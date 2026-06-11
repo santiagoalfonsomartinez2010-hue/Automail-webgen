@@ -1,39 +1,36 @@
 import { Actor } from 'apify';
 import { generateLandingPage } from './claude.js';
 import { publishToGitHub } from './github.js';
-import { sendWhatsApp } from './twilio.js';
+import { sendEmail } from './email.js';
 import { scrapeBusinesses } from './scraper.js';
 
 await Actor.init();
 
-// FIX 1: Guard against null input (Actor.getInput() returns null if nothing was passed)
 const input = await Actor.getInput();
 if (!input) throw new Error('No se proporcionó ningún input. Rellena el formulario antes de ejecutar.');
 
 const {
-    ciudad       = 'Madrid',
-    categoria    = 'clinica fisioterapia',
-    cantidad     = 10,
+    ciudad        = 'Madrid',
+    categoria     = 'clinica fisioterapia',
+    cantidad      = 10,
     anthropicKey,
     githubToken,
     githubUser,
     githubRepo,
-    twilioSid,
-    twilioToken,
-    twilioFrom,
+    gmailUser,
+    gmailAppPassword,
 } = input;
 
-// FIX 2: Validate required secrets up front so the run fails fast with a clear message
+// Validar campos obligatorios
 const missing = [];
-if (!anthropicKey) missing.push('anthropicKey');
-if (!githubToken)  missing.push('githubToken');
-if (!githubUser)   missing.push('githubUser');
-if (!githubRepo)   missing.push('githubRepo');
-if (!twilioSid)    missing.push('twilioSid');
-if (!twilioToken)  missing.push('twilioToken');
-if (!twilioFrom)   missing.push('twilioFrom');
+if (!anthropicKey)    missing.push('anthropicKey');
+if (!githubToken)     missing.push('githubToken');
+if (!githubUser)      missing.push('githubUser');
+if (!githubRepo)      missing.push('githubRepo');
+if (!gmailUser)       missing.push('gmailUser');
+if (!gmailAppPassword) missing.push('gmailAppPassword');
 if (missing.length > 0) {
-    throw new Error(`Faltan campos obligatorios en el input: ${missing.join(', ')}`);
+    throw new Error(`Faltan campos obligatorios: ${missing.join(', ')}`);
 }
 
 console.log(`🚀 Iniciando AUTOMAIL WebGen`);
@@ -70,46 +67,44 @@ for (const biz of businesses) {
         });
         console.log(`  🌐 Publicada en: ${pageUrl}`);
 
-        // 2c. Enviar WhatsApp (solo si hay teléfono válido)
-        let whatsappStatus = 'no_phone';
-        if (biz.phone) {
-            whatsappStatus = await sendWhatsApp({
-                to: biz.phone,
+        // 2c. Enviar email (solo si hay email disponible)
+        let emailStatus = 'no_email';
+        if (biz.email) {
+            emailStatus = await sendEmail({
+                to: biz.email,
                 bizName: biz.name,
                 pageUrl,
-                twilioSid,
-                twilioToken,
-                twilioFrom,
+                gmailUser,
+                gmailAppPassword,
             });
-            console.log(`  📱 WhatsApp: ${whatsappStatus}`);
+            console.log(`  📧 Email: ${emailStatus}`);
         } else {
-            console.log(`  📱 WhatsApp: sin teléfono, omitido`);
+            console.log(`  📧 Email: sin email, omitido`);
         }
 
         results.push({
-            name:           biz.name,
-            phone:          biz.phone || '—',
-            address:        biz.address || '—',
-            category:       biz.category || categoria,
-            rating:         biz.rating || '—',
+            name:        biz.name,
+            email:       biz.email || '—',
+            phone:       biz.phone || '—',
+            address:     biz.address || '—',
+            category:    biz.category || categoria,
+            rating:      biz.rating || '—',
             pageUrl,
-            whatsappStatus,
-            status:         'completado',
-            timestamp:      new Date().toISOString(),
+            emailStatus,
+            status:      'completado',
+            timestamp:   new Date().toISOString(),
         });
 
     } catch (err) {
         console.error(`  ❌ Error con ${biz.name}: ${err.message}`);
         results.push({
             name:      biz.name,
-            phone:     biz.phone || '—',
             status:    'error',
             error:     err.message,
             timestamp: new Date().toISOString(),
         });
     }
 
-    // Pausa entre negocios para no saturar APIs (2s)
     await new Promise(r => setTimeout(r, 2000));
 }
 
@@ -118,12 +113,12 @@ await Actor.pushData(results);
 
 const completed = results.filter(r => r.status === 'completado').length;
 const errors    = results.filter(r => r.status === 'error').length;
-const noPhone   = results.filter(r => r.whatsappStatus === 'no_phone').length;
+const noEmail   = results.filter(r => r.emailStatus === 'no_email').length;
 
 console.log(`\n🎯 RESUMEN FINAL`);
-console.log(`   ✅ Completados:       ${completed}`);
-console.log(`   ❌ Errores:           ${errors}`);
-console.log(`   📵 Sin teléfono:      ${noPhone}`);
-console.log(`   📊 Total procesados:  ${results.length}`);
+console.log(`   ✅ Completados:      ${completed}`);
+console.log(`   ❌ Errores:          ${errors}`);
+console.log(`   📵 Sin email:        ${noEmail}`);
+console.log(`   📊 Total procesados: ${results.length}`);
 
 await Actor.exit();
