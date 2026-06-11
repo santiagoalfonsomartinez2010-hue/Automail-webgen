@@ -1,0 +1,79 @@
+{
+    "title": "AUTOMAIL WebGen",
+    "description": "Genera landing pages automáticas para negocios sin web y los contacta por WhatsApp",
+    "type": "object",
+    "schemaVersion": 1,
+    "properties": {
+        "ciudad": {
+            "title": "Ciudad",
+            "type": "string",
+            "description": "Ciudad donde buscar negocios (ej: Madrid, Barcelona, Sevilla)",
+            "default": "Madrid",
+            "editor": "textfield"
+        },
+        "categoria": {
+            "title": "Categoría de negocio",
+            "type": "string",
+            "description": "Tipo de negocio a buscar (ej: clinica fisioterapia, restaurante, peluqueria)",
+            "default": "clinica fisioterapia",
+            "editor": "textfield"
+        },
+        "cantidad": {
+            "title": "Número de negocios",
+            "type": "integer",
+            "description": "Cuántos negocios procesar por ejecución",
+            "default": 10,
+            "minimum": 1,
+            "maximum": 50,
+            "editor": "number"
+        },
+        "anthropicKey": {
+            "title": "Anthropic API Key",
+            "type": "string",
+            "description": "Tu API key de Anthropic (console.anthropic.com)",
+            "editor": "textfield",
+            "isSecret": true
+        },
+        "githubToken": {
+            "title": "GitHub Personal Access Token",
+            "type": "string",
+            "description": "Token con permisos de repo (github.com → Settings → Developer settings → Tokens)",
+            "editor": "textfield",
+            "isSecret": true
+        },
+        "githubUser": {
+            "title": "GitHub Username",
+            "type": "string",
+            "description": "Tu nombre de usuario de GitHub",
+            "editor": "textfield"
+        },
+        "githubRepo": {
+            "title": "GitHub Repo (GitHub Pages)",
+            "type": "string",
+            "description": "Nombre del repo habilitado con GitHub Pages (ej: automail-webs)",
+            "editor": "textfield"
+        },
+        "twilioSid": {
+            "title": "Twilio Account SID",
+            "type": "string",
+            "description": "Tu Account SID de Twilio",
+            "editor": "textfield",
+            "isSecret": true
+        },
+        "twilioToken": {
+            "title": "Twilio Auth Token",
+            "type": "string",
+            "description": "Tu Auth Token de Twilio",
+            "editor": "textfield",
+            "isSecret": true
+        },
+        "twilioFrom": {
+            "title": "Twilio WhatsApp From",
+            "type": "string",
+            "description": "Número de WhatsApp Twilio con prefijo (ej: whatsapp:+14155238886)",
+            "default": "whatsapp:+14155238886",
+            "editor": "textfield"
+        }
+    },
+    "required": ["ciudad", "categoria", "cantidad", "anthropicKey", "githubToken", "githubUser", "githubRepo", "twilioSid", "twilioToken", "twilioFrom"]
+}
