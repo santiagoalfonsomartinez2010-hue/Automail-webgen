@@ -1,0 +1,17 @@
+{
+    "name": "automail-webgen",
+    "version": "1.0.0",
+    "description": "AUTOMAIL WebGen — scrape negocios sin web, genera landing pages con Claude, publica en GitHub Pages y contacta por WhatsApp",
+    "type": "module",
+    "main": "src/main.js",
+    "scripts": {
+        "start": "node src/main.js"
+    },
+    "dependencies": {
+        "apify": "^3.4.0",
+        "apify-client": "^2.9.0"
+    },
+    "engines": {
+        "node": ">=18.0.0"
+    }
+}
