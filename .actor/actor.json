@@ -1,0 +1,12 @@
+{
+    "actorSpecification": 1,
+    "name": "automail-webgen",
+    "title": "AUTOMAIL WebGen",
+    "description": "Scrape negocios sin web → genera landing pages con Claude → publica en GitHub Pages → contacta por WhatsApp",
+    "version": "1.0",
+    "buildTag": "latest",
+    "environmentVariables": {},
+    "dockerfile": "./Dockerfile",
+    "readme": "../README.md",
+    "input": "./input_schema.json"
+}
