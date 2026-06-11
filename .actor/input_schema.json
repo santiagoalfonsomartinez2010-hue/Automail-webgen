@@ -1,6 +1,6 @@
 {
     "title": "AUTOMAIL WebGen",
-    "description": "Genera landing pages automáticas para negocios sin web y los contacta por WhatsApp",
+    "description": "Genera landing pages automáticas para negocios sin web y los contacta por email",
     "type": "object",
     "schemaVersion": 1,
     "properties": {
@@ -22,7 +22,7 @@
             "title": "Número de negocios",
             "type": "integer",
             "description": "Cuántos negocios procesar por ejecución",
-            "default": 10,
+            "default": 3,
             "minimum": 1,
             "maximum": 50,
             "editor": "number"
@@ -37,7 +37,7 @@
         "githubToken": {
             "title": "GitHub Personal Access Token",
             "type": "string",
-            "description": "Token con permisos de repo (github.com → Settings → Developer settings → Tokens)",
+            "description": "Token con permisos de repo",
             "editor": "textfield",
             "isSecret": true
         },
@@ -48,32 +48,25 @@
             "editor": "textfield"
         },
         "githubRepo": {
-            "title": "GitHub Repo (GitHub Pages)",
+            "title": "GitHub Repo",
             "type": "string",
-            "description": "Nombre del repo habilitado con GitHub Pages (ej: automail-webs)",
+            "description": "Nombre del repo con GitHub Pages activo",
+            "default": "Automail-webgen",
             "editor": "textfield"
         },
-        "twilioSid": {
-            "title": "Twilio Account SID",
+        "gmailUser": {
+            "title": "Gmail (tu dirección)",
             "type": "string",
-            "description": "Tu Account SID de Twilio",
-            "editor": "textfield",
-            "isSecret": true
-        },
-        "twilioToken": {
-            "title": "Twilio Auth Token",
-            "type": "string",
-            "description": "Tu Auth Token de Twilio",
-            "editor": "textfield",
-            "isSecret": true
-        },
-        "twilioFrom": {
-            "title": "Twilio WhatsApp From",
-            "type": "string",
-            "description": "Número de WhatsApp Twilio con prefijo (ej: whatsapp:+14155238886)",
-            "default": "whatsapp:+14155238886",
+            "description": "Tu dirección de Gmail (ej: tunombre@gmail.com)",
             "editor": "textfield"
+        },
+        "gmailAppPassword": {
+            "title": "Gmail App Password",
+            "type": "string",
+            "description": "Contraseña de aplicación de Google (16 caracteres, no tu contraseña real)",
+            "editor": "textfield",
+            "isSecret": true
         }
     },
-    "required": ["ciudad", "categoria", "cantidad", "anthropicKey", "githubToken", "githubUser", "githubRepo", "twilioSid", "twilioToken", "twilioFrom"]
+    "required": ["anthropicKey", "githubToken", "githubUser", "githubRepo", "gmailUser", "gmailAppPassword"]
 }
