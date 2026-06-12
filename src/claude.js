@@ -99,11 +99,10 @@ SECCIONES OBLIGATORIAS (en este orden)
 6. RESEÑAS DE CLIENTES:
 ${reviewsSection}
 
-7. MAPA INTERACTIVO:
-   - Usar iframe de Google Maps con la dirección real: "${address}"
-   - URL del iframe: https://maps.google.com/maps?q=${encodeURIComponent(address || name)}&output=embed
-   - El mapa debe tener altura mínima de 400px, bordes redondeados
-   - Acompañado de la dirección completa, teléfono y horario estimado del sector
+7. SECCIÓN "CÓMO LLEGAR":
+   - SIN mapa ni iframe de ningún tipo
+   - Grid de 4 tarjetas con icono, label en mayúsculas y valor: Dirección, Teléfono, Horario (inferido para el sector), Transporte público cercano (inferido)
+   - Diseño limpio sobre fondo claro con sombra suave en cada tarjeta
 
 8. FORMULARIO DE CITA:
    - Campos: Nombre completo, Teléfono, Email, Tipo de servicio (select con los servicios del negocio), Fecha preferida (date picker), Mensaje opcional
