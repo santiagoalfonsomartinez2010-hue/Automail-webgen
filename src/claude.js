@@ -1,11 +1,3 @@
-/**
- * Calls the Claude API to generate a professional, unique landing page.
- *
- * FIX 1: Model name corrected to current production model
- * FIX 2: max_tokens raised to 8096 — 4096 was often not enough for full HTML pages
- * FIX 3: More robust markdown fence stripping (multiline regex with `s` flag)
- * FIX 4: Retry once on 529 (overloaded) before throwing
- */
 export async function generateLandingPage(biz, apiKey) {
     if (!apiKey) throw new Error('Anthropic API key no proporcionada');
 
@@ -26,7 +18,6 @@ export async function generateLandingPage(biz, apiKey) {
             }),
         });
 
-        // Retry once on 529 (API overloaded)
         if (res.status === 529 && attempt === 1) {
             console.warn('  ⏳ Claude sobrecargado, reintentando en 10s...');
             await new Promise(r => setTimeout(r, 10_000));
@@ -39,14 +30,9 @@ export async function generateLandingPage(biz, apiKey) {
         }
 
         const data = await res.json();
-
-        if (!data.content?.[0]?.text) {
-            throw new Error('Claude devolvió una respuesta vacía');
-        }
+        if (!data.content?.[0]?.text) throw new Error('Claude devolvió una respuesta vacía');
 
         const raw = data.content[0].text;
-
-        // FIX 3: strip markdown fences robustly
         return raw
             .replace(/^```html\s*/is, '')
             .replace(/^```\s*/is,    '')
@@ -62,6 +48,16 @@ function buildPrompt(biz) {
         ? `- Valoración actual en Google Maps: ${rating}/5 (${reviews ?? '?'} reseñas)`
         : '';
 
+    // Generate 5 fake but realistic reviews for the sector
+    const reviewsSection = `
+SECCIÓN DE RESEÑAS — Genera 5 reseñas ficticias pero realistas y creíbles de clientes satisfechos.
+Cada reseña debe tener:
+- Nombre real español (nombre + apellido)
+- Valoración de 5 estrellas (★★★★★)
+- Texto de 2-3 frases específico al sector ${category}, que mencione el trato personal, resultados concretos o un servicio específico
+- Diseño tipo tarjetas en grid con foto de avatar generada con iniciales del nombre sobre fondo de color
+- Las reseñas deben parecer reales, no genéricas`;
+
     return `Eres un diseñador web profesional español. Crea una landing page HTML completa, moderna y de alta conversión para este negocio local.
 
 DATOS DEL NEGOCIO:
@@ -71,28 +67,71 @@ DATOS DEL NEGOCIO:
 - Teléfono: ${phone || 'No disponible'}
 ${ratingLine}
 
-REQUISITOS TÉCNICOS:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+REQUISITOS TÉCNICOS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 - Un único archivo HTML autocontenido (CSS y JS inline, sin dependencias externas excepto Google Fonts)
 - Totalmente responsive (mobile-first)
-- Carga rápida: sin librerías pesadas
+- Sin librerías externas pesadas
 
-REQUISITOS DE DISEÑO:
-- Diseño profesional con identidad visual coherente al sector (${category})
-- Paleta de colores específica para el sector, no genérica
-- Tipografía de Google Fonts apropiada (importar en el <head>)
-- Hero section potente con headline y CTA
-- Sección de servicios (infiere 4-6 servicios típicos del sector)
-- Sección "Por qué elegirnos" con 3-4 puntos de valor
-- Sección de contacto con el teléfono y dirección reales
-- Footer profesional
-- Micro-animaciones sutiles en scroll (vanilla JS, sin jQuery)
-${phone ? '- Botón de WhatsApp flotante con el número real del negocio' : ''}
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SECCIONES OBLIGATORIAS (en este orden)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-REQUISITOS DE COPY:
+1. NAV fijo con logo y botón CTA de llamada
+
+2. HERO — MUY IMPORTANTE:
+   - El nombre del negocio "${name}" debe ser el elemento más prominente visualmente
+   - Tamaño de fuente del nombre: mínimo 80px en desktop, 52px en móvil (usar clamp(52px, 10vw, 96px))
+   - Usar la tipografía display más característica y dramática de Google Fonts para el nombre
+   - El nombre puede ocupar 2-3 líneas si es necesario, con mucho peso visual
+   - Subtítulo descriptivo debajo, más pequeño
+   - Dos botones CTA: "Pedir cita" y "Ver servicios"
+   - Elemento visual flotante con animación (tarjeta con stats del negocio)
+
+3. BARRA DE ESTADÍSTICAS — 3 números impactantes del negocio
+
+4. SERVICIOS — Grid de 6 tarjetas con icono emoji, título y descripción
+   Infiere los servicios más típicos del sector ${category}
+
+5. POR QUÉ ELEGIRNOS — 4 puntos de valor sobre fondo oscuro
+
+6. RESEÑAS DE CLIENTES:
+${reviewsSection}
+
+7. MAPA INTERACTIVO:
+   - Usar iframe de Google Maps con la dirección real: "${address}"
+   - URL del iframe: https://maps.google.com/maps?q=${encodeURIComponent(address || name)}&output=embed
+   - El mapa debe tener altura mínima de 400px, bordes redondeados
+   - Acompañado de la dirección completa, teléfono y horario estimado del sector
+
+8. FORMULARIO DE CITA:
+   - Campos: Nombre completo, Teléfono, Email, Tipo de servicio (select con los servicios del negocio), Fecha preferida (date picker), Mensaje opcional
+   - Botón de envío prominente con el color principal del diseño
+   - Al hacer submit (preventDefault): mostrar mensaje de confirmación "¡Solicitud recibida! Te llamaremos en menos de 24h" con animación
+   - Diseño limpio, sin backend real necesario
+
+9. FOOTER con logo, dirección, teléfono y copyright
+
+10. BOTÓN WHATSAPP FLOTANTE${phone ? ` con href="https://wa.me/${phone.replace(/\D/g,'')}"` : ''}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+REQUISITOS DE DISEÑO
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+- Identidad visual específica al sector ${category} (colores, iconografía, tono)
+- Paleta coherente de 4-5 colores, NO genérica
+- Google Fonts: una tipografía display dramática para títulos + una sans-serif limpia para el cuerpo
+- Micro-animaciones en scroll con IntersectionObserver (vanilla JS)
+- Transiciones suaves en hover de tarjetas y botones
+- Sombras y bordes redondeados modernos
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+REQUISITOS DE COPY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 - Todo en español
-- Tono cercano y profesional
-- Copy persuasivo orientado a conversión
-- Título SEO relevante en el <title>
+- Tono cercano, profesional y persuasivo
+- Copy orientado a conversión, no genérico
+- Título SEO relevante en el <title>: "${name} | ${category} en ${address?.split(',').pop()?.trim() || 'Madrid'}"
 
-Devuelve ÚNICAMENTE el código HTML completo, empezando por <!DOCTYPE html>. Sin explicaciones, sin markdown, sin bloques de código.`;
+Devuelve ÚNICAMENTE el código HTML completo empezando por <!DOCTYPE html>. Sin explicaciones, sin markdown, sin bloques de código.`;
 }
