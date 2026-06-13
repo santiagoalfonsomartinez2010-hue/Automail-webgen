@@ -24,6 +24,7 @@ export async function scrapeBusinesses({ ciudad, categoria, cantidad }) {
                 maxCrawledPlacesPerSearch: fetchQuantity,
                 language: 'es',
                 countryCode: 'es',
+                skipPlacesWithWebsite: true,
             },
             { waitSecs: 600 }
         );
