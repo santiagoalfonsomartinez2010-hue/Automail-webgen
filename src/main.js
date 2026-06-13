@@ -71,12 +71,14 @@ for (const biz of businesses) {
 
         // 2c. Enviar email (solo si hay email disponible)
         let emailStatus = 'no_email';
-        if (biz.email) {
+        if (true) { // Always send lead email to Santiago
             emailStatus = await sendEmail({
-                to: biz.email,
+                to: gmailUser,
                 bizName: biz.name,
                 pageUrl,
                 city: ciudad,
+                phone: biz.phone,
+                address: biz.address,
                 gmailUser,
                 gmailAppPassword,
             });
