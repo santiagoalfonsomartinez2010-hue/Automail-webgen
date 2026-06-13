@@ -7,7 +7,7 @@
  */
 import nodemailer from 'nodemailer';
 
-export async function sendEmail({ to, bizName, pageUrl, city, gmailUser, gmailAppPassword }) {
+export async function sendEmail({ to, bizName, pageUrl, city, phone, address, gmailUser, gmailAppPassword }) {
     if (!to) return 'no_email';
 
     const transporter = nodemailer.createTransport({
@@ -18,7 +18,7 @@ export async function sendEmail({ to, bizName, pageUrl, city, gmailUser, gmailAp
         },
     });
 
-    const { subject, html, text } = buildEmail(bizName, pageUrl, city);
+    const { subject, html, text } = buildEmail(bizName, pageUrl, city, phone, address);
 
     const info = await transporter.sendMail({
         from:    `AUTOMAIL <${gmailUser}>`,
@@ -31,24 +31,30 @@ export async function sendEmail({ to, bizName, pageUrl, city, gmailUser, gmailAp
     return `sent:${info.messageId}`;
 }
 
-function buildEmail(bizName, pageUrl, city) {
-    const subject = `${bizName} — cada mes pierdes clientes por no tener web`;
+function buildEmail(bizName, pageUrl, city, phone, address) {
+    const subject = `✅ Nueva web generada — ${bizName}`;
+
+    const whatsappMessage = `Hola 👋 Cada mes miles de personas en ${city || 'tu ciudad'} buscan en Google negocios como *${bizName}* y no os encuentran porque no tenéis página web.
+
+Os he preparado una de muestra para que veáis cómo podría quedar 👉 ${pageUrl}
+
+En menos de una semana podría estar activa y empezar a traeros clientes nuevos por internet. ¿Os llamo para contaros más sin compromiso?`;
+
+    const whatsappLink = phone
+        ? `https://wa.me/${phone.replace(/\D/g, '')}?text=${encodeURIComponent(whatsappMessage)}`
+        : null;
 
     const text = `
-Hola,
+NUEVO LEAD GENERADO
+===================
+Negocio:   ${bizName}
+Teléfono:  ${phone || 'No disponible'}
+Dirección: ${address || 'No disponible'}
+Web:       ${pageUrl}
 
-Cada mes miles de personas en ${city || 'tu ciudad'} buscan en Google negocios como ${bizName} y no os encuentran porque no tenéis página web.
-
-Os he preparado una de muestra para que veáis cómo podría quedar:
-${pageUrl}
-
-En menos de una semana podría estar activa y empezar a traeros clientes nuevos por internet.
-
-¿Os llamo para contaros más sin compromiso?
-
-Un saludo,
-Santiago
-AUTOMAIL
+MENSAJE PARA COPIAR EN WHATSAPP:
+---------------------------------
+${whatsappMessage}
     `.trim();
 
     const html = `
@@ -57,34 +63,56 @@ AUTOMAIL
 <head>
   <meta charset="UTF-8">
   <style>
-    body { font-family: Arial, sans-serif; color: #333; max-width: 600px; margin: 0 auto; padding: 20px; }
-    .header { background: #0f172a; color: white; padding: 28px 32px; border-radius: 8px 8px 0 0; }
-    .header h1 { margin: 0; font-size: 20px; letter-spacing: 1px; }
-    .body { background: #f8fafc; padding: 36px 32px; border-radius: 0 0 8px 8px; line-height: 1.7; }
-    .highlight { background: #fff7ed; border-left: 4px solid #f97316; padding: 16px 20px; margin: 24px 0; border-radius: 0 8px 8px 0; font-size: 15px; }
-    .cta { display: inline-block; background: #0f172a; color: white; padding: 16px 32px; border-radius: 6px; text-decoration: none; font-weight: bold; margin: 24px 0; font-size: 15px; }
-    .cta:hover { background: #1e293b; }
-    .footer { margin-top: 32px; font-size: 12px; color: #94a3b8; text-align: center; border-top: 1px solid #e2e8f0; padding-top: 20px; }
+    body { font-family: Arial, sans-serif; color: #333; max-width: 620px; margin: 0 auto; padding: 20px; }
+    .header { background: #0f172a; color: white; padding: 24px 32px; border-radius: 8px 8px 0 0; display: flex; justify-content: space-between; align-items: center; }
+    .header h1 { margin: 0; font-size: 18px; letter-spacing: 1px; }
+    .header span { background: #22c55e; color: white; padding: 4px 12px; border-radius: 100px; font-size: 12px; font-weight: 700; }
+    .body { background: #f8fafc; padding: 32px; border-radius: 0 0 8px 8px; }
+    .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 28px; }
+    .info-card { background: white; border-radius: 8px; padding: 16px; border: 1px solid #e2e8f0; }
+    .info-label { font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #94a3b8; margin-bottom: 4px; }
+    .info-value { font-size: 15px; font-weight: 600; color: #0f172a; word-break: break-word; }
+    .web-btn { display: block; background: #0f172a; color: white; padding: 14px 24px; border-radius: 8px; text-decoration: none; font-weight: 700; text-align: center; margin-bottom: 28px; font-size: 15px; }
+    .wa-section { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 24px; margin-bottom: 16px; }
+    .wa-section h3 { margin: 0 0 8px 0; font-size: 14px; color: #15803d; display: flex; align-items: center; gap: 8px; }
+    .wa-message { background: white; border-radius: 8px; padding: 16px; font-size: 14px; line-height: 1.7; color: #333; border: 1px solid #dcfce7; white-space: pre-wrap; font-family: inherit; margin: 12px 0; }
+    .wa-btn { display: block; background: #25D366; color: white; padding: 14px 24px; border-radius: 8px; text-decoration: none; font-weight: 700; text-align: center; font-size: 15px; }
+    .footer { margin-top: 20px; font-size: 12px; color: #94a3b8; text-align: center; }
   </style>
 </head>
 <body>
   <div class="header">
     <h1>AUTOMAIL</h1>
+    <span>✅ Nueva web lista</span>
   </div>
   <div class="body">
-    <p>Hola,</p>
-    <div class="highlight">
-      Cada mes miles de personas en <strong>${city || 'vuestra ciudad'}</strong> buscan en Google negocios como <strong>${bizName}</strong> y no os encuentran — porque no tenéis página web.
+
+    <div class="info-grid">
+      <div class="info-card">
+        <div class="info-label">Negocio</div>
+        <div class="info-value">${bizName}</div>
+      </div>
+      <div class="info-card">
+        <div class="info-label">Teléfono</div>
+        <div class="info-value">${phone || '—'}</div>
+      </div>
+      <div class="info-card" style="grid-column: 1/-1">
+        <div class="info-label">Dirección</div>
+        <div class="info-value">${address || '—'}</div>
+      </div>
     </div>
-    <p>Os he preparado una de muestra para que veáis cómo podría quedar:</p>
-    <p style="text-align:center">
-      <a class="cta" href="${pageUrl}">👉 Ver vuestra página web</a>
-    </p>
-    <p>En menos de una semana podría estar activa y empezar a traeros clientes nuevos por internet.</p>
-    <p><strong>¿Os llamo para contaros más sin compromiso?</strong></p>
-    <p>Un saludo,<br><strong>Santiago</strong><br>AUTOMAIL</p>
+
+    <a href="${pageUrl}" class="web-btn">👀 Ver la web generada →</a>
+
+    <div class="wa-section">
+      <h3>💬 Mensaje listo para WhatsApp</h3>
+      <p style="font-size:13px; color:#166534; margin:0 0 8px 0">Copia y pega este mensaje en WhatsApp al número de arriba:</p>
+      <div class="wa-message">${whatsappMessage.replace(/\*/g, '<strong>').replace(/\*/g, '</strong>')}</div>
+      ${whatsappLink ? `<a href="${whatsappLink}" class="wa-btn">📱 Abrir WhatsApp directo →</a>` : '<p style="font-size:13px;color:#94a3b8;text-align:center">Sin teléfono disponible para este negocio</p>'}
+    </div>
+
   </div>
-  <div class="footer">Has recibido este email porque tu negocio aparece en Google Maps sin página web.</div>
+  <div class="footer">Generado automáticamente por AUTOMAIL</div>
 </body>
 </html>
     `.trim();
