@@ -134,6 +134,22 @@ REQUISITOS DE DISEÑO
 - Sombras y bordes redondeados modernos
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+REQUISITOS DE LINKS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+LINKS QUE DEBEN FUNCIONAR:
+- Teléfono: usar href="tel:${phone}" en todos los botones de llamada
+- WhatsApp flotante: usar href="https://wa.me/${phone ? phone.replace(/\D/g,'') : ''}"
+- Anclas internas: #servicios, #cita, #contacto — scroll suave a secciones
+
+LINKS QUE DEBES EVITAR COMPLETAMENTE:
+- Redes sociales (Facebook, Instagram, Twitter, LinkedIn) — NO incluir ningún icono ni link de RRSS
+- Links de footer a servicios individuales — el footer solo muestra texto sin enlace
+- Cualquier href="#" sin destino real — si no hay destino, usa texto plano sin <a>
+- Links externos a sitios de terceros
+
+REGLA GENERAL: Si un link no tiene una URL real y funcional, conviértelo en texto plano sin etiqueta <a>.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 REQUISITOS DE COPY Y GÉNERO
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 - Todo en español
