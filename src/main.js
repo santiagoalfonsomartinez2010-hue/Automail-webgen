@@ -54,6 +54,8 @@ for (const biz of businesses) {
 
     try {
         // 2a. Generar landing page con Claude
+        const photoCount = biz.images?.length || 0;
+        console.log(`  📸 ${photoCount > 0 ? photoCount + ' fotos reales encontradas' : 'Sin fotos — usando diseño CSS'}`);
         const html = await generateLandingPage(biz, anthropicKey);
         console.log(`  ✏️  Landing page generada (${Math.round(html.length / 1024)}KB)`);
 
