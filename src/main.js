@@ -74,6 +74,7 @@ for (const biz of businesses) {
                 to: biz.email,
                 bizName: biz.name,
                 pageUrl,
+                city: ciudad,
                 gmailUser,
                 gmailAppPassword,
             });
