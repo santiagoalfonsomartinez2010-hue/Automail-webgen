@@ -125,12 +125,19 @@ REQUISITOS DE DISEÑO
 - Sombras y bordes redondeados modernos
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-REQUISITOS DE COPY
+REQUISITOS DE COPY Y GÉNERO
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 - Todo en español
 - Tono cercano, profesional y persuasivo
 - Copy orientado a conversión, no genérico
 - Título SEO relevante en el <title>: "${name} | ${category} en ${address?.split(',').pop()?.trim() || 'Madrid'}"
+
+IMPORTANTE — GÉNERO DEL PÚBLICO:
+Analiza el nombre del negocio ("${name}") y la categoría ("${category}") para determinar el público:
+- Si contiene palabras como "barbería", "barber", "barbero", "caballeros", "gentlemen" → público MASCULINO: usa "clientes", servicios de barba, degradados, afeitado, etc.
+- Si contiene "peluquería", "salón", "beauty", "estudio" sin indicación de género → público MIXTO: usa lenguaje neutro ("clientes", "personas"), incluye servicios para todos
+- Si contiene "mujer", "dama", "ella", "femme" → público FEMENINO
+- En caso de duda → usa siempre lenguaje NEUTRO e incluye servicios para todo tipo de clientes
 
 Devuelve ÚNICAMENTE el código HTML completo empezando por <!DOCTYPE html>. Sin explicaciones, sin markdown, sin bloques de código.`;
 }
