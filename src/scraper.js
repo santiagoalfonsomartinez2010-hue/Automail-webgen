@@ -23,9 +23,7 @@ export async function scrapeBusinesses({ ciudad, categoria, cantidad }) {
                 searchStringsArray: [`${categoria} ${ciudad}`],
                 maxCrawledPlacesPerSearch: fetchQuantity,
                 language: 'es',
-                countryCode: 'ES',
-                // Only return businesses without a website
-                searchMatching: 'all',
+                countryCode: 'es',
             },
             { waitSecs: 600 }
         );
