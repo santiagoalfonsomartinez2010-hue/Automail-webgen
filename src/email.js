@@ -7,7 +7,7 @@
  */
 import nodemailer from 'nodemailer';
 
-export async function sendEmail({ to, bizName, pageUrl, gmailUser, gmailAppPassword }) {
+export async function sendEmail({ to, bizName, pageUrl, city, gmailUser, gmailAppPassword }) {
     if (!to) return 'no_email';
 
     const transporter = nodemailer.createTransport({
@@ -18,7 +18,7 @@ export async function sendEmail({ to, bizName, pageUrl, gmailUser, gmailAppPassw
         },
     });
 
-    const { subject, html, text } = buildEmail(bizName, pageUrl);
+    const { subject, html, text } = buildEmail(bizName, pageUrl, city);
 
     const info = await transporter.sendMail({
         from:    `AUTOMAIL <${gmailUser}>`,
@@ -31,19 +31,20 @@ export async function sendEmail({ to, bizName, pageUrl, gmailUser, gmailAppPassw
     return `sent:${info.messageId}`;
 }
 
-function buildEmail(bizName, pageUrl) {
-    const subject = `Hemos diseñado una página web para ${bizName}`;
+function buildEmail(bizName, pageUrl, city) {
+    const subject = `${bizName} — cada mes pierdes clientes por no tener web`;
 
     const text = `
 Hola,
 
-He visto que ${bizName} aún no tiene página web y he querido diseñaros una de muestra.
+Cada mes miles de personas en ${city || 'tu ciudad'} buscan en Google negocios como ${bizName} y no os encuentran porque no tenéis página web.
 
-Podéis verla aquí: ${pageUrl}
+Os he preparado una de muestra para que veáis cómo podría quedar:
+${pageUrl}
 
-En menos de una semana podríais tenerla activa y empezar a recibir clientes por internet.
+En menos de una semana podría estar activa y empezar a traeros clientes nuevos por internet.
 
-¿Os interesa? Respondedme a este email o escribidme sin compromiso.
+¿Os llamo para contaros más sin compromiso?
 
 Un saludo,
 Santiago
@@ -57,11 +58,13 @@ AUTOMAIL
   <meta charset="UTF-8">
   <style>
     body { font-family: Arial, sans-serif; color: #333; max-width: 600px; margin: 0 auto; padding: 20px; }
-    .header { background: #0f172a; color: white; padding: 24px; border-radius: 8px 8px 0 0; text-align: center; }
-    .header h1 { margin: 0; font-size: 22px; }
-    .body { background: #f8fafc; padding: 32px; border-radius: 0 0 8px 8px; }
-    .cta { display: inline-block; background: #2563eb; color: white; padding: 14px 28px; border-radius: 6px; text-decoration: none; font-weight: bold; margin: 20px 0; }
-    .footer { margin-top: 32px; font-size: 12px; color: #94a3b8; text-align: center; }
+    .header { background: #0f172a; color: white; padding: 28px 32px; border-radius: 8px 8px 0 0; }
+    .header h1 { margin: 0; font-size: 20px; letter-spacing: 1px; }
+    .body { background: #f8fafc; padding: 36px 32px; border-radius: 0 0 8px 8px; line-height: 1.7; }
+    .highlight { background: #fff7ed; border-left: 4px solid #f97316; padding: 16px 20px; margin: 24px 0; border-radius: 0 8px 8px 0; font-size: 15px; }
+    .cta { display: inline-block; background: #0f172a; color: white; padding: 16px 32px; border-radius: 6px; text-decoration: none; font-weight: bold; margin: 24px 0; font-size: 15px; }
+    .cta:hover { background: #1e293b; }
+    .footer { margin-top: 32px; font-size: 12px; color: #94a3b8; text-align: center; border-top: 1px solid #e2e8f0; padding-top: 20px; }
   </style>
 </head>
 <body>
@@ -70,13 +73,15 @@ AUTOMAIL
   </div>
   <div class="body">
     <p>Hola,</p>
-    <p>He visto que <strong>${bizName}</strong> aún no tiene página web y he querido diseñaros una de muestra.</p>
-    <p>Le hemos dado un diseño profesional adaptado a vuestro sector, con información de contacto, servicios y llamada a la acción:</p>
+    <div class="highlight">
+      Cada mes miles de personas en <strong>${city || 'vuestra ciudad'}</strong> buscan en Google negocios como <strong>${bizName}</strong> y no os encuentran — porque no tenéis página web.
+    </div>
+    <p>Os he preparado una de muestra para que veáis cómo podría quedar:</p>
     <p style="text-align:center">
       <a class="cta" href="${pageUrl}">👉 Ver vuestra página web</a>
     </p>
-    <p>En menos de una semana podríais tenerla activa y empezar a recibir clientes por internet.</p>
-    <p>¿Os interesa? Respondedme a este email sin compromiso y os cuento cómo funciona.</p>
+    <p>En menos de una semana podría estar activa y empezar a traeros clientes nuevos por internet.</p>
+    <p><strong>¿Os llamo para contaros más sin compromiso?</strong></p>
     <p>Un saludo,<br><strong>Santiago</strong><br>AUTOMAIL</p>
   </div>
   <div class="footer">Has recibido este email porque tu negocio aparece en Google Maps sin página web.</div>
