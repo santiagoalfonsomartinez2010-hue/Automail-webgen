@@ -72,5 +72,41 @@ function normalise(categoria) {
         category: item.categoryName || item.category     || item.type  || categoria,
         rating:   item.totalScore   || item.rating       || null,
         reviews:  item.reviewsCount || item.reviews      || null,
+        images:   extractImages(item),
     });
+}
+
+/**
+ * Extract up to 5 real photo URLs from the Google Maps result.
+ * The compass Actor stores images in several possible fields.
+ */
+function extractImages(item) {
+    const imgs = [];
+
+    // Field 1: imageUrls — array of direct URLs
+    if (Array.isArray(item.imageUrls)) {
+        imgs.push(...item.imageUrls);
+    }
+
+    // Field 2: images — array of objects with {url} or {imageUrl}
+    if (Array.isArray(item.images)) {
+        for (const img of item.images) {
+            const url = img.url || img.imageUrl || img.src || '';
+            if (url) imgs.push(url);
+        }
+    }
+
+    // Field 3: photos — same pattern
+    if (Array.isArray(item.photos)) {
+        for (const p of item.photos) {
+            const url = p.url || p.imageUrl || p.src || p;
+            if (typeof url === 'string' && url.startsWith('http')) imgs.push(url);
+        }
+    }
+
+    // Field 4: featuredImage — single cover photo
+    if (item.featuredImage) imgs.push(item.featuredImage);
+
+    // Deduplicate and return up to 5
+    return [...new Set(imgs)].slice(0, 5);
 }
