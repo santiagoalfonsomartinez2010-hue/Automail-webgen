@@ -42,7 +42,7 @@ export async function generateLandingPage(biz, apiKey) {
 }
 
 function buildPrompt(biz) {
-    const { name, category, address, phone, rating, reviews } = biz;
+    const { name, category, address, phone, rating, reviews, images } = biz;
 
     const ratingLine = rating
         ? `- Valoración actual en Google Maps: ${rating}/5 (${reviews ?? '?'} reseñas)`
@@ -66,6 +66,7 @@ DATOS DEL NEGOCIO:
 - Dirección: ${address || 'No disponible'}
 - Teléfono: ${phone || 'No disponible'}
 ${ratingLine}
+${images && images.length > 0 ? `- Fotos reales del negocio disponibles (${images.length} imágenes): ${images.join(', ')}` : '- Sin fotos reales disponibles'}
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 REQUISITOS TÉCNICOS
@@ -81,6 +82,7 @@ SECCIONES OBLIGATORIAS (en este orden)
 1. NAV fijo con logo y botón CTA de llamada
 
 2. HERO — MUY IMPORTANTE:
+   ${images && images.length > 0 ? `- Usa la primera foto real del negocio como imagen de fondo del hero con overlay oscuro semitransparente: ${images[0]}` : '- Sin foto real, usa gradiente CSS como fondo'}
    - El nombre del negocio "${name}" debe ser el elemento más prominente visualmente
    - Tamaño de fuente del nombre: mínimo 80px en desktop, 52px en móvil (usar clamp(52px, 10vw, 96px))
    - Usar la tipografía display más característica y dramática de Google Fonts para el nombre
@@ -91,28 +93,35 @@ SECCIONES OBLIGATORIAS (en este orden)
 
 3. BARRA DE ESTADÍSTICAS — 3 números impactantes del negocio
 
-4. SERVICIOS — Grid de 6 tarjetas con icono emoji, título y descripción
+4. GALERÍA DE FOTOS (solo si hay imágenes reales disponibles):
+   - Si hay imágenes reales, añade una sección galería ANTES de servicios
+   - Grid de fotos del negocio real con efecto hover de zoom
+   - Máximo 4 fotos en grid 2x2
+   - Título: "Nuestras instalaciones" o similar según el sector
+   - Si NO hay imágenes reales, omite esta sección completamente
+
+5. SERVICIOS — Grid de 6 tarjetas con icono emoji, título y descripción
    Infiere los servicios más típicos del sector ${category}
 
-5. POR QUÉ ELEGIRNOS — 4 puntos de valor sobre fondo oscuro
+6. POR QUÉ ELEGIRNOS — 4 puntos de valor sobre fondo oscuro
 
-6. RESEÑAS DE CLIENTES:
+7. RESEÑAS DE CLIENTES:
 ${reviewsSection}
 
-7. SECCIÓN "CÓMO LLEGAR":
+8. SECCIÓN "CÓMO LLEGAR":
    - SIN mapa ni iframe de ningún tipo
    - Grid de 4 tarjetas con icono, label en mayúsculas y valor: Dirección, Teléfono, Horario (inferido para el sector), Transporte público cercano (inferido)
    - Diseño limpio sobre fondo claro con sombra suave en cada tarjeta
 
-8. FORMULARIO DE CITA:
+9. FORMULARIO DE CITA:
    - Campos: Nombre completo, Teléfono, Email, Tipo de servicio (select con los servicios del negocio), Fecha preferida (date picker), Mensaje opcional
    - Botón de envío prominente con el color principal del diseño
    - Al hacer submit (preventDefault): mostrar mensaje de confirmación "¡Solicitud recibida! Te llamaremos en menos de 24h" con animación
    - Diseño limpio, sin backend real necesario
 
-9. FOOTER con logo, dirección, teléfono y copyright
+10. FOOTER con logo, dirección, teléfono y copyright
 
-10. BOTÓN WHATSAPP FLOTANTE${phone ? ` con href="https://wa.me/${phone.replace(/\D/g,'')}"` : ''}
+11. BOTÓN WHATSAPP FLOTANTE${phone ? ` con href="https://wa.me/${phone.replace(/\D/g,'')}"` : ''}
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 REQUISITOS DE DISEÑO
