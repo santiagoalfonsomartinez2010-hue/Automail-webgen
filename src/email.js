@@ -33,6 +33,7 @@ export async function sendEmail({ to, bizName, pageUrl, city, phone, address, gm
 
 function buildEmail(bizName, pageUrl, city, phone, address) {
     const subject = `✅ Nueva web generada — ${bizName}`;
+    const isMobile = isSpanishMobile(phone);
 
     const whatsappMessage = `Hola 👋 Cada mes miles de personas en ${city || 'tu ciudad'} buscan en Google negocios como *${bizName}* y no os encuentran porque no tenéis página web.
 
@@ -40,7 +41,9 @@ Os he preparado una de muestra para que veáis cómo podría quedar 👉 ${pageU
 
 En menos de una semana podría estar activa y empezar a traeros clientes nuevos por internet. ¿Os llamo para contaros más sin compromiso?`;
 
-    const whatsappLink = phone
+    const callScript = `Buenos días, ¿hablo con ${bizName}? Soy Santiago, le llamo porque he visto que su negocio no tiene página web y le he preparado una de muestra gratis. ¿Tiene un minuto para que le explique?`;
+
+    const whatsappLink = (phone && isMobile)
         ? `https://wa.me/${phone.replace(/\D/g, '')}?text=${encodeURIComponent(whatsappMessage)}`
         : null;
 
@@ -48,13 +51,15 @@ En menos de una semana podría estar activa y empezar a traeros clientes nuevos 
 NUEVO LEAD GENERADO
 ===================
 Negocio:   ${bizName}
-Teléfono:  ${phone || 'No disponible'}
+Teléfono:  ${phone || 'No disponible'} ${phone ? (isMobile ? '(móvil)' : '(fijo)') : ''}
 Dirección: ${address || 'No disponible'}
 Web:       ${pageUrl}
 
-MENSAJE PARA COPIAR EN WHATSAPP:
+${phone && isMobile ? `MENSAJE PARA COPIAR EN WHATSAPP:
 ---------------------------------
-${whatsappMessage}
+${whatsappMessage}` : phone ? `GUION PARA LLAMADA (número fijo, sin WhatsApp):
+---------------------------------
+${callScript}` : 'Sin teléfono disponible para este negocio'}
     `.trim();
 
     const html = `
@@ -77,6 +82,9 @@ ${whatsappMessage}
     .wa-section h3 { margin: 0 0 8px 0; font-size: 14px; color: #15803d; display: flex; align-items: center; gap: 8px; }
     .wa-message { background: white; border-radius: 8px; padding: 16px; font-size: 14px; line-height: 1.7; color: #333; border: 1px solid #dcfce7; white-space: pre-wrap; font-family: inherit; margin: 12px 0; }
     .wa-btn { display: block; background: #25D366; color: white; padding: 14px 24px; border-radius: 8px; text-decoration: none; font-weight: 700; text-align: center; font-size: 15px; }
+    .call-section { background: #fffbeb; border: 1px solid #fde68a; border-radius: 8px; padding: 24px; margin-bottom: 16px; }
+    .call-section h3 { margin: 0 0 8px 0; font-size: 14px; color: #92400e; display: flex; align-items: center; gap: 8px; }
+    .call-btn { display: block; background: #f59e0b; color: white; padding: 14px 24px; border-radius: 8px; text-decoration: none; font-weight: 700; text-align: center; font-size: 15px; }
     .footer { margin-top: 20px; font-size: 12px; color: #94a3b8; text-align: center; }
   </style>
 </head>
@@ -104,12 +112,23 @@ ${whatsappMessage}
 
     <a href="${pageUrl}" class="web-btn">👀 Ver la web generada →</a>
 
+    ${phone && isMobile ? `
     <div class="wa-section">
       <h3>💬 Mensaje listo para WhatsApp</h3>
       <p style="font-size:13px; color:#166534; margin:0 0 8px 0">Copia y pega este mensaje en WhatsApp al número de arriba:</p>
-      <div class="wa-message">${whatsappMessage.replace(/\*/g, '<strong>').replace(/\*/g, '</strong>')}</div>
-      ${whatsappLink ? `<a href="${whatsappLink}" class="wa-btn">📱 Abrir WhatsApp directo →</a>` : '<p style="font-size:13px;color:#94a3b8;text-align:center">Sin teléfono disponible para este negocio</p>'}
+      <div class="wa-message">${whatsappMessage.replace(/\*(.+?)\*/g, '<strong>$1</strong>')}</div>
+      <a href="${whatsappLink}" class="wa-btn">📱 Abrir WhatsApp directo →</a>
     </div>
+    ` : phone ? `
+    <div class="call-section">
+      <h3>📞 Este número es fijo — toca para llamar</h3>
+      <p style="font-size:13px; color:#92400e; margin:0 0 8px 0">Guion sugerido para la llamada:</p>
+      <div class="wa-message">${callScript}</div>
+      <a href="tel:${phone}" class="call-btn">📞 Llamar a ${phone} →</a>
+    </div>
+    ` : `
+    <p style="font-size:13px;color:#94a3b8;text-align:center">Sin teléfono disponible para este negocio</p>
+    `}
 
   </div>
   <div class="footer">Generado automáticamente por AUTOMAIL</div>
@@ -118,4 +137,16 @@ ${whatsappMessage}
     `.trim();
 
     return { subject, html, text };
+}
+
+/**
+ * Spanish mobile numbers start with 6 or 7 (after country code).
+ * Landlines start with 8 or 9 and don't have WhatsApp.
+ */
+function isSpanishMobile(phone) {
+    if (!phone) return false;
+    const digits = phone.replace(/\D/g, '');
+    // Strip country code 34 if present
+    const local = digits.startsWith('34') ? digits.slice(2) : digits;
+    return /^[67]/.test(local) && local.length === 9;
 }
