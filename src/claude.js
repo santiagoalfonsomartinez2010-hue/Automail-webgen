@@ -150,6 +150,10 @@ LINKS QUE DEBES EVITAR COMPLETAMENTE:
 REGLA GENERAL: Si un link no tiene una URL real y funcional, conviértelo en texto plano sin etiqueta <a>.
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+INSTRUCCIONES ESPECÍFICAS POR SECTOR:
+- Si el sector es "floristería" o similar: NO incluir servicios de coronas fúnebres ni suscripción semanal. Servicios típicos: ramos artesanales, bodas y eventos, decoración de espacios, entrega a domicilio, plantas de interior, ramos de regalo.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 REQUISITOS DE COPY Y GÉNERO
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 - Todo en español
