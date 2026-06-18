@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javier Santamaría | Peluquería en Madrid</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-primary: #2C1810;
+            --color-secondary: #D4AF37;
+            --color-accent: #8B6F47;
+            --color-light: #F5F1ED;
+            --color-white: #FFFFFF;
+            --color-dark: #1A1A1A;
+            --font-display: 'Playfair Display', serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--color-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--color-primary);
+            letter-spacing: -0.5px;
+        }
+
+        .nav-cta {
+            background: var(--color-secondary);
+            color: var(--color-primary);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .nav-cta:hover {
+            background: var(--color-accent);
+            color: var(--color-white);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #2C1810 0%, #5A4332 50%, #8B6F47 100%);
+            position: relative;
+            overflow: hidden;
+            padding: 8rem 2rem 4rem;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(139, 111, 71, 0.15) 0%, transparent 50%);
+            animation: gradientMove 15s ease infinite;
+        }
+
+        @keyframes gradientMove {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(50px, 50px); }
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-text {
+            text-align: center;
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(52px, 10vw, 96px);
+            font-weight: 900;
+            color: var(--color-white);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -2px;
+            text-shadow: 0 4px 30px rgba(0,0,0,0.3);
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.25rem, 3vw, 1.75rem);
+            color: var(--color-light);
+            margin-bottom: 2.5rem;
+            font-weight: 400;
+            animation: fadeInUp 1s ease 0.2s backwards;
+            letter-spacing: 0.5px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease 0.4s backwards;
+        }
+
+        .btn-primary, .btn-secondary {
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--color-secondary);
+            color: var(--color-primary);
+        }
+
+        .btn-primary:hover {
+            background: var(--color-white);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--color-white);
+            border: 2px solid var(--color-white);
+        }
+
+        .btn-secondary:hover {
+            background: var(--color-white);
+            color: var(--color-primary);
+            transform: translateY(-3px);
+        }
+
+        .hero-card {
+            position: absolute;
+            bottom: 10%;
+            right: 5%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            animation: float 6s ease-in-out infinite;
+            display: none;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .stats {
+            background: var(--color-light);
+            padding: 4rem 2rem;
+        }
+
+        .stats-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .stat-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stat-number {
+            font-family: var(--font-display);
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: var(--color-secondary);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: var(--color-primary);
+            font-weight: 500;
+        }
+
+        .section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 900;
+            color: var(--color-primary);
+            text-align: center;
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--color-accent);
+            margin-bottom: 4rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--color-white);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(30px);
+            border: 2px solid transparent;
+        }
+
+        .service-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 50px rgba(44, 24, 16, 0.15);
+            border-color: var(--color-secondary);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .service-title {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+        }
+
+        .service-description {
+            color: #666;
+            line-height: 1.7;
+            font-size: 1rem;
+        }
+
+        .why-us {
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 5rem 2rem;
+        }
+
+        .why-us .section-title {
+            color: var(--color-white);
+        }
+
+        .why-us .section-subtitle {
+            color: var(--color-light);
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .why-item {
+            text-align: center;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .why-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .why-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .why-title {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--color-secondary);
+        }
+
+        .why-description {
+            color: var(--color-light);
+            line-height: 1.7;
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .review-card {
+            background: var(--color-white);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.08);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .review-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .review-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .review-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: var(--color-white);
+        }
+
+        .review-info {
+            flex: 1;
+        }
+
+        .review-name {
+            font-weight: 700;
+            color: var(--color-primary);
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .review-stars {
+            color: var(--color-secondary);
+            font-size: 1.1rem;
+        }
+
+        .review-text {
+            color: #666;
+            line-height: 1.7;
+            font-style: italic;
+        }
+
+        .form-section {
+            background: var(--color-light);
+        }
+
+        .contact-form {
+            max-width: 700px;
+            margin: 0 auto;
+            background: var(--color-white);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--color-primary);
+            font-size: 0.95rem;
+        }
+
+        .form-input, .form-select, .form-textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #E5E5E5;
+            border-radius: 12px;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus, .form-select:focus, .form-textarea:focus {
+            outline: none;
+            border-color: var(--color-secondary);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-button {
+            width: 100%;
+            padding: 1.25rem;
+            background: var(--color-secondary);
+            color: var(--color-primary);
+            border: none;
+            border-radius: 12px;
+            font-family: var(--font-body);
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .form-button:hover {
+            background: var(--color-accent);
+            color: var(--color-white);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+        }
+
+        .form-message {
+            display: none;
+            padding: 1.5rem;
+            background: #22C55E;
+            color: white;
+            border-radius: 12px;
+            text-align: center;
+            font-weight: 600;
+            margin-top: 1rem;
+            animation: slideDown 0.5s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .location-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .location-card {
+            background: var(--color-white);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .location-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .location-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(44, 24, 16, 0.15);
+        }
+
+        .location-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .location-label {
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--color-accent);
+            margin-bottom: 0.75rem;
+        }
+
+        .location-value {
+            color: var(--color-primary);
+            font-size: 1.1rem;
+            font-weight: 500;
+            line-height: 1.6;
+        }
+
+        .footer {
+            background: var(--color-dark);
+            color: var(--color-light);
+            padding: 3rem 2rem 2rem;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--color-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-info {
+            margin-bottom: 1.5rem;
+            color: var(--color-light);
+        }
+
+        .footer-info p {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-copyright {
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 5px 25px rgba(37, 211, 102, 0.5);
+            z-index: 1000;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 35px rgba(37, 211, 102, 0.6);
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 5px 25px rgba(37, 211, 102, 0.5);
+            }
+            50% {
+                box-shadow: 0 5px 35px rgba(37, 211, 102, 0.8);
+            }
+        }
+
+        @media (min-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-card {
+                display: block;
+            }
+
+            .hero-card-title {
+                font-family: var(--font-display);
+                font-size: 1rem;
+                font-weight: 700;
+                color: var(--color-accent);
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                margin-bottom: 1rem;
+            }
+
+            .hero-card-stats {
+                display: flex;
+                gap: 2rem;
+            }
+
+            .hero-card-stat {
+                text-align: center;
+            }
+
+            .hero-card-number {
+                font-family: var(--font-display);
+                font-size: 2rem;
+                font-weight: 900;
+                color: var(--color-primary);
+            }
+
+            .hero-card-label {
+                font-size: 0.85rem;
+                color: #666;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .nav-container {
+                padding: 1rem;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            .nav-cta {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.85rem;
+            }
+
+            .hero {
+                padding: 6rem 1.5rem 3rem;
+            }
+
+            .section {
+                padding: 3rem 1.5rem;
+            }
+
+            .contact-form {
+                padding: 2rem 1.5rem;
+            }
+
+            .services-grid, .reviews-grid, .location-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="logo">Javier Santamaría</div>
+            <a href="tel:+34915212904" class="nav-cta">📞 Llamar ahora</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">Javier Santamaría</h1>
+                <p class="hero-subtitle">Peluquería de Estilo y Distinción en el Corazón de Madrid</p>
+                <div class="hero-buttons">
+                    <a href="#cita" class="btn-primary">Pedir Cita</a>
+                    <a href="#servicios" class="btn-secondary">Ver Servicios</a>
+                </div>
+            </div>
+        </div>
+        <div class="hero-card">
+            <div class="hero-card-title">Confianza certificada</div>
+            <div class="hero-card-stats">
+                <div class="hero-card-stat">
+                    <div class="hero-card-number">4.9</div>
+                    <div class="hero-card-label">Valoración</div>
+                </div>
+                <div class="hero-card-stat">
+                    <div class="hero-card-number">222</div>
+                    <div class="hero-card-label">Reseñas</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats">
+        <div class="stats-container">
+            <div class="stat-item">
+                <div class="stat-number">15+</div>
+                <div class="stat-label">Años de Experiencia</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">4.9★</div>
+                <div class="stat-label">Valoración en Google</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">5000+</div>
+                <div class="stat-label">Clientes Satisfechos</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="servicios" class="section">
+        <h2 class="section-title">Nuestros Servicios</h2>
+        <p class="section-subtitle">Estilo personalizado para cada persona. Técnicas profesionales y atención exclusiva.</p>
+        <div class="services-grid">
+            <div class="service-card">
+                <span class="service-icon">✂️</span>
+                <h3 class="service-title">Corte y Peinado</h3>
+                <p class="service-description">Cortes personalizados adaptados a tu estilo y fisonomía. Asesoramiento profesional para encontrar el look perfecto.</p>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">🎨</span>
+                <h3 class="service-title">Color y Mechas</h3>
+                <p class="service-description">Coloración con productos de alta calidad. Mechas, balayage y técnicas modernas para un acabado natural.</p>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">💆</span>
+                <h3 class="service-title">Tratamientos Capilares</h3>
+                <p class="service-description">Tratamientos hidratantes, reconstructores y anticaída. Devolvemos la salud y brillo a tu cabello.</p>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">👔</span>
+                <h3 class="service-title">Afeitado y Barba</h3>
+                <p class="service-description">Afeitado tradicional con toalla caliente. Arreglo y diseño de barba con técnicas clásicas.</p>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">💇‍♀️</span>
+                <h3 class="service-title">Peinados para Eventos</h3>
+                <p class="service-description">Recogidos y peinados especiales para bodas, eventos y ocasiones especiales. Prueba previa incluida.</p>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">✨</span>
+                <h3 class="service-title">Alisados y Permanentes</h3>
+                <p class="service-description">Alisados de keratina, permanentes y cambios de textura con las últimas técnicas del sector.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="why-us">
+        <h2 class="section-title">Por Qué Elegirnos</h2>
+        <p class="section-subtitle">La excelencia en cada detalle de nuestro servicio</p>
+        <div class="why-grid">
+            <div class="why-item">
+                <span class="why-icon">🏆</span>
+                <h3 class="why-title">Profesionales Expertos</h3>
+                <p class="why-description">Equipo con más de 15 años de experiencia y formación continua en las últimas tendencias internacionales.</p>
+            </div>
+            <div class="why-item">
+                <span class="why-icon">💎</span>
+                <h3 class="why-title">Productos Premium</h3>
+                <p class="why-description">Trabajamos exclusivamente con las mejores marcas profesionales para garantizar resultados excepcionales.</p>
+            </div>
+            <div class="why-item">
+                <span class="why-icon">📍</span>
+                <h3 class="why-title">Ubicación Céntrica</h3>
+                <p class="why-description">En pleno centro de Madrid, fácil acceso en transporte público y aparcamiento cercano.</p>
+            </div>
+            <div class="why-item">
+                <span class="why-icon">⭐</span>
+                <h3 class="why-title">Atención Personalizada</h3>
+                <p class="why-description">Asesoramiento individual y trato cercano. Cada cliente es único y merece un servicio exclusivo.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">Lo Que Dicen Nuestros Clientes</h2>
+        <p class="section-subtitle">Testimonios reales de personas que confían en nosotros</p>
+        <div class="reviews-grid">
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-avatar" style="background: linear-gradient(135deg, #D4AF37, #8B6F47);">MC</div>
+                    <div class="review-info">
+                        <div class="review-name">María Carmen López</div>
+                        <div class="review-stars">★★★★★</div>
+                    </div>
+                </div>
+                <p class="review-text">"Llevo años viniendo y siempre salgo encantada. Javier entiende perfectamente lo que quiero sin necesidad de explicarle mucho. El trato es excepcional y los resultados siempre superan mis expectativas."</p>
+            </div>
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-avatar" style="background: linear-gradient(135deg, #8B6F47, #2C1810);">AR</div>
+                    <div class="review-info">
+                        <div class="review-name">Alberto Ramírez</div>
+                        <div class="review-stars">★★★★★</div>
+                    </div>
+                </div>
+                <p class="review-text">"El mejor afeitado tradicional que he probado en Madrid. El ambiente es acogedor y el servicio impecable. Me ha cambiado por completo la forma de cuidar mi barba y estilo personal."</p>
+            </div>
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-avatar" style="background: linear-gradient(135deg, #D4AF37, #2C1810);">LF</div>
+                    <div class="review-info">
+                        <div class="review-name">Laura Fernández</div>
+                        <div class="review-stars">★★★★★</div>
+                    </div>
+                </div>
+                <p class="review-text">"Me
