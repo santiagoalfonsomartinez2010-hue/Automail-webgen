@@ -136,18 +136,22 @@ REQUISITOS DE DISEÑO
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 REQUISITOS DE LINKS
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-LINKS QUE DEBEN FUNCIONAR:
-- Teléfono: usar href="tel:${phone}" en todos los botones de llamada
-- WhatsApp flotante: usar href="https://wa.me/${phone ? phone.replace(/\D/g,'') : ''}"
-- Anclas internas: #servicios, #cita, #contacto — scroll suave a secciones
+REGLAS DE LINKS — MUY IMPORTANTE, SEGUIR AL PIE DE LA LETRA:
 
-LINKS QUE DEBES EVITAR COMPLETAMENTE:
-- Redes sociales (Facebook, Instagram, Twitter, LinkedIn) — NO incluir ningún icono ni link de RRSS
-- Links de footer a servicios individuales — el footer solo muestra texto sin enlace
-- Cualquier href="#" sin destino real — si no hay destino, usa texto plano sin <a>
-- Links externos a sitios de terceros
+SOLO se permiten estos 3 tipos de links en toda la página:
+1. href="tel:${phone || ''}" — para botones de llamada al teléfono del negocio
+2. href="https://wa.me/${phone ? phone.replace(/[^0-9]/g, '') : ''}" — SOLO para el botón flotante de WhatsApp
+3. href="#seccion" — para anclas internas de navegación dentro de la misma página
 
-REGLA GENERAL: Si un link no tiene una URL real y funcional, conviértelo en texto plano sin etiqueta <a>.
+ESTÁ TERMINANTEMENTE PROHIBIDO incluir:
+- Cualquier link a redes sociales (Facebook, Instagram, Twitter, LinkedIn, TikTok, YouTube, etc.)
+- Cualquier href="#" vacío o sin destino real
+- Cualquier link externo a otro sitio web
+- Links en el footer a servicios, páginas o secciones
+- Links a Google Maps, Tripadvisor, Yelp o cualquier plataforma externa
+- Botones o iconos de redes sociales aunque no tengan link
+
+REGLA DE ORO: Si un elemento no tiene una URL real de las 3 permitidas arriba, se escribe como texto plano <span> o <p>, NUNCA como <a>. Esto incluye servicios en el footer, datos de contacto adicionales, y cualquier otro elemento.
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 INSTRUCCIONES ESPECÍFICAS POR SECTOR:
