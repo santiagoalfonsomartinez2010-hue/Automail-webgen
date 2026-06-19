@@ -6,7 +6,7 @@
     <title>M Madrid Estilistas 66 | Peluquería en Madrid</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -15,20 +15,19 @@
         }
 
         :root {
-            --primary: #D4A574;
-            --primary-dark: #B8875E;
-            --secondary: #2C2C2C;
-            --accent: #E8C8A0;
-            --bg-light: #FAF8F5;
-            --text-dark: #1A1A1A;
-            --text-light: #6B6B6B;
+            --primary: #2D1B1B;
+            --secondary: #C49B63;
+            --accent: #8B6F47;
+            --light: #F5F1ED;
             --white: #FFFFFF;
+            --dark: #1A1A1A;
+            --gray: #6B6B6B;
         }
 
         body {
             font-family: 'Inter', sans-serif;
-            color: var(--text-dark);
             line-height: 1.6;
+            color: var(--dark);
             overflow-x: hidden;
         }
 
@@ -46,52 +45,51 @@
             background: rgba(255, 255, 255, 0.98);
             backdrop-filter: blur(10px);
             z-index: 1000;
-            padding: 18px 0;
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
         }
 
         nav .container {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 18px 20px;
         }
 
         .logo {
             font-family: 'Playfair Display', serif;
-            font-size: 26px;
+            font-size: 24px;
             font-weight: 900;
             color: var(--primary);
-            letter-spacing: -0.5px;
+            letter-spacing: -1px;
         }
 
         .nav-cta {
-            background: var(--primary);
+            background: var(--secondary);
             color: var(--white);
             padding: 12px 28px;
-            border-radius: 30px;
+            border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 15px;
+            font-size: 14px;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(212, 165, 116, 0.3);
+            box-shadow: 0 4px 15px rgba(196, 155, 99, 0.3);
         }
 
         .nav-cta:hover {
-            background: var(--primary-dark);
+            background: var(--accent);
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(212, 165, 116, 0.4);
+            box-shadow: 0 6px 25px rgba(196, 155, 99, 0.4);
         }
 
         /* HERO */
         .hero {
-            margin-top: 80px;
+            margin-top: 70px;
             min-height: 90vh;
-            background: linear-gradient(135deg, #2C2C2C 0%, #4A4A4A 50%, var(--primary) 100%);
-            position: relative;
-            overflow: hidden;
+            background: linear-gradient(135deg, #2D1B1B 0%, #4A3333 50%, #C49B63 100%);
             display: flex;
             align-items: center;
-            padding: 60px 0;
+            position: relative;
+            overflow: hidden;
         }
 
         .hero::before {
@@ -101,123 +99,130 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: radial-gradient(circle at 20% 50%, rgba(212, 165, 116, 0.3) 0%, transparent 50%),
-                        radial-gradient(circle at 80% 80%, rgba(232, 200, 160, 0.2) 0%, transparent 50%);
+            background: radial-gradient(circle at 30% 50%, rgba(196, 155, 99, 0.2) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 80%, rgba(139, 111, 71, 0.3) 0%, transparent 50%);
         }
 
         .hero-content {
             position: relative;
             z-index: 2;
-            color: var(--white);
-            max-width: 800px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
         }
 
-        .hero h1 {
+        .hero-text h1 {
             font-family: 'Playfair Display', serif;
             font-size: clamp(52px, 10vw, 96px);
             font-weight: 900;
+            color: var(--white);
             line-height: 1.1;
             margin-bottom: 24px;
             letter-spacing: -2px;
-            text-shadow: 2px 4px 12px rgba(0, 0, 0, 0.3);
+            text-shadow: 0 4px 20px rgba(0,0,0,0.3);
         }
 
         .hero-subtitle {
-            font-size: clamp(20px, 3vw, 26px);
+            font-size: clamp(18px, 2.5vw, 24px);
+            color: rgba(255, 255, 255, 0.9);
             margin-bottom: 40px;
-            opacity: 0.95;
-            font-weight: 400;
+            font-weight: 300;
             letter-spacing: 0.5px;
         }
 
-        .hero-ctas {
+        .hero-buttons {
             display: flex;
             gap: 20px;
             flex-wrap: wrap;
         }
 
         .btn-primary, .btn-secondary {
-            padding: 16px 40px;
-            border-radius: 30px;
+            padding: 18px 40px;
+            border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 17px;
+            font-size: 16px;
             transition: all 0.3s ease;
             display: inline-block;
         }
 
         .btn-primary {
-            background: var(--primary);
+            background: var(--secondary);
             color: var(--white);
-            box-shadow: 0 6px 25px rgba(212, 165, 116, 0.4);
+            box-shadow: 0 6px 30px rgba(196, 155, 99, 0.4);
         }
 
         .btn-primary:hover {
-            background: var(--primary-dark);
+            background: var(--accent);
             transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(212, 165, 116, 0.5);
+            box-shadow: 0 8px 40px rgba(196, 155, 99, 0.5);
         }
 
         .btn-secondary {
-            background: rgba(255, 255, 255, 0.15);
+            background: transparent;
             color: var(--white);
             border: 2px solid var(--white);
-            backdrop-filter: blur(10px);
         }
 
         .btn-secondary:hover {
             background: var(--white);
-            color: var(--secondary);
+            color: var(--primary);
+            transform: translateY(-3px);
         }
 
         .hero-card {
-            position: absolute;
-            right: 80px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(255, 255, 255, 0.12);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(20px);
-            padding: 35px 40px;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            animation: float 4s ease-in-out infinite;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            animation: float 6s ease-in-out infinite;
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(-50%) translateX(0); }
-            50% { transform: translateY(-50%) translateX(-10px); }
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
         }
 
-        .hero-card-stat {
-            text-align: center;
-            color: var(--white);
-            margin-bottom: 25px;
-        }
-
-        .hero-card-stat:last-child {
-            margin-bottom: 0;
-        }
-
-        .hero-card-number {
-            font-size: 42px;
-            font-weight: 900;
+        .hero-card h3 {
             font-family: 'Playfair Display', serif;
-            display: block;
-            line-height: 1;
+            font-size: 28px;
+            color: var(--primary);
+            margin-bottom: 24px;
         }
 
-        .hero-card-label {
+        .stat {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .stat-icon {
+            font-size: 32px;
+        }
+
+        .stat-text {
+            flex: 1;
+        }
+
+        .stat-number {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+
+        .stat-label {
             font-size: 14px;
-            opacity: 0.9;
-            margin-top: 8px;
+            color: var(--gray);
         }
 
         /* STATS BAR */
         .stats-bar {
-            background: var(--secondary);
-            padding: 50px 0;
+            background: var(--primary);
             color: var(--white);
+            padding: 60px 0;
         }
 
         .stats-grid {
@@ -227,58 +232,58 @@
             text-align: center;
         }
 
-        .stat-item h3 {
-            font-size: 52px;
-            font-weight: 900;
-            font-family: 'Playfair Display', serif;
-            color: var(--primary);
-            margin-bottom: 10px;
+        .stat-item {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
         }
 
-        .stat-item p {
+        .stat-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stat-item-number {
+            font-size: 56px;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 12px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .stat-item-label {
             font-size: 16px;
             opacity: 0.9;
+            font-weight: 300;
         }
 
         /* SERVICES */
         .services {
             padding: 100px 0;
-            background: var(--bg-light);
+            background: var(--light);
         }
 
         .section-title {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .section-title h2 {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(38px, 5vw, 52px);
+            font-size: clamp(36px, 5vw, 56px);
+            text-align: center;
+            color: var(--primary);
+            margin-bottom: 60px;
             font-weight: 900;
-            color: var(--secondary);
-            margin-bottom: 16px;
-        }
-
-        .section-title p {
-            font-size: 18px;
-            color: var(--text-light);
-            max-width: 600px;
-            margin: 0 auto;
         }
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 30px;
         }
 
         .service-card {
             background: var(--white);
-            padding: 40px 30px;
+            padding: 40px;
             border-radius: 20px;
-            text-align: center;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
             transition: all 0.4s ease;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
             opacity: 0;
             transform: translateY(30px);
         }
@@ -290,46 +295,49 @@
 
         .service-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(212, 165, 116, 0.2);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.12);
         }
 
         .service-icon {
-            font-size: 56px;
+            font-size: 48px;
             margin-bottom: 20px;
             display: block;
         }
 
         .service-card h3 {
             font-size: 24px;
+            color: var(--primary);
+            margin-bottom: 16px;
             font-weight: 700;
-            margin-bottom: 12px;
-            color: var(--secondary);
         }
 
         .service-card p {
-            color: var(--text-light);
+            color: var(--gray);
             line-height: 1.7;
         }
 
-        /* WHY US */
+        /* WHY CHOOSE US */
         .why-us {
             padding: 100px 0;
-            background: var(--secondary);
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .why-us .section-title {
             color: var(--white);
         }
 
         .why-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 40px;
-            margin-top: 60px;
         }
 
         .why-item {
             text-align: center;
             opacity: 0;
             transform: scale(0.9);
-            transition: all 0.5s ease;
+            transition: all 0.6s ease;
         }
 
         .why-item.visible {
@@ -338,20 +346,15 @@
         }
 
         .why-icon {
-            width: 80px;
-            height: 80px;
-            background: var(--primary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 36px;
-            margin: 0 auto 24px;
+            font-size: 56px;
+            margin-bottom: 24px;
+            display: block;
         }
 
         .why-item h3 {
             font-size: 22px;
-            margin-bottom: 12px;
+            margin-bottom: 16px;
+            color: var(--secondary);
             font-weight: 700;
         }
 
@@ -363,29 +366,28 @@
         /* REVIEWS */
         .reviews {
             padding: 100px 0;
-            background: var(--bg-light);
+            background: var(--white);
         }
 
         .reviews-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 30px;
-            margin-top: 60px;
         }
 
         .review-card {
-            background: var(--white);
+            background: var(--light);
             padding: 35px;
             border-radius: 20px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.06);
             opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.4s ease;
+            transform: translateX(-30px);
+            transition: all 0.5s ease;
         }
 
         .review-card.visible {
             opacity: 1;
-            transform: translateY(0);
+            transform: translateX(0);
         }
 
         .review-header {
@@ -396,10 +398,10 @@
         }
 
         .review-avatar {
-            width: 55px;
-            height: 55px;
+            width: 56px;
+            height: 56px;
             border-radius: 50%;
-            background: var(--primary);
+            background: var(--secondary);
             color: var(--white);
             display: flex;
             align-items: center;
@@ -410,60 +412,45 @@
 
         .review-info h4 {
             font-size: 18px;
-            font-weight: 600;
+            color: var(--primary);
             margin-bottom: 4px;
         }
 
-        .review-stars {
-            color: var(--primary);
+        .stars {
+            color: var(--secondary);
             font-size: 16px;
         }
 
         .review-text {
-            color: var(--text-light);
+            color: var(--gray);
             line-height: 1.7;
             font-style: italic;
         }
 
-        /* CONTACT FORM */
-        .contact-form {
+        /* FORM */
+        .form-section {
             padding: 100px 0;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-        }
-
-        .contact-form .section-title h2,
-        .contact-form .section-title p {
-            color: var(--white);
+            background: var(--light);
         }
 
         .form-container {
             max-width: 700px;
-            margin: 60px auto 0;
+            margin: 0 auto;
             background: var(--white);
             padding: 50px;
             border-radius: 24px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-        }
-
-        .form-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 24px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
         }
 
         .form-group {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .form-group.full {
-            grid-column: 1 / -1;
+            margin-bottom: 24px;
         }
 
         .form-group label {
-            font-weight: 600;
+            display: block;
             margin-bottom: 8px;
-            color: var(--secondary);
+            font-weight: 600;
+            color: var(--primary);
             font-size: 14px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -472,11 +459,12 @@
         .form-group input,
         .form-group select,
         .form-group textarea {
-            padding: 14px 18px;
-            border: 2px solid #E5E5E5;
+            width: 100%;
+            padding: 16px;
+            border: 2px solid #E0E0E0;
             border-radius: 12px;
+            font-size: 16px;
             font-family: 'Inter', sans-serif;
-            font-size: 15px;
             transition: all 0.3s ease;
         }
 
@@ -484,8 +472,8 @@
         .form-group select:focus,
         .form-group textarea:focus {
             outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(212, 165, 116, 0.1);
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(196, 155, 99, 0.1);
         }
 
         .form-group textarea {
@@ -494,45 +482,41 @@
         }
 
         .form-submit {
+            width: 100%;
+            padding: 18px;
             background: var(--secondary);
             color: var(--white);
-            padding: 16px 40px;
             border: none;
-            border-radius: 30px;
-            font-size: 17px;
-            font-weight: 600;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 700;
             cursor: pointer;
             transition: all 0.3s ease;
-            width: 100%;
-            margin-top: 10px;
+            box-shadow: 0 8px 30px rgba(196, 155, 99, 0.3);
         }
 
         .form-submit:hover {
-            background: var(--primary);
+            background: var(--accent);
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(212, 165, 116, 0.4);
+            box-shadow: 0 12px 40px rgba(196, 155, 99, 0.4);
         }
 
         .form-message {
             display: none;
+            margin-top: 24px;
             padding: 20px;
-            background: #10B981;
-            color: var(--white);
+            background: #4CAF50;
+            color: white;
             border-radius: 12px;
             text-align: center;
             font-weight: 600;
-            margin-top: 20px;
-            animation: slideDown 0.4s ease;
+            animation: slideIn 0.5s ease;
         }
 
-        .form-message.show {
-            display: block;
-        }
-
-        @keyframes slideDown {
+        @keyframes slideIn {
             from {
                 opacity: 0;
-                transform: translateY(-10px);
+                transform: translateY(-20px);
             }
             to {
                 opacity: 1;
@@ -543,54 +527,54 @@
         /* LOCATION */
         .location {
             padding: 100px 0;
-            background: var(--bg-light);
+            background: var(--white);
         }
 
         .location-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 30px;
-            margin-top: 60px;
         }
 
         .location-card {
-            background: var(--white);
-            padding: 40px 30px;
+            background: var(--light);
+            padding: 35px;
             border-radius: 20px;
             text-align: center;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.06);
             transition: all 0.3s ease;
         }
 
         .location-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.1);
         }
 
         .location-icon {
-            font-size: 44px;
-            margin-bottom: 20px;
+            font-size: 40px;
+            margin-bottom: 16px;
+            display: block;
         }
 
         .location-label {
             font-size: 12px;
-            font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
-            color: var(--primary);
-            margin-bottom: 12px;
+            color: var(--gray);
+            margin-bottom: 8px;
+            font-weight: 600;
         }
 
         .location-value {
             font-size: 16px;
-            color: var(--text-dark);
-            line-height: 1.6;
-            font-weight: 500;
+            color: var(--primary);
+            font-weight: 600;
+            line-height: 1.5;
         }
 
         /* FOOTER */
         footer {
-            background: var(--secondary);
+            background: var(--primary);
             color: var(--white);
             padding: 60px 0 30px;
         }
@@ -606,19 +590,20 @@
             font-family: 'Playfair Display', serif;
             font-size: 32px;
             font-weight: 900;
-            color: var(--primary);
             margin-bottom: 20px;
+            color: var(--secondary);
         }
 
         .footer-text {
-            opacity: 0.85;
+            opacity: 0.8;
             line-height: 1.8;
+            margin-bottom: 12px;
         }
 
         .footer-bottom {
             text-align: center;
             padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid rgba(255,255,255,0.1);
             opacity: 0.7;
             font-size: 14px;
         }
@@ -628,51 +613,49 @@
             position: fixed;
             bottom: 30px;
             right: 30px;
+            background: #25D366;
+            color: white;
             width: 65px;
             height: 65px;
-            background: #25D366;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 32px;
-            color: var(--white);
-            text-decoration: none;
-            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.4);
+            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.4);
             z-index: 999;
+            text-decoration: none;
             transition: all 0.3s ease;
             animation: pulse 2s infinite;
         }
 
         .whatsapp-float:hover {
             transform: scale(1.1);
-            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.6);
+            box-shadow: 0 12px 40px rgba(37, 211, 102, 0.6);
         }
 
         @keyframes pulse {
-            0%, 100% { box-shadow: 0 6px 25px rgba(37, 211, 102, 0.4); }
-            50% { box-shadow: 0 6px 35px rgba(37, 211, 102, 0.6); }
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
         }
 
         /* RESPONSIVE */
         @media (max-width: 768px) {
-            .hero-card {
-                position: relative;
-                right: 0;
-                top: 0;
-                transform: none;
-                margin-top: 40px;
-            }
-
-            .form-grid {
+            .hero-content {
                 grid-template-columns: 1fr;
+                gap: 40px;
             }
 
-            .form-container {
-                padding: 35px 25px;
+            .hero {
+                min-height: auto;
+                padding: 60px 0;
             }
 
-            .hero-ctas {
+            .hero-card {
+                padding: 30px;
+            }
+
+            .hero-buttons {
                 flex-direction: column;
             }
 
@@ -681,25 +664,36 @@
                 text-align: center;
             }
 
+            .services-grid,
+            .reviews-grid,
+            .location-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-container {
+                padding: 30px 20px;
+            }
+
             .whatsapp-float {
-                width: 58px;
-                height: 58px;
-                font-size: 28px;
                 bottom: 20px;
                 right: 20px;
+                width: 55px;
+                height: 55px;
+                font-size: 28px;
             }
-        }
 
-        /* SCROLL ANIMATIONS */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
-        }
+            nav .container {
+                padding: 12px 20px;
+            }
 
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
+            .logo {
+                font-size: 18px;
+            }
+
+            .nav-cta {
+                padding: 10px 20px;
+                font-size: 13px;
+            }
         }
     </style>
 </head>
@@ -707,7 +701,7 @@
     <!-- NAV -->
     <nav>
         <div class="container">
-            <div class="logo">M Madrid</div>
+            <div class="logo">M Madrid Estilistas 66</div>
             <a href="tel:+34667014290" class="nav-cta">☎ Llamar ahora</a>
         </div>
     </nav>
@@ -716,21 +710,37 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1>M Madrid Estilistas 66</h1>
-                <p class="hero-subtitle">Tu salón de confianza en el corazón de Chamberí. Expertos en estilo, color y transformaciones que realzan tu personalidad.</p>
-                <div class="hero-ctas">
-                    <a href="#cita" class="btn-primary">Pedir cita</a>
-                    <a href="#servicios" class="btn-secondary">Ver servicios</a>
+                <div class="hero-text">
+                    <h1>M Madrid Estilistas 66</h1>
+                    <p class="hero-subtitle">El arte del cabello perfecto en el corazón de Chamberí</p>
+                    <div class="hero-buttons">
+                        <a href="#cita" class="btn-primary">Pedir cita</a>
+                        <a href="#servicios" class="btn-secondary">Ver servicios</a>
+                    </div>
                 </div>
-            </div>
-            <div class="hero-card">
-                <div class="hero-card-stat">
-                    <span class="hero-card-number">4.9★</span>
-                    <span class="hero-card-label">Valoración</span>
-                </div>
-                <div class="hero-card-stat">
-                    <span class="hero-card-number">268</span>
-                    <span class="hero-card-label">Reseñas</span>
+                <div class="hero-card">
+                    <h3>Tu salón de confianza</h3>
+                    <div class="stat">
+                        <span class="stat-icon">⭐</span>
+                        <div class="stat-text">
+                            <div class="stat-number">4.9/5</div>
+                            <div class="stat-label">Valoración Google</div>
+                        </div>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-icon">💬</span>
+                        <div class="stat-text">
+                            <div class="stat-number">268</div>
+                            <div class="stat-label">Reseñas positivas</div>
+                        </div>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-icon">📍</span>
+                        <div class="stat-text">
+                            <div class="stat-number">Chamberí</div>
+                            <div class="stat-label">Madrid Centro</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -741,58 +751,55 @@
         <div class="container">
             <div class="stats-grid">
                 <div class="stat-item">
-                    <h3>15+</h3>
-                    <p>Años de experiencia</p>
+                    <div class="stat-item-number">15+</div>
+                    <div class="stat-item-label">Años de experiencia</div>
                 </div>
                 <div class="stat-item">
-                    <h3>5000+</h3>
-                    <p>Clientes satisfechos</p>
+                    <div class="stat-item-number">5.000+</div>
+                    <div class="stat-item-label">Clientes satisfechos</div>
                 </div>
                 <div class="stat-item">
-                    <h3>100%</h3>
-                    <p>Productos profesionales</p>
+                    <div class="stat-item-number">100%</div>
+                    <div class="stat-item-label">Profesionalidad garantizada</div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- SERVICES -->
-    <section class="services" id="servicios">
+    <section id="servicios" class="services">
         <div class="container">
-            <div class="section-title">
-                <h2>Nuestros Servicios</h2>
-                <p>Tratamientos personalizados con las mejores técnicas y productos del mercado</p>
-            </div>
+            <h2 class="section-title">Nuestros Servicios</h2>
             <div class="services-grid">
-                <div class="service-card fade-in">
+                <div class="service-card">
                     <span class="service-icon">✂️</span>
-                    <h3>Corte y Peinado</h3>
-                    <p>Cortes personalizados adaptados a tu estilo y tipo de cabello. Asesoramiento profesional incluido.</p>
+                    <h3>Corte y Estilismo</h3>
+                    <p>Cortes personalizados para cada tipo de cabello. Nuestros estilistas estudian tu rostro y personalidad para crear el look perfecto que realce tu belleza natural.</p>
                 </div>
-                <div class="service-card fade-in">
+                <div class="service-card">
                     <span class="service-icon">🎨</span>
-                    <h3>Coloración Experta</h3>
-                    <p>Tintes, mechas, balayage y técnicas avanzadas de color con productos de máxima calidad.</p>
+                    <h3>Coloración Profesional</h3>
+                    <p>Técnicas avanzadas de coloración, mechas balayage, reflejos y tintes con productos premium que cuidan y nutren tu cabello mientras logran el color deseado.</p>
                 </div>
-                <div class="service-card fade-in">
+                <div class="service-card">
                     <span class="service-icon">💆</span>
                     <h3>Tratamientos Capilares</h3>
-                    <p>Hidratación profunda, keratina, botox capilar y tratamientos reparadores intensivos.</p>
+                    <p>Tratamientos intensivos de hidratación, queratina y reconstrucción para devolver la vida a tu cabello. Protocolos personalizados según tus necesidades.</p>
                 </div>
-                <div class="service-card fade-in">
-                    <span class="service-icon">💇</span>
-                    <h3>Peinados de Evento</h3>
-                    <p>Recogidos elegantes, peinados de novia y looks especiales para tus momentos importantes.</p>
+                <div class="service-card">
+                    <span class="service-icon">💅</span>
+                    <h3>Peinados y Recogidos</h3>
+                    <p>Peinados espectaculares para bodas, eventos y ocasiones especiales. Desde recogidos clásicos hasta estilos modernos y vanguardistas.</p>
                 </div>
-                <div class="service-card fade-in">
-                    <span class="service-icon">🌊</span>
-                    <h3>Alisados y Permanentes</h3>
-                    <p>Alisado brasileño, japonés y permanentes duraderas con técnicas de última generación.</p>
-                </div>
-                <div class="service-card fade-in">
+                <div class="service-card">
                     <span class="service-icon">✨</span>
-                    <h3>Extensiones</h3>
-                    <p>Extensiones naturales de queratina, microring y cosidas. Volumen y largo al instante.</p>
+                    <h3>Alisados y Permanentes</h3>
+                    <p>Transformaciones completas con alisados brasileños, japoneses y permanentes que te permiten cambiar totalmente tu look de forma duradera.</p>
+                </div>
+                <div class="service-card">
+                    <span class="service-icon">👰</span>
+                    <h3>Novias y Eventos</h3>
+                    <p>Servicio especializado para novias con pruebas previas incluidas. Creamos el peinado de tus sueños para el día más importante de tu vida.</p>
                 </div>
             </div>
         </div>
@@ -801,30 +808,27 @@
     <!-- WHY US -->
     <section class="why-us">
         <div class="container">
-            <div class="section-title">
-                <h2>¿Por Qué Elegirnos?</h2>
-                <p>La excelencia en cada servicio es nuestro compromiso contigo</p>
-            </div>
+            <h2 class="section-title">¿Por qué elegirnos?</h2>
             <div class="why-grid">
-                <div class="why-item fade-in">
-                    <div class="why-icon">👨‍🎨</div>
-                    <h3>Equipo Profesional</h3>
-                    <p>Estilistas certificados con formación continua en las últimas tendencias internacionales.</p>
+                <div class="why-item">
+                    <span class="why-icon">🏆</span>
+                    <h3>Equipo Experto</h3>
+                    <p>Estilistas con más de 15 años de experiencia y formación continua en las últimas tendencias internacionales del sector.</p>
                 </div>
-                <div class="why-item fade-in">
-                    <div class="why-icon">🏆</div>
+                <div class="why-item">
+                    <span class="why-icon">💎</span>
                     <h3>Productos Premium</h3>
-                    <p>Trabajamos exclusivamente con marcas profesionales de alta gama para resultados perfectos.</p>
+                    <p>Trabajamos exclusivamente con las mejores marcas profesionales que garantizan resultados excepcionales y cuidado del cabello.</p>
                 </div>
-                <div class="why-item fade-in">
-                    <div class="why-icon">💎</div>
+                <div class="why-item">
+                    <span class="why-icon">❤️</span>
                     <h3>Atención Personalizada</h3>
-                    <p>Cada cliente es único. Asesoramiento individual y trato cercano en cada visita.</p>
+                    <p>Cada cliente es único. Te escuchamos, asesoramos y creamos el look perfecto adaptado a tu estilo y personalidad.</p>
                 </div>
-                <div class="why-item fade-in">
-                    <div class="why-icon">⭐</div>
-                    <h3>Resultados Garantizados</h3>
-                    <p>268 reseñas de 5 estrellas avalan nuestra calidad y compromiso con la satisfacción.</p>
+                <div class="why-item">
+                    <span class="why-icon">📍</span>
+                    <h3>Ubicación Privilegiada</h3>
+                    <p>En pleno corazón de Chamberí, con excelentes conexiones de transporte público y fácil acceso desde cualquier punto de Madrid.</p>
                 </div>
             </div>
         </div>
@@ -833,108 +837,99 @@
     <!-- REVIEWS -->
     <section class="reviews">
         <div class="container">
-            <div class="section-title">
-                <h2>Opiniones de Clientes</h2>
-                <p>La satisfacción de nuestros clientes es nuestra mejor carta de presentación</p>
-            </div>
+            <h2 class="section-title">Opiniones de Nuestros Clientes</h2>
             <div class="reviews-grid">
-                <div class="review-card fade-in">
+                <div class="review-card">
                     <div class="review-header">
-                        <div class="review-avatar">CM</div>
+                        <div class="review-avatar">MC</div>
                         <div class="review-info">
-                            <h4>Carmen Martínez</h4>
-                            <div class="review-stars">★★★★★</div>
+                            <h4>María Carmen González</h4>
+                            <div class="stars">★★★★★</div>
                         </div>
                     </div>
-                    <p class="review-text">Llevo años viniendo y siempre salgo encantada. El balayage que me hicieron la última vez es espectacular, super natural y con un brillo increíble. El equipo es profesional y te hacen sentir como en casa.</p>
+                    <p class="review-text">"Llevo años viniendo a M Madrid Estilistas y siempre salgo encantada. El corte y el color quedan perfectos, y el trato es increíblemente cercano. Me siento como en casa cada vez que vengo."</p>
                 </div>
-                <div class="review-card fade-in">
+                <div class="review-card">
                     <div class="review-header">
-                        <div class="review-avatar">JR</div>
+                        <div class="review-avatar">LR</div>
                         <div class="review-info">
-                            <h4>Javier Ruiz</h4>
-                            <div class="review-stars">★★★★★</div>
+                            <h4>Laura Rodríguez Pérez</h4>
+                            <div class="stars">★★★★★</div>
                         </div>
                     </div>
-                    <p class="review-text">Buscaba una peluquería de confianza en Chamberí y la encontré. El corte perfecto cada vez y el trato muy profesional. Te asesoran de verdad sobre qué estilo te queda mejor. Totalmente recomendable.</p>
+                    <p class="review-text">"El tratamiento de keratina que me hicieron cambió completamente mi cabello. Está mucho más suave y brillante. Las chicas son súper profesionales y te asesoran perfectamente."</p>
                 </div>
-                <div class="review-card fade-in">
+                <div class="review-card">
                     <div class="review-header">
-                        <div class="review-avatar">LG</div>
+                        <div class="review-avatar">AM</div>
                         <div class="review-info">
-                            <h4>Laura García</h4>
-                            <div class="review-stars">★★★★★</div>
+                            <h4>Ana Martínez Silva</h4>
+                            <div class="stars">★★★★★</div>
                         </div>
                     </div>
-                    <p class="review-text">Me hicieron el peinado para mi boda y quedé maravillada. Escucharon todas mis ideas y el resultado superó mis expectativas. Todo el día recibiendo cumplidos. Gracias por hacer mi día más especial.</p>
+                    <p class="review-text">"Me peinaron para mi boda y fue todo perfecto. El recogido aguantó impecable toda la noche. Además hicieron pruebas previas hasta dar con el estilo ideal. ¡Totalmente recomendable!"</p>
                 </div>
-                <div class="review-card fade-in">
+                <div class="review-card">
                     <div class="review-header">
-                        <div class="review-avatar">AS</div>
+                        <div class="review-avatar">CB</div>
                         <div class="review-info">
-                            <h4>Alberto Sánchez</h4>
-                            <div class="review-stars">★★★★★</div>
+                            <h4>Carmen Benítez López</h4>
+                            <div class="stars">★★★★★</div>
                         </div>
                     </div>
-                    <p class="review-text">Excelente servicio y atención. Me rescataron el pelo después de un desastre en otra peluquería. El tratamiento de keratina me dejó el cabello como nuevo. Profesionales de verdad, no voy a ir a otro sitio.</p>
+                    <p class="review-text">"Buscaba un cambio radical de look y me asesoraron de maravilla. El balayage que me hicieron es espectacular, muy natural. Me encanta el resultado y la atención recibida."</p>
                 </div>
-                <div class="review-card fade-in">
+                <div class="review-card">
                     <div class="review-header">
-                        <div class="review-avatar">MF</div>
+                        <div class="review-avatar">SP</div>
                         <div class="review-info">
-                            <h4>Marta Fernández</h4>
-                            <div class="review-stars">★★★★★</div>
+                            <h4>Sofía Prieto Ramírez</h4>
+                            <div class="stars">★★★★★</div>
                         </div>
                     </div>
-                    <p class="review-text">La mejor peluquería de Madrid sin duda. Ambiente acogedor, productos de calidad y resultados siempre impecables. El cambio de color que me hicieron es justo lo que quería. Volveré seguro.</p>
+                    <p class="review-text">"La mejor peluquería de Chamberí sin duda. Siempre consiguen lo que quiero incluso cuando no sé explicarlo bien. Son auténticas artistas del cabello y el ambiente es muy agradable."</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CONTACT FORM -->
-    <section class="contact-form" id="cita">
+    <!-- FORM -->
+    <section id="cita" class="form-section">
         <div class="container">
-            <div class="section-title">
-                <h2>Reserva Tu Cita</h2>
-                <p>Completa el formulario y te llamaremos para confirmar tu cita</p>
-            </div>
+            <h2 class="section-title">Reserva tu Cita</h2>
             <div class="form-container">
                 <form id="appointmentForm">
-                    <div class="form-grid">
-                        <div class="form-group">
-                            <label>Nombre Completo</label>
-                            <input type="text" required placeholder="Tu nombre">
-                        </div>
-                        <div class="form-group">
-                            <label>Teléfono</label>
-                            <input type="tel" required placeholder="+34 600 000 000">
-                        </div>
-                        <div class="form-group">
-                            <label>Email</label>
-                            <input type="email" required placeholder="tu@email.com">
-                        </div>
-                        <div class="form-group">
-                            <label>Fecha Preferida</label>
-                            <input type="date" required>
-                        </div>
-                        <div class="form-group full">
-                            <label>Servicio</label>
-                            <select required>
-                                <option value="">Selecciona un servicio</option>
-                                <option>Corte y Peinado</option>
-                                <option>Coloración</option>
-                                <option>Tratamiento Capilar</option>
-                                <option>Peinado de Evento</option>
-                                <option>Alisado o Permanente</option>
-                                <option>Extensiones</option>
-                                <option>Otro</option>
-                            </select>
-                        </div>
-                        <div class="form-group full">
-                            <label>Mensaje (Opcional)</label>
-                            <textarea placeholder="Cuéntanos qué necesitas..."></textarea>
-                        </div>
+                    <div class="form-group">
+                        <label>Nombre completo</label>
+                        <input type="text" name="nombre" required placeholder="Tu nombre y apellidos">
+                    </div>
+                    <div class="form-group">
+                        <label>Teléfono</label>
+                        <input type="tel" name="telefono" required placeholder="Ej: 666 123 456">
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" name="email" required placeholder="tu@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Tipo de servicio</label>
+                        <select name="servicio" required>
+                            <option value="">Selecciona un servicio</option>
+                            <option value="corte">Corte y Estilismo</option>
+                            <option value="color">Coloración Profesional</option>
+                            <option value="tratamiento">Tratamientos Capilares</option>
+                            <option value="peinados">Peinados y Recogidos</option>
+                            <option value="alisado">Alisados y Permanentes</option>
+                            <option value="novias">Novias y Eventos</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Fecha preferida</label>
+                        <input type="date" name="fecha" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Mensaje adicional (opcional)</label>
+                        <textarea name="mensaje" placeholder="Cuéntanos más sobre lo que necesitas..."></textarea>
                     </div>
                     <button type="submit" class="form-submit">Solicitar Cita</button>
                     <div class="form-message" id="formMessage">
@@ -948,28 +943,25 @@
     <!-- LOCATION -->
     <section class="location">
         <div class="container">
-            <div class="section-title">
-                <h2>Cómo Llegar</h2>
-                <p>Encuéntranos en el barrio de Chamberí, Madrid</p>
-            </div>
+            <h2 class="section-title">Cómo Llegar</h2>
             <div class="location-grid">
-                <div class="location-card fade-in">
-                    <div class="location-icon">📍</div>
+                <div class="location-card">
+                    <span class="location-icon">📍</span>
                     <div class="location-label">Dirección</div>
                     <div class="location-value">Calle de Viriato, 66<br>Chamberí, 28010 Madrid</div>
                 </div>
-                <div class="location-card fade-in">
-                    <div class="location-icon">📞</div>
+                <div class="location-card">
+                    <span class="location-icon">📞</span>
                     <div class="location-label">Teléfono</div>
                     <div class="location-value">+34 667 01 42 90</div>
                 </div>
-                <div class="location-card fade-in">
-                    <div class="location-icon">🕐</div>
+                <div class="location-card">
+                    <span class="location-icon">🕒</span>
                     <div class="location-label">Horario</div>
-                    <div class="location-value">Lun-Vie: 10:00 - 20:00<br>Sáb: 10:00 - 19:00</div>
+                    <div class="location-value">Lun-Vie: 10:00-20:00<br>Sáb: 10:00-15:00</div>
                 </div>
-                <div class="location-card fade-in">
-                    <div class="location-icon">🚇</div>
+                <div class="location-card">
+                    <span class="location-icon">🚇</span>
                     <div class="location-label">Transporte</div>
                     <div class="location-value">Metro Ríos Rosas (L1)<br>Metro Iglesia (L1)</div>
                 </div>
@@ -983,15 +975,18 @@
             <div class="footer-content">
                 <div>
                     <div class="footer-logo">M Madrid Estilistas 66</div>
-                    <p class="footer-text">Tu salón de referencia en Chamberí. Profesionalidad, estilo y cuidado personalizado desde hace más de 15 años.</p>
+                    <p class="footer-text">Tu salón de confianza en Chamberí</p>
                 </div>
                 <div>
-                    <h4 style="margin-bottom: 16px; font-size: 18px;">Contacto</h4>
-                    <p class="footer-text">
-                        Calle de Viriato, 66<br>
-                        28010 Madrid, España<br>
-                        Tel: +34 667 01 42 90
-                    </p>
+                    <h4 style="margin-bottom: 16px; color: var(--secondary);">Contacto</h4>
+                    <p class="footer-text">Calle de Viriato, 66<br>28010 Madrid, España</p>
+                    <p class="footer-text">Tel: +34 667 01 42 90</p>
+                </div>
+                <div>
+                    <h4 style="margin-bottom: 16px; color: var(--secondary);">Horario</h4>
+                    <p class="footer-text">Lunes a Viernes: 10:00-20:00</p>
+                    <p class="footer-text">Sábado: 10:00-15:00</p>
+                    <p class="footer-text">Domingo: Cerrado</p>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -1000,13 +995,13 @@
         </div>
     </footer>
 
-    <!-- WHATSAPP FLOAT -->
+    <!-- WHATSAPP -->
     <a href="https://wa.me/34667014290" class="whatsapp-float" target="_blank" rel="noopener">
         💬
     </a>
 
     <script>
-        // Intersection Observer for scroll animations
+        // Intersection Observer for animations
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -1020,19 +1015,25 @@
             });
         }, observerOptions);
 
-        document.querySelectorAll('.fade-in, .service-card, .review-card, .why-item').forEach(el => {
+        // Observe all animated elements
+        document.querySelectorAll('.stat-item, .service-card, .why-item, .review-card').forEach(el => {
             observer.observe(el);
         });
 
-        // Form submission
+        // Form handling
         document.getElementById('appointmentForm').addEventListener('submit', function(e) {
             e.preventDefault();
+            
+            // Show success message
             const message = document.getElementById('formMessage');
-            message.classList.add('show');
+            message.style.display = 'block';
+            
+            // Reset form
             this.reset();
             
+            // Hide message after 5 seconds
             setTimeout(() => {
-                message.classList.remove('show');
+                message.style.display = 'none';
             }, 5000);
         });
 
@@ -1042,13 +1043,21 @@
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
+                    const offsetTop = target.offsetTop - 80;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
                     });
                 }
             });
         });
+
+        // Set min date for date picker to today
+        const dateInput = document.querySelector('input[type="date"]');
+        if (dateInput) {
+            const today = new Date().toISOString().split('T')[0];
+            dateInput.setAttribute('min', today);
+        }
     </script>
 </body>
 </html>
