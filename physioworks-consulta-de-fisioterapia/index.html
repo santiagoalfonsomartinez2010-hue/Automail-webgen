@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Physioworks Consulta de Fisioterapia | Fisioterapeuta en Zaragoza</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-primary: #0D7377;
+            --color-secondary: #14FFEC;
+            --color-accent: #32E0C4;
+            --color-dark: #1A3A3C;
+            --color-light: #F8FFFE;
+            --color-gray: #6B8E91;
+            --font-display: 'Playfair Display', serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--color-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(13, 115, 119, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--color-primary);
+            letter-spacing: -0.5px;
+        }
+
+        .cta-button {
+            background: var(--color-primary);
+            color: white;
+            padding: 0.875rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            background: var(--color-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(13, 115, 119, 0.3);
+        }
+
+        .hero {
+            margin-top: 80px;
+            min-height: 90vh;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-dark) 50%, var(--color-primary) 100%);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            padding: 4rem 2rem;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(20, 255, 236, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(50, 224, 196, 0.15) 0%, transparent 50%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-content {
+            color: white;
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(52px, 10vw, 96px);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -2px;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.25rem, 3vw, 1.75rem);
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+            font-weight: 400;
+            line-height: 1.5;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .cta-primary {
+            background: var(--color-secondary);
+            color: var(--color-dark);
+        }
+
+        .cta-primary:hover {
+            background: white;
+            transform: translateY(-2px);
+        }
+
+        .cta-secondary {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+
+        .cta-secondary:hover {
+            background: white;
+            color: var(--color-primary);
+        }
+
+        .hero-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero-card-title {
+            color: var(--color-primary);
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-card-stats {
+            display: grid;
+            gap: 1.25rem;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .stat-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .stat-text strong {
+            display: block;
+            color: var(--color-primary);
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .stat-text span {
+            color: var(--color-gray);
+            font-size: 0.875rem;
+        }
+
+        .stats-bar {
+            background: var(--color-light);
+            padding: 3rem 2rem;
+        }
+
+        .stats-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: var(--color-primary);
+            font-family: var(--font-display);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 1.125rem;
+            color: var(--color-gray);
+            margin-top: 0.5rem;
+        }
+
+        .section {
+            padding: 5rem 2rem;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+            text-align: center;
+            font-weight: 900;
+        }
+
+        .section-description {
+            text-align: center;
+            font-size: 1.25rem;
+            color: var(--color-gray);
+            margin-bottom: 4rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 5px 30px rgba(13, 115, 119, 0.1);
+            transition: all 0.4s ease;
+            border: 2px solid transparent;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 50px rgba(13, 115, 119, 0.2);
+            border-color: var(--color-accent);
+        }
+
+        .service-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .service-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+        }
+
+        .service-description {
+            color: var(--color-gray);
+            line-height: 1.7;
+        }
+
+        .why-us {
+            background: var(--color-dark);
+            color: white;
+        }
+
+        .why-us .section-title {
+            color: var(--color-secondary);
+        }
+
+        .why-us .section-description {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .why-item {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .why-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--color-secondary), var(--color-accent));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin: 0 auto 1.5rem;
+        }
+
+        .why-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--color-secondary);
+        }
+
+        .why-text {
+            opacity: 0.9;
+            line-height: 1.7;
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .review-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 5px 30px rgba(13, 115, 119, 0.1);
+            transition: all 0.4s ease;
+        }
+
+        .review-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(13, 115, 119, 0.15);
+        }
+
+        .review-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .review-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .review-info h4 {
+            color: var(--color-primary);
+            font-weight: 700;
+            font-size: 1.125rem;
+        }
+
+        .review-stars {
+            color: #FFB800;
+            font-size: 1.125rem;
+        }
+
+        .review-text {
+            color: var(--color-gray);
+            line-height: 1.7;
+            font-style: italic;
+        }
+
+        .form-section {
+            background: linear-gradient(135deg, var(--color-light) 0%, white 100%);
+        }
+
+        .form-container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 50px rgba(13, 115, 119, 0.15);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            font-weight: 600;
+            color: var(--color-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #E0F0F1;
+            border-radius: 12px;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--color-accent);
+            box-shadow: 0 0 0 4px rgba(50, 224, 196, 0.1);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 1.25rem;
+            font-size: 1.125rem;
+            margin-top: 1rem;
+        }
+
+        .form-message {
+            display: none;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, var(--color-secondary), var(--color-accent));
+            color: var(--color-dark);
+            border-radius: 12px;
+            text-align: center;
+            font-weight: 600;
+            margin-top: 1.5rem;
+            animation: slideIn 0.5s ease;
+        }
+
+        .form-message.show {
+            display: block;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .location-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .location-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 5px 30px rgba(13, 115, 119, 0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .location-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(13, 115, 119, 0.15);
+        }
+
+        .location-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .location-label {
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--color-gray);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .location-value {
+            color: var(--color-primary);
+            font-weight: 600;
+            font-size: 1.125rem;
+            line-height: 1.6;
+        }
+
+        .footer {
+            background: var(--color-dark);
+            color: white;
+            padding: 3rem 2rem 2rem;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            color: var(--color-secondary);
+        }
+
+        .footer-info {
+            opacity: 0.8;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .footer-divider {
+            height: 1px;
+            background: rgba(255, 255, 255, 0.2);
+            margin: 2rem 0;
+        }
+
+        .footer-copyright {
+            opacity: 0.6;
+            font-size: 0.875rem;
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 65px;
+            height: 65px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            text-decoration: none;
+            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.4);
+            z-index: 999;
+            transition: all 0.3s ease;
+            animation: pulse-whatsapp 2s infinite;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 40px rgba(37, 211, 102, 0.6);
+        }
+
+        @keyframes pulse-whatsapp {
+            0%, 100% {
+                box-shadow: 0 8px 30px rgba(37, 211, 102, 0.4);
+            }
+            50% {
+                box-shadow: 0 8px 40px rgba(37, 211, 102, 0.7);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                padding: 1rem;
+            }
+
+            .logo {
+                font-size: 1.25rem;
+            }
+
+            .cta-button {
+                padding: 0.75rem 1.5rem;
+                font-size: 0.875rem;
+            }
+
+            .hero {
+                min-height: auto;
+                padding: 3rem 1.5rem;
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .hero-buttons .cta-button {
+                width: 100%;
+                text-align: center;
+            }
+
+            .section {
+                padding: 3rem 1.5rem;
+            }
+
+            .stats-container {
+                gap: 2rem;
+            }
+
+            .stat-number {
+                font-size: 2.5rem;
+            }
+
+            .services-grid,
+            .why-grid,
+            .reviews-grid,
+            .location-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-container {
+                padding: 2rem 1.5rem;
+            }
+
+            .whatsapp-float {
+                width: 55px;
+                height: 55px;
+                bottom: 20px;
+                right: 20px;
+                font-size: 1.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="logo">Physioworks</div>
+            <a href="tel:+34644929092" class="cta-button">📞 Llamar ahora</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">Physioworks Consulta de Fisioterapia</h1>
+                <p class="hero-subtitle">Recupera tu bienestar con tratamientos personalizados y profesionales en el corazón de Zaragoza</p>
+                <div class="hero-buttons">
+                    <a href="#cita" class="cta-button cta-primary">Pedir cita</a>
+                    <a href="#servicios" class="cta-button cta-secondary">Ver servicios</a>
+                </div>
+            </div>
+            <div class="hero-card">
+                <h3 class="hero-card-title">Tu centro de confianza</h3>
+                <div class="hero-card-stats">
+                    <div class="stat-item">
+                        <div class="stat-icon">🏥</div>
+                        <div class="stat-text">
+                            <strong>Profesional</strong>
+                            <span>Fisioterapeuta titulado</span>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon">⚡</div>
+                        <div class="stat-text">
+                            <strong>Resultados</strong>
+                            <span>Tratamientos efectivos</span>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon">📍</div>
+                        <div class="stat-text">
+                            <strong>Delicias, Zaragoza</strong>
+                            <span>Fácil acceso y aparcamiento</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats-bar">
+        <div class="stats-container">
+            <div class="stat">
+                <div class="stat-number">10+</div>
+                <div class="stat-label">Años de experiencia</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">500+</div>
+                <div class="stat-label">Pacientes tratados</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">98%</div>
+                <div class="stat-label">Mejoría reportada</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="servicios" class="section">
+        <div class="section-container">
+            <h2 class="section-title">Nuestros Servicios</h2>
+            <p class="section-description">Tratamientos especializados para tu recuperación y bienestar integral</p>
+            <div class="services-grid">
+                <div class="service-card">
+                    <span class="service-icon">💆</span>
+                    <h3 class="service-title">Fisioterapia Traumatológica</h3>
+                    <p class="service-description">Tratamiento de lesiones musculares, articulares y óseas. Recuperación post-cirugía y fracturas con técnicas manuales avanzadas.</p>
+                </div>
+                <div class="service-card">
+                    <span class="service-icon">🔧</span>
+                    <h3 class="service-title">Terapia Manual</h3>
+                    <p class="service-description">Técnicas de masaje terapéutico, movilizaciones articulares y estiramientos dirigidos para aliviar el dolor y mejorar la movilidad.</p>
+                </div>
+                <div class="service-card">
+                    <span class="service-icon">⚡</span>
+                    <h3 class="service-title">Electroterapia</h3>
+                    <p class="service-description">Aplicación de corrientes terapéuticas para reducir inflamación, dolor crónico y acelerar procesos de recuperación tisular.</p>
+                </div>
+                <div class="service-card">
+                    <span class="service-icon">🏃</span>
+                    <h3 class="service-title">Fisioterapia Deportiva</h3>
+                    <p class="service-description">Prevención y tratamiento de lesiones deportivas. Readaptación funcional para volver a tu actividad física con seguridad.</p>
+                </div>
+                <div class="service-card">
+                    <span class="service-icon">🧘</span>
+                    <h3 class="service-title">Rehabilitación Funcional</h3>
+                    <p class="service-description">Programas personalizados de ejercicio terapéutico para recuperar la funcionalidad completa en actividades diarias.</p>
+                </div>
+                <div class="service-card">
+                    <span class="service-icon">🦴</span>
+                    <h3 class="service-title">Fisioterapia Neurológica</h3>
+                    <p class="service-description">Tratamiento especializado para afecciones neurológicas, mejorando equilibrio, coordinación y capacidades motoras.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section why-us">
+        <div class="section-container">
+            <h2 class="section-title">¿Por qué elegirnos?</h2>
+            <p class="section-description">Compromiso con tu salud y recuperación desde el primer día</p>
+            <div class="why-grid">
+                <div class="why-item">
+                    <div class="why-icon">🎓</div>
+                    <h3 class="why-title">Profesionales Cualificados</h3>
+                    <p class="why-text">Fisioterapeutas colegiados con formación continua en las técnicas más avanzadas y efectivas del sector.</p>
+                </div>
+                <div class="why-item">
+                    <div class="why-icon">👤</div>
+                    <h3 class="why-title">Atención Personalizada</h3>
+                    <p class="why-text">Cada paciente es único. Diseñamos planes de tratamiento adaptados a tus necesidades específicas y objetivos.</p>
+                </div>
+                <div class="why-item">
+                    <div class="why-icon">🛠️</div>
+                    <h3 class="why-title">Equipamiento Moderno</h3>
+                    <p class="why-text">Instalaciones equipadas con la última tecnología para garantizar tratamientos eficaces y recuperaciones más rápidas.</p>
+                </div>
+                <div class="why-item">
+                    <div class="why-icon">⏰</div>
+                    <h3 class="why-title">Horarios Flexibles</h3>
+                    <p class="why-text">Horarios amplios que se adaptan a tu rutina. Citas sin largas esperas para que valores tu tiempo.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="section-container">
+            <h2 class="section-title">Lo que dicen nuestros pacientes</h2>
+            <p class="section-description">Testimonios reales de personas que han recuperado su bienestar</p>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar">CM</div>
+                        <div class="review-info">
+                            <h4>Carlos Martínez</h4>
+                            <div class="review-stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="review-text">Llegué con una contractura cervical que me impedía trabajar. En dos sesiones ya noté mejoría increíble. El fisioterapeuta es muy profesional y explica todo el proceso. Totalmente recomendable.</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar">AL</div>
+                        <div class="review-info">
+                            <h4>Ana López</h4>
+                            <div class="review-stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="review-text">Tras una lesión deportiva pensé que tardaría meses en volver a correr. Gracias al tratamiento personalizado y los ejercicios pautados, en 6 semanas estaba de nuevo entrenando. Muy agradecida.</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar">JG</div>
+                        <div class="review-info">
+                            <h4>Javier García</h4>
+                            <div class="review-stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="review-text">Sufría de dolor lumbar crónico desde hace años. El tratamiento con electroterapia y terapia manual ha sido un antes y un después. Por fin puedo hacer vida normal sin molestias constantes.</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar">MR</div>
+                        <div class="review-info">
+                            <h4>María Rodríguez</h4>
+                            <div class="review-stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="review-text">Atención excelente desde la primera cita. Me explicaron el origen de mi tendinitis y el plan de recuperación. La mejoría ha sido progresiva pero muy efectiva. Consulta muy profesional.</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar">PS</div>
+                        <div class="review-info">
+                            <h4>Pedro Sánchez</h4>
+                            <div class="review-stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="review-text">Después de una operación de menisco necesitaba rehabilitación. El trato cercano y los ejercicios adaptados me ayudaron a recuperar movilidad mucho antes de lo esperado. Muy satisfecho con el servicio.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="cita" class="section form-section">
+        <div class="section-container">
+            <h2 class="section-title">Reserva tu cita</h2>
+            <p class="section-description">Completa el formulario y te contactaremos en menos de 24h para confirmar tu cita</p>
+            <div class="form-container">
+                <form id="appointmentForm">
+                    <div class="form-group">
+                        <label class="form-label">Nombre completo *</label>
+                        <input type="text" class="form-input" required placeholder="Tu nombre y apellidos">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Teléfono *</label>
+                        <input type="tel" class="form-input" required placeholder="+34 600 00 00 00">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Email *</label>
+                        <input type="email" class="form-input" required placeholder="tu@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Tipo de servicio *</label>
+                        <select class="form-select" required>
+                            <option value="">Selecciona un servicio</option>
+                            <option value="traumatologica">Fisioterapia Traumatológica</option>
+                            <option value="manual">Terapia Manual</option>
+                            <option value="electroterapia">Electroterapia</option>
+                            <option value="deportiva">Fisioterapia Deportiva</option>
+                            <option value="rehabilitacion">Rehabilitación Funcional</option>
+                            <option value="neurologica">Fisioterapia Neurológica</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Fecha preferida *</label>
+                        <input type="date" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Mensaje (opcional)</label>
+                        <textarea class="form-textarea" placeholder="Cuéntanos brevemente qué molestia o lesión quieres tratar..."></textarea>
+                    </div>
+                    <button type="submit" class="cta-button form-submit">Solicitar cita</button>
+                    <div class="form-message" id="formMessage">
+                        ¡Solicitud recibida! Te llamaremos en menos de 24h
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="section-container">
+            <h2 class="section-title">Cómo llegar</h2>
+            <p class="section-description">Estamos en Delicias, Zaragoza. Fácil acceso y bien comunicado</p>
+            <div class="location-grid">
+                <div class="location-card">
+                    <div class="location-icon">📍</div>
+                    <div class="location-label">Dirección</div>
+                    <div class="location-value">Av. de Madrid, 222<br>Delicias, 50017 Zaragoza</div>
+                </div>
+                <div class="location-card">
+                    <div class="location-icon">📞</div>
+                    <div class="location-label">Teléfono</div>
+                    <div class="location-value">+34 644 92 90 92</div>
+                </div>
+                <div class="location-card">
+                    <div class="location-icon">🕐</div>
+                    <div class="location-label">Horario</div>
+                    <div class="location-value">Lun-Vie: 9:00 - 20:00<br>Sáb: 10:00 - 14:00</div>
+                </div>
+                <div class="location-card">
+                    <div class="location-icon">🚇</div>
+                    <div class="location-label">Transporte</div>
+                    <div class="location-value">Metro: Delicias<br>Bus: Líneas 22, 23, 51</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-logo">Physioworks</div>
+            <div class="footer-info">
+                Av. de Madrid, 222, Delicias, 50017 Zaragoza<br>
+                +34 644 92 90 92
+            </div>
+            <div class="footer-divider"></div>
+            <div class="footer-copyright">
+                © 2024 Physioworks Consulta de Fisioterapia. Todos los derechos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/34644929092" class="whatsapp-float" target="_blank" rel="noopener">💬</a>
+
+    <script>
+        // Intersection Observer para animaciones
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Scroll suave para anclas
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offsetTop = target.offsetTop - 80;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Formulario
+        document.getElementById('appointmentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const message = document.getElementById('formMessage');
+            message.classList.add('show');
+            this.reset();
+            setTimeout(() => {
+                message.classList.remove('show');
+            }, 5000);
+        });
+
+        // Navbar scroll effect
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('.nav');
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                nav.style.boxShadow = '0 2px 30px rgba(13, 115, 119, 0.15)';
+            } else {
+                nav.style.boxShadow = '0 2px 20px rgba(13, 115, 119, 0.1)';
+            }
+            
+            lastScroll = currentScroll;
+        });
+    </script>
+</body>
+</html>
