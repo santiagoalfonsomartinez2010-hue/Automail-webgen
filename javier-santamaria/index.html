@@ -6,7 +6,7 @@
     <title>Javier Santamaría | Peluquería en Madrid</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -15,12 +15,12 @@
         }
 
         :root {
-            --color-primary: #2C1810;
-            --color-secondary: #D4AF37;
-            --color-accent: #8B6F47;
-            --color-light: #F5F1ED;
-            --color-white: #FFFFFF;
-            --color-dark: #1A1A1A;
+            --color-primary: #2c1810;
+            --color-secondary: #d4a574;
+            --color-accent: #8b6f47;
+            --color-light: #f8f5f0;
+            --color-white: #ffffff;
+            --color-dark: #1a1a1a;
             --font-display: 'Playfair Display', serif;
             --font-body: 'Inter', sans-serif;
         }
@@ -36,17 +36,16 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(10px);
+            background: var(--color-white);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
             z-index: 1000;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.08);
-            transition: all 0.3s ease;
+            padding: 1rem 0;
         }
 
         .nav-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 1rem 2rem;
+            padding: 0 1.5rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -57,37 +56,34 @@
             font-size: 1.5rem;
             font-weight: 900;
             color: var(--color-primary);
-            letter-spacing: -0.5px;
+            letter-spacing: -1px;
         }
 
         .nav-cta {
-            background: var(--color-secondary);
-            color: var(--color-primary);
+            background: var(--color-primary);
+            color: var(--color-white);
             padding: 0.75rem 1.5rem;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 0.95rem;
             transition: all 0.3s ease;
-            display: inline-block;
+            font-size: 0.95rem;
         }
 
         .nav-cta:hover {
             background: var(--color-accent);
-            color: var(--color-white);
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
+            box-shadow: 0 5px 15px rgba(44, 24, 16, 0.3);
         }
 
         .hero {
-            min-height: 100vh;
+            margin-top: 80px;
+            min-height: 90vh;
             display: flex;
             align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, #2C1810 0%, #5A4332 50%, #8B6F47 100%);
+            background: linear-gradient(135deg, #2c1810 0%, #5c4033 50%, #d4a574 100%);
             position: relative;
             overflow: hidden;
-            padding: 8rem 2rem 4rem;
         }
 
         .hero::before {
@@ -97,68 +93,54 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: 
-                radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(139, 111, 71, 0.15) 0%, transparent 50%);
-            animation: gradientMove 15s ease infinite;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="none"/><path d="M0 50 Q 25 45, 50 50 T 100 50" stroke="rgba(255,255,255,0.03)" fill="none" stroke-width="2"/></svg>');
+            opacity: 0.3;
         }
 
-        @keyframes gradientMove {
-            0%, 100% { transform: translate(0, 0); }
-            50% { transform: translate(50px, 50px); }
-        }
-
-        .hero-content {
+        .hero-container {
             max-width: 1200px;
-            width: 100%;
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
             display: grid;
             grid-template-columns: 1fr;
             gap: 3rem;
             align-items: center;
             position: relative;
-            z-index: 2;
+            z-index: 1;
         }
 
-        .hero-text {
-            text-align: center;
-        }
-
-        .hero-title {
+        .hero-content h1 {
             font-family: var(--font-display);
             font-size: clamp(52px, 10vw, 96px);
             font-weight: 900;
             color: var(--color-white);
             line-height: 1.1;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             letter-spacing: -2px;
-            text-shadow: 0 4px 30px rgba(0,0,0,0.3);
-            animation: fadeInUp 1s ease;
+            text-shadow: 2px 4px 8px rgba(0,0,0,0.3);
         }
 
         .hero-subtitle {
-            font-size: clamp(1.25rem, 3vw, 1.75rem);
+            font-size: clamp(1.1rem, 3vw, 1.5rem);
             color: var(--color-light);
             margin-bottom: 2.5rem;
-            font-weight: 400;
-            animation: fadeInUp 1s ease 0.2s backwards;
+            font-weight: 300;
             letter-spacing: 0.5px;
         }
 
         .hero-buttons {
             display: flex;
             gap: 1rem;
-            justify-content: center;
             flex-wrap: wrap;
-            animation: fadeInUp 1s ease 0.4s backwards;
         }
 
         .btn-primary, .btn-secondary {
-            padding: 1rem 2.5rem;
+            padding: 1rem 2rem;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 1.1rem;
             transition: all 0.3s ease;
+            font-size: 1rem;
             display: inline-block;
         }
 
@@ -168,9 +150,9 @@
         }
 
         .btn-primary:hover {
-            background: var(--color-white);
+            background: #e6b885;
             transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+            box-shadow: 0 10px 25px rgba(212, 165, 116, 0.4);
         }
 
         .btn-secondary {
@@ -187,10 +169,10 @@
 
         .hero-card {
             position: absolute;
-            bottom: 10%;
             right: 5%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--color-white);
             padding: 2rem;
             border-radius: 20px;
             box-shadow: 0 20px 60px rgba(0,0,0,0.3);
@@ -199,36 +181,47 @@
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
+            0%, 100% { transform: translateY(-50%) translateX(0); }
+            50% { transform: translateY(-50%) translateX(-10px); }
         }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .hero-card-stat {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .hero-card-stat:last-child {
+            margin-bottom: 0;
+        }
+
+        .hero-card-number {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--color-primary);
+            font-family: var(--font-display);
+        }
+
+        .hero-card-label {
+            font-size: 0.9rem;
+            color: var(--color-accent);
+            font-weight: 500;
         }
 
         .stats {
             background: var(--color-light);
-            padding: 4rem 2rem;
+            padding: 3rem 1.5rem;
         }
 
         .stats-container {
             max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
         }
 
         .stat-item {
-            text-align: center;
             opacity: 0;
             transform: translateY(30px);
             transition: all 0.6s ease;
@@ -240,31 +233,43 @@
         }
 
         .stat-number {
-            font-family: var(--font-display);
-            font-size: 3.5rem;
+            font-size: 3rem;
             font-weight: 900;
-            color: var(--color-secondary);
-            line-height: 1;
+            color: var(--color-primary);
+            font-family: var(--font-display);
             margin-bottom: 0.5rem;
         }
 
         .stat-label {
-            font-size: 1.1rem;
-            color: var(--color-primary);
+            font-size: 1rem;
+            color: var(--color-accent);
             font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .section {
-            padding: 5rem 2rem;
+            padding: 5rem 1.5rem;
+        }
+
+        .section-dark {
+            background: var(--color-primary);
+            color: var(--color-white);
+        }
+
+        .section-light {
+            background: var(--color-white);
+        }
+
+        .section-container {
             max-width: 1200px;
             margin: 0 auto;
         }
 
         .section-title {
             font-family: var(--font-display);
-            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-size: clamp(2rem, 5vw, 3rem);
             font-weight: 900;
-            color: var(--color-primary);
             text-align: center;
             margin-bottom: 1rem;
             letter-spacing: -1px;
@@ -272,29 +277,31 @@
 
         .section-subtitle {
             text-align: center;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
             color: var(--color-accent);
-            margin-bottom: 4rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
+            font-weight: 300;
+        }
+
+        .section-dark .section-subtitle {
+            color: var(--color-secondary);
         }
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
         }
 
         .service-card {
             background: var(--color-white);
-            padding: 2.5rem;
-            border-radius: 20px;
-            box-shadow: 0 5px 30px rgba(0,0,0,0.08);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
             transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
             opacity: 0;
             transform: translateY(30px);
-            border: 2px solid transparent;
         }
 
         .service-card.visible {
@@ -304,81 +311,59 @@
 
         .service-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 50px rgba(44, 24, 16, 0.15);
-            border-color: var(--color-secondary);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
         }
 
         .service-icon {
             font-size: 3rem;
-            margin-bottom: 1.5rem;
-            display: block;
+            margin-bottom: 1rem;
         }
 
         .service-title {
-            font-family: var(--font-display);
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-weight: 700;
+            margin-bottom: 0.75rem;
             color: var(--color-primary);
-            margin-bottom: 1rem;
         }
 
         .service-description {
             color: #666;
-            line-height: 1.7;
-            font-size: 1rem;
+            line-height: 1.6;
         }
 
-        .why-us {
-            background: var(--color-primary);
-            color: var(--color-white);
-            padding: 5rem 2rem;
-        }
-
-        .why-us .section-title {
-            color: var(--color-white);
-        }
-
-        .why-us .section-subtitle {
-            color: var(--color-light);
-        }
-
-        .why-grid {
+        .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-            max-width: 1200px;
-            margin: 0 auto;
+            gap: 2rem;
         }
 
-        .why-item {
+        .feature-card {
             text-align: center;
             opacity: 0;
             transform: translateY(30px);
             transition: all 0.6s ease;
         }
 
-        .why-item.visible {
+        .feature-card.visible {
             opacity: 1;
             transform: translateY(0);
         }
 
-        .why-icon {
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
-            display: block;
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
         }
 
-        .why-title {
-            font-family: var(--font-display);
-            font-size: 1.5rem;
+        .feature-title {
+            font-size: 1.3rem;
             font-weight: 700;
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
             color: var(--color-secondary);
         }
 
-        .why-description {
+        .feature-description {
             color: var(--color-light);
-            line-height: 1.7;
+            opacity: 0.9;
         }
 
         .reviews-grid {
@@ -390,8 +375,8 @@
         .review-card {
             background: var(--color-white);
             padding: 2rem;
-            border-radius: 20px;
-            box-shadow: 0 5px 30px rgba(0,0,0,0.08);
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
             opacity: 0;
             transform: translateY(30px);
             transition: all 0.6s ease;
@@ -406,40 +391,39 @@
             display: flex;
             align-items: center;
             gap: 1rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
         }
 
         .review-avatar {
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
+            background: var(--color-secondary);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-family: var(--font-display);
             font-weight: 700;
-            font-size: 1.3rem;
-            color: var(--color-white);
+            color: var(--color-primary);
+            font-size: 1.1rem;
         }
 
-        .review-info {
+        .review-author {
             flex: 1;
         }
 
         .review-name {
             font-weight: 700;
             color: var(--color-primary);
-            font-size: 1.1rem;
             margin-bottom: 0.25rem;
         }
 
         .review-stars {
-            color: var(--color-secondary);
-            font-size: 1.1rem;
+            color: #ffa500;
+            font-size: 0.9rem;
         }
 
         .review-text {
-            color: #666;
+            color: #555;
             line-height: 1.7;
             font-style: italic;
         }
@@ -448,7 +432,7 @@
             background: var(--color-light);
         }
 
-        .contact-form {
+        .form-container {
             max-width: 700px;
             margin: 0 auto;
             background: var(--color-white);
@@ -466,14 +450,13 @@
             margin-bottom: 0.5rem;
             font-weight: 600;
             color: var(--color-primary);
-            font-size: 0.95rem;
         }
 
         .form-input, .form-select, .form-textarea {
             width: 100%;
-            padding: 1rem;
-            border: 2px solid #E5E5E5;
-            border-radius: 12px;
+            padding: 0.9rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
             font-family: var(--font-body);
             font-size: 1rem;
             transition: all 0.3s ease;
@@ -482,7 +465,7 @@
         .form-input:focus, .form-select:focus, .form-textarea:focus {
             outline: none;
             border-color: var(--color-secondary);
-            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+            box-shadow: 0 0 0 3px rgba(212, 165, 116, 0.1);
         }
 
         .form-textarea {
@@ -492,12 +475,11 @@
 
         .form-button {
             width: 100%;
-            padding: 1.25rem;
-            background: var(--color-secondary);
-            color: var(--color-primary);
+            padding: 1.2rem;
+            background: var(--color-primary);
+            color: var(--color-white);
             border: none;
-            border-radius: 12px;
-            font-family: var(--font-body);
+            border-radius: 50px;
             font-size: 1.1rem;
             font-weight: 700;
             cursor: pointer;
@@ -506,20 +488,19 @@
 
         .form-button:hover {
             background: var(--color-accent);
-            color: var(--color-white);
             transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+            box-shadow: 0 10px 30px rgba(44, 24, 16, 0.3);
         }
 
         .form-message {
             display: none;
+            margin-top: 1.5rem;
             padding: 1.5rem;
-            background: #22C55E;
-            color: white;
-            border-radius: 12px;
+            background: #d4edda;
+            color: #155724;
+            border-radius: 10px;
             text-align: center;
             font-weight: 600;
-            margin-top: 1rem;
             animation: slideDown 0.5s ease;
         }
 
@@ -542,23 +523,16 @@
 
         .location-card {
             background: var(--color-white);
-            padding: 2.5rem;
-            border-radius: 20px;
-            box-shadow: 0 5px 30px rgba(0,0,0,0.08);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
             text-align: center;
             transition: all 0.3s ease;
-            opacity: 0;
-            transform: translateY(30px);
-        }
-
-        .location-card.visible {
-            opacity: 1;
-            transform: translateY(0);
         }
 
         .location-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 50px rgba(44, 24, 16, 0.15);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
         }
 
         .location-icon {
@@ -568,24 +542,23 @@
 
         .location-label {
             font-size: 0.85rem;
-            font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
             color: var(--color-accent);
-            margin-bottom: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
         }
 
         .location-value {
             color: var(--color-primary);
-            font-size: 1.1rem;
-            font-weight: 500;
+            font-weight: 600;
             line-height: 1.6;
         }
 
         .footer {
             background: var(--color-dark);
-            color: var(--color-light);
-            padding: 3rem 2rem 2rem;
+            color: var(--color-white);
+            padding: 3rem 1.5rem 2rem;
             text-align: center;
         }
 
@@ -593,23 +566,23 @@
             font-family: var(--font-display);
             font-size: 2rem;
             font-weight: 900;
+            margin-bottom: 1rem;
             color: var(--color-secondary);
-            margin-bottom: 1.5rem;
         }
 
         .footer-info {
             margin-bottom: 1.5rem;
-            color: var(--color-light);
+            color: #999;
         }
 
         .footer-info p {
-            margin-bottom: 0.5rem;
+            margin: 0.5rem 0;
         }
 
         .footer-copyright {
             padding-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            color: #999;
+            border-top: 1px solid #333;
+            color: #666;
             font-size: 0.9rem;
         }
 
@@ -617,17 +590,15 @@
             position: fixed;
             bottom: 30px;
             right: 30px;
-            background: #25D366;
-            color: white;
             width: 60px;
             height: 60px;
+            background: #25D366;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
-            box-shadow: 0 5px 25px rgba(37, 211, 102, 0.5);
-            z-index: 1000;
+            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
+            z-index: 999;
             text-decoration: none;
             transition: all 0.3s ease;
             animation: pulse 2s infinite;
@@ -635,62 +606,41 @@
 
         .whatsapp-float:hover {
             transform: scale(1.1);
-            box-shadow: 0 8px 35px rgba(37, 211, 102, 0.6);
+            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.6);
+        }
+
+        .whatsapp-float::before {
+            content: '💬';
+            font-size: 2rem;
         }
 
         @keyframes pulse {
             0%, 100% {
-                box-shadow: 0 5px 25px rgba(37, 211, 102, 0.5);
+                box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
             }
             50% {
-                box-shadow: 0 5px 35px rgba(37, 211, 102, 0.8);
+                box-shadow: 0 5px 30px rgba(37, 211, 102, 0.7);
             }
         }
 
         @media (min-width: 768px) {
-            .hero-content {
-                grid-template-columns: 1fr;
-            }
-
             .hero-card {
                 display: block;
             }
 
-            .hero-card-title {
-                font-family: var(--font-display);
-                font-size: 1rem;
-                font-weight: 700;
-                color: var(--color-accent);
-                text-transform: uppercase;
-                letter-spacing: 1px;
-                margin-bottom: 1rem;
-            }
-
-            .hero-card-stats {
-                display: flex;
-                gap: 2rem;
-            }
-
-            .hero-card-stat {
-                text-align: center;
-            }
-
-            .hero-card-number {
-                font-family: var(--font-display);
-                font-size: 2rem;
-                font-weight: 900;
-                color: var(--color-primary);
-            }
-
-            .hero-card-label {
-                font-size: 0.85rem;
-                color: #666;
+            .form-container {
+                padding: 3rem 4rem;
             }
         }
 
         @media (max-width: 767px) {
+            .hero {
+                min-height: auto;
+                padding: 3rem 0;
+            }
+
             .nav-container {
-                padding: 1rem;
+                padding: 0 1rem;
             }
 
             .logo {
@@ -702,20 +652,28 @@
                 font-size: 0.85rem;
             }
 
-            .hero {
-                padding: 6rem 1.5rem 3rem;
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn-primary, .btn-secondary {
+                width: 100%;
+                text-align: center;
             }
 
             .section {
-                padding: 3rem 1.5rem;
+                padding: 3rem 1rem;
             }
 
-            .contact-form {
+            .form-container {
                 padding: 2rem 1.5rem;
             }
 
-            .services-grid, .reviews-grid, .location-grid {
-                grid-template-columns: 1fr;
+            .whatsapp-float {
+                bottom: 20px;
+                right: 20px;
+                width: 55px;
+                height: 55px;
             }
         }
     </style>
@@ -724,24 +682,21 @@
     <nav class="nav">
         <div class="nav-container">
             <div class="logo">Javier Santamaría</div>
-            <a href="tel:+34915212904" class="nav-cta">📞 Llamar ahora</a>
+            <a href="tel:+34915212904" class="nav-cta">Llamar Ahora</a>
         </div>
     </nav>
 
     <section class="hero">
-        <div class="hero-content">
-            <div class="hero-text">
-                <h1 class="hero-title">Javier Santamaría</h1>
-                <p class="hero-subtitle">Peluquería de Estilo y Distinción en el Corazón de Madrid</p>
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Javier Santamaría</h1>
+                <p class="hero-subtitle">Peluquería de confianza en el corazón de Madrid. Expertos en corte, color y cuidado capilar personalizado.</p>
                 <div class="hero-buttons">
                     <a href="#cita" class="btn-primary">Pedir Cita</a>
                     <a href="#servicios" class="btn-secondary">Ver Servicios</a>
                 </div>
             </div>
-        </div>
-        <div class="hero-card">
-            <div class="hero-card-title">Confianza certificada</div>
-            <div class="hero-card-stats">
+            <div class="hero-card">
                 <div class="hero-card-stat">
                     <div class="hero-card-number">4.9</div>
                     <div class="hero-card-label">Valoración</div>
@@ -758,113 +713,276 @@
         <div class="stats-container">
             <div class="stat-item">
                 <div class="stat-number">15+</div>
-                <div class="stat-label">Años de Experiencia</div>
+                <div class="stat-label">Años de experiencia</div>
             </div>
             <div class="stat-item">
-                <div class="stat-number">4.9★</div>
-                <div class="stat-label">Valoración en Google</div>
+                <div class="stat-number">4.9</div>
+                <div class="stat-label">Valoración Google</div>
             </div>
             <div class="stat-item">
                 <div class="stat-number">5000+</div>
-                <div class="stat-label">Clientes Satisfechos</div>
+                <div class="stat-label">Clientes satisfechos</div>
             </div>
         </div>
     </section>
 
-    <section id="servicios" class="section">
-        <h2 class="section-title">Nuestros Servicios</h2>
-        <p class="section-subtitle">Estilo personalizado para cada persona. Técnicas profesionales y atención exclusiva.</p>
-        <div class="services-grid">
-            <div class="service-card">
-                <span class="service-icon">✂️</span>
-                <h3 class="service-title">Corte y Peinado</h3>
-                <p class="service-description">Cortes personalizados adaptados a tu estilo y fisonomía. Asesoramiento profesional para encontrar el look perfecto.</p>
-            </div>
-            <div class="service-card">
-                <span class="service-icon">🎨</span>
-                <h3 class="service-title">Color y Mechas</h3>
-                <p class="service-description">Coloración con productos de alta calidad. Mechas, balayage y técnicas modernas para un acabado natural.</p>
-            </div>
-            <div class="service-card">
-                <span class="service-icon">💆</span>
-                <h3 class="service-title">Tratamientos Capilares</h3>
-                <p class="service-description">Tratamientos hidratantes, reconstructores y anticaída. Devolvemos la salud y brillo a tu cabello.</p>
-            </div>
-            <div class="service-card">
-                <span class="service-icon">👔</span>
-                <h3 class="service-title">Afeitado y Barba</h3>
-                <p class="service-description">Afeitado tradicional con toalla caliente. Arreglo y diseño de barba con técnicas clásicas.</p>
-            </div>
-            <div class="service-card">
-                <span class="service-icon">💇‍♀️</span>
-                <h3 class="service-title">Peinados para Eventos</h3>
-                <p class="service-description">Recogidos y peinados especiales para bodas, eventos y ocasiones especiales. Prueba previa incluida.</p>
-            </div>
-            <div class="service-card">
-                <span class="service-icon">✨</span>
-                <h3 class="service-title">Alisados y Permanentes</h3>
-                <p class="service-description">Alisados de keratina, permanentes y cambios de textura con las últimas técnicas del sector.</p>
+    <section id="servicios" class="section section-light">
+        <div class="section-container">
+            <h2 class="section-title">Nuestros Servicios</h2>
+            <p class="section-subtitle">Tratamientos profesionales adaptados a tus necesidades</p>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">✂️</div>
+                    <h3 class="service-title">Corte y Peinado</h3>
+                    <p class="service-description">Cortes personalizados y peinados profesionales que realzan tu estilo único. Adaptamos cada técnica a la forma de tu rostro.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🎨</div>
+                    <h3 class="service-title">Coloración</h3>
+                    <p class="service-description">Tintes, mechas y balayage con productos de alta calidad que cuidan tu cabello mientras lo transforman.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">💆</div>
+                    <h3 class="service-title">Tratamientos Capilares</h3>
+                    <p class="service-description">Hidratación profunda, keratina y tratamientos reparadores para devolver la vitalidad a tu pelo.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">👰</div>
+                    <h3 class="service-title">Peinados para Eventos</h3>
+                    <p class="service-description">Recogidos elegantes y peinados especiales para bodas, comuniones y celebraciones importantes.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🧔</div>
+                    <h3 class="service-title">Barba y Afeitado</h3>
+                    <p class="service-description">Arreglo de barba, perfilado y afeitado tradicional con técnicas profesionales y productos premium.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">✨</div>
+                    <h3 class="service-title">Permanente y Alisado</h3>
+                    <p class="service-description">Transforma la textura de tu cabello con permanentes modernas o alisados duraderos y naturales.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <section class="why-us">
-        <h2 class="section-title">Por Qué Elegirnos</h2>
-        <p class="section-subtitle">La excelencia en cada detalle de nuestro servicio</p>
-        <div class="why-grid">
-            <div class="why-item">
-                <span class="why-icon">🏆</span>
-                <h3 class="why-title">Profesionales Expertos</h3>
-                <p class="why-description">Equipo con más de 15 años de experiencia y formación continua en las últimas tendencias internacionales.</p>
-            </div>
-            <div class="why-item">
-                <span class="why-icon">💎</span>
-                <h3 class="why-title">Productos Premium</h3>
-                <p class="why-description">Trabajamos exclusivamente con las mejores marcas profesionales para garantizar resultados excepcionales.</p>
-            </div>
-            <div class="why-item">
-                <span class="why-icon">📍</span>
-                <h3 class="why-title">Ubicación Céntrica</h3>
-                <p class="why-description">En pleno centro de Madrid, fácil acceso en transporte público y aparcamiento cercano.</p>
-            </div>
-            <div class="why-item">
-                <span class="why-icon">⭐</span>
-                <h3 class="why-title">Atención Personalizada</h3>
-                <p class="why-description">Asesoramiento individual y trato cercano. Cada cliente es único y merece un servicio exclusivo.</p>
+    <section class="section section-dark">
+        <div class="section-container">
+            <h2 class="section-title">¿Por Qué Elegirnos?</h2>
+            <p class="section-subtitle">La experiencia y calidad que tu cabello merece</p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">👨‍🎨</div>
+                    <h3 class="feature-title">Profesionales Cualificados</h3>
+                    <p class="feature-description">Equipo con más de 15 años de experiencia y formación continua en las últimas tendencias.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌿</div>
+                    <h3 class="feature-title">Productos Premium</h3>
+                    <p class="feature-description">Utilizamos solo las mejores marcas profesionales que respetan y cuidan tu cabello.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💎</div>
+                    <h3 class="feature-title">Atención Personalizada</h3>
+                    <p class="feature-description">Cada cliente es único. Estudiamos tus necesidades para ofrecerte el mejor resultado.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📍</div>
+                    <h3 class="feature-title">Ubicación Céntrica</h3>
+                    <p class="feature-description">En pleno centro de Madrid, fácil acceso y horario flexible para tu comodidad.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <section class="section">
-        <h2 class="section-title">Lo Que Dicen Nuestros Clientes</h2>
-        <p class="section-subtitle">Testimonios reales de personas que confían en nosotros</p>
-        <div class="reviews-grid">
-            <div class="review-card">
-                <div class="review-header">
-                    <div class="review-avatar" style="background: linear-gradient(135deg, #D4AF37, #8B6F47);">MC</div>
-                    <div class="review-info">
-                        <div class="review-name">María Carmen López</div>
-                        <div class="review-stars">★★★★★</div>
+    <section class="section section-light">
+        <div class="section-container">
+            <h2 class="section-title">Opiniones de Clientes</h2>
+            <p class="section-subtitle">Lo que dicen quienes confían en nosotros</p>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar">MC</div>
+                        <div class="review-author">
+                            <div class="review-name">María Carmen López</div>
+                            <div class="review-stars">★★★★★</div>
+                        </div>
                     </div>
+                    <p class="review-text">Llevo años viniendo a Javier y siempre salgo encantada. El trato es cercano y profesional, y el resultado del color es impecable. Recomiendo 100% este salón.</p>
                 </div>
-                <p class="review-text">"Llevo años viniendo y siempre salgo encantada. Javier entiende perfectamente lo que quiero sin necesidad de explicarle mucho. El trato es excepcional y los resultados siempre superan mis expectativas."</p>
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar">AR</div>
+                        <div class="review-author">
+                            <div class="review-name">Antonio Ruiz</div>
+                            <div class="review-stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="review-text">Excelente servicio de barbería. El corte de pelo y arreglo de barba siempre perfecto. Javier es un auténtico profesional que sabe lo que hace.</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar">LF</div>
+                        <div class="review-author">
+                            <div class="review-name">Lucía Fernández</div>
+                            <div class="review-stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="review-text">Me hicieron un tratamiento de keratina increíble. Mi pelo nunca había estado tan suave y brillante. Además, el ambiente en el salón es muy agradable y acogedor.</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar">JM</div>
+                        <div class="review-author">
+                            <div class="review-name">Jorge Martín</div>
+                            <div class="review-stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="review-text">La mejor peluquería de Madrid centro sin duda. Los cortes modernos que hacen son espectaculares y siempre te aconsejan qué te favorece más. Muy recomendable.</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar">SG</div>
+                        <div class="review-author">
+                            <div class="review-name">Sandra García</div>
+                            <div class="review-stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="review-text">Me peinaron para mi boda y quedé maravillada. El recogido duró todo el día perfecto. Javier y su equipo son artistas con un trato excepcional.</p>
+                </div>
             </div>
-            <div class="review-card">
-                <div class="review-header">
-                    <div class="review-avatar" style="background: linear-gradient(135deg, #8B6F47, #2C1810);">AR</div>
-                    <div class="review-info">
-                        <div class="review-name">Alberto Ramírez</div>
-                        <div class="review-stars">★★★★★</div>
+        </div>
+    </section>
+
+    <section id="cita" class="section form-section">
+        <div class="section-container">
+            <h2 class="section-title">Reserva tu Cita</h2>
+            <p class="section-subtitle">Completa el formulario y te confirmaremos tu cita en menos de 24 horas</p>
+            <div class="form-container">
+                <form id="appointmentForm">
+                    <div class="form-group">
+                        <label class="form-label">Nombre Completo</label>
+                        <input type="text" class="form-input" required placeholder="Tu nombre completo">
                     </div>
-                </div>
-                <p class="review-text">"El mejor afeitado tradicional que he probado en Madrid. El ambiente es acogedor y el servicio impecable. Me ha cambiado por completo la forma de cuidar mi barba y estilo personal."</p>
+                    <div class="form-group">
+                        <label class="form-label">Teléfono</label>
+                        <input type="tel" class="form-input" required placeholder="+34 600 000 000">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-input" required placeholder="tu@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Servicio</label>
+                        <select class="form-select" required>
+                            <option value="">Selecciona un servicio</option>
+                            <option value="corte">Corte y Peinado</option>
+                            <option value="color">Coloración</option>
+                            <option value="tratamiento">Tratamientos Capilares</option>
+                            <option value="eventos">Peinados para Eventos</option>
+                            <option value="barba">Barba y Afeitado</option>
+                            <option value="permanente">Permanente y Alisado</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Fecha Preferida</label>
+                        <input type="date" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Mensaje (Opcional)</label>
+                        <textarea class="form-textarea" placeholder="Cuéntanos qué necesitas..."></textarea>
+                    </div>
+                    <button type="submit" class="form-button">Solicitar Cita</button>
+                    <div class="form-message" id="formMessage">
+                        ¡Solicitud recibida! Te llamaremos en menos de 24h
+                    </div>
+                </form>
             </div>
-            <div class="review-card">
-                <div class="review-header">
-                    <div class="review-avatar" style="background: linear-gradient(135deg, #D4AF37, #2C1810);">LF</div>
-                    <div class="review-info">
-                        <div class="review-name">Laura Fernández</div>
-                        <div class="review-stars">★★★★★</div>
-                    </div>
+        </div>
+    </section>
+
+    <section class="section section-light">
+        <div class="section-container">
+            <h2 class="section-title">Cómo Llegar</h2>
+            <p class="section-subtitle">Visítanos en pleno centro de Madrid</p>
+            <div class="location-grid">
+                <div class="location-card">
+                    <div class="location-icon">📍</div>
+                    <div class="location-label">Dirección</div>
+                    <div class="location-value">C. de la Libertad, 1<br>Centro, 28004 Madrid</div>
                 </div>
-                <p class="review-text">"Me
+                <div class="location-card">
+                    <div class="location-icon">📞</div>
+                    <div class="location-label">Teléfono</div>
+                    <div class="location-value">+34 915 21 29 04</div>
+                </div>
+                <div class="location-card">
+                    <div class="location-icon">🕒</div>
+                    <div class="location-label">Horario</div>
+                    <div class="location-value">Lun-Vie: 10:00 - 20:00<br>Sáb: 10:00 - 14:00</div>
+                </div>
+                <div class="location-card">
+                    <div class="location-icon">🚇</div>
+                    <div class="location-label">Transporte</div>
+                    <div class="location-value">Metro Chueca (L5)<br>Metro Gran Vía (L1, L5)</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-logo">Javier Santamaría</div>
+        <div class="footer-info">
+            <p>C. de la Libertad, 1, Centro, 28004 Madrid</p>
+            <p>+34 915 21 29 04</p>
+        </div>
+        <div class="footer-copyright">
+            © 2024 Javier Santamaría Peluquería. Todos los derechos reservados.
+        </div>
+    </footer>
+
+    <a href="https://wa.me/34915212904" class="whatsapp-float" target="_blank" rel="noopener"></a>
+
+    <script>
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.stat-item, .service-card, .feature-card, .review-card').forEach(el => {
+            observer.observe(el);
+        });
+
+        document.getElementById('appointmentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const message = document.getElementById('formMessage');
+            message.style.display = 'block';
+            this.reset();
+            setTimeout(() => {
+                message.style.display = 'none';
+            }, 5000);
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offsetTop = target.offsetTop - 80;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
