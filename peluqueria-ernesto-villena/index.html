@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peluquería Ernesto Villena | Peluquería en Torrox, Málaga</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2C1810;
+            --secondary: #D4AF37;
+            --accent: #8B6F47;
+            --light: #F5F1EC;
+            --white: #FFFFFF;
+            --dark: #1A1A1A;
+            --text: #333333;
+            --gradient: linear-gradient(135deg, #2C1810 0%, #5D4037 50%, #8B6F47 100%);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* NAV */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--primary);
+            letter-spacing: -0.5px;
+        }
+
+        .nav-cta {
+            background: var(--secondary);
+            color: var(--primary);
+            padding: 12px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .nav-cta:hover {
+            background: var(--primary);
+            color: var(--secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+        }
+
+        /* HERO */
+        .hero {
+            margin-top: 70px;
+            min-height: 90vh;
+            background: var(--gradient);
+            position: relative;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            color: var(--white);
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(52px, 10vw, 96px);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            letter-spacing: -2px;
+            color: var(--white);
+        }
+
+        .hero-subtitle {
+            font-size: clamp(18px, 3vw, 24px);
+            margin-bottom: 40px;
+            opacity: 0.95;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary, .btn-secondary {
+            padding: 16px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--secondary);
+            color: var(--primary);
+            box-shadow: 0 6px 25px rgba(212, 175, 55, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(212, 175, 55, 0.5);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .btn-secondary:hover {
+            background: var(--white);
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .hero-card {
+            position: absolute;
+            right: 80px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(-50%) translateX(0); }
+            50% { transform: translateY(-50%) translateX(-10px); }
+        }
+
+        .hero-card-stat {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .hero-card-stat:last-child {
+            margin-bottom: 0;
+        }
+
+        .hero-card-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            font-weight: 900;
+            color: var(--secondary);
+            display: block;
+        }
+
+        .hero-card-label {
+            color: var(--text);
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        /* STATS BAR */
+        .stats-bar {
+            background: var(--primary);
+            color: var(--white);
+            padding: 60px 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            text-align: center;
+        }
+
+        .stat-item {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .stat-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 56px;
+            font-weight: 900;
+            color: var(--secondary);
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        /* SERVICES */
+        .services {
+            padding: 100px 0;
+            background: var(--light);
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(36px, 5vw, 52px);
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 18px;
+            color: var(--accent);
+            margin-bottom: 60px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 40px 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .service-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .service-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .service-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        .service-description {
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        /* WHY US */
+        .why-us {
+            padding: 100px 0;
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .why-us .section-title {
+            color: var(--white);
+        }
+
+        .why-us .section-subtitle {
+            color: var(--secondary);
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .why-item {
+            text-align: center;
+            opacity: 0;
+            transform: scale(0.9);
+            transition: all 0.6s ease;
+        }
+
+        .why-item.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .why-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 36px;
+        }
+
+        .why-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .why-description {
+            opacity: 0.9;
+            line-height: 1.7;
+        }
+
+        /* REVIEWS */
+        .reviews {
+            padding: 100px 0;
+            background: var(--light);
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .review-card {
+            background: var(--white);
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .review-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .review-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .review-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--secondary);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 18px;
+            margin-right: 15px;
+        }
+
+        .review-info h4 {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .review-stars {
+            color: var(--secondary);
+            font-size: 14px;
+            letter-spacing: 2px;
+        }
+
+        .review-text {
+            color: var(--text);
+            line-height: 1.7;
+            font-style: italic;
+        }
+
+        /* APPOINTMENT FORM */
+        .appointment {
+            padding: 100px 0;
+            background: var(--white);
+        }
+
+        .form-container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: var(--light);
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group.full {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--primary);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 14px 18px;
+            border: 2px solid #E0E0E0;
+            border-radius: 10px;
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            background: var(--white);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 18px;
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .submit-btn:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(44, 24, 16, 0.3);
+        }
+
+        .form-message {
+            display: none;
+            background: #4CAF50;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 20px;
+            font-weight: 600;
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* LOCATION */
+        .location {
+            padding: 100px 0;
+            background: var(--light);
+        }
+
+        .location-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .location-card {
+            background: var(--white);
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            text-align: center;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .location-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .location-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .location-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .location-value {
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--primary);
+            color: var(--white);
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 900;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+
+        .footer-text {
+            opacity: 0.8;
+            line-height: 1.8;
+        }
+
+        .footer-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+            opacity: 0.8;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            opacity: 0.7;
+        }
+
+        /* WHATSAPP BUTTON */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            z-index: 999;
+            text-decoration: none;
+            font-size: 32px;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(37, 211, 102, 0.6);
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            }
+            50% {
+                box-shadow: 0 4px 30px rgba(37, 211, 102, 0.7);
+            }
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero-card {
+                position: static;
+                transform: none;
+                margin-top: 40px;
+                animation: none;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-container {
+                padding: 30px 20px;
+            }
+
+            nav .container {
+                padding: 12px 20px;
+            }
+
+            .logo {
+                font-size: 20px;
+            }
+
+            .nav-cta {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn-primary, .btn-secondary {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- NAV -->
+    <nav>
+        <div class="container">
+            <div class="logo">Ernesto Villena</div>
+            <a href="tel:+34652877526" class="nav-cta">☎ Llamar ahora</a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Peluquería Ernesto Villena</h1>
+                <p class="hero-subtitle">Estilo, elegancia y profesionalidad en el corazón de Torrox. Tu imagen, nuestra pasión.</p>
+                <div class="hero-buttons">
+                    <a href="#cita" class="btn-primary">Pedir cita</a>
+                    <a href="#servicios" class="btn-secondary">Ver servicios</a>
+                </div>
+            </div>
+            <div class="hero-card">
+                <div class="hero-card-stat">
+                    <span class="hero-card-number">4.8★</span>
+                    <span class="hero-card-label">Valoración Google</span>
+                </div>
+                <div class="hero-card-stat">
+                    <span class="hero-card-number">99</span>
+                    <span class="hero-card-label">Reseñas</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS BAR -->
+    <section class="stats-bar">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-number">15+</span>
+                    <span class="stat-label">Años de experiencia</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">3500+</span>
+                    <span class="stat-label">Clientes satisfechos</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">Productos profesionales</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="services" id="servicios">
+        <div class="container">
+            <h2 class="section-title">Nuestros Servicios</h2>
+            <p class="section-subtitle">Ofrecemos una amplia gama de servicios profesionales adaptados a tus necesidades</p>
+            <div class="services-grid">
+                <div class="service-card">
+                    <span class="service-icon">✂️</span>
+                    <h3 class="service-title">Corte y Peinado</h3>
+                    <p class="service-description">Cortes personalizados para todos los estilos. Desde clásicos hasta las últimas tendencias, siempre con acabado profesional.</p>
+                </div>
+                <div class="service-card">
+                    <span class="service-icon">🎨</span>
+                    <h3 class="service-title">Coloración</h3>
+                    <p class="service-description">Tintes, mechas, balayage y técnicas de color de última generación con productos de alta calidad que cuidan tu cabello.</p>
+                </div>
+                <div class="service-card">
+                    <span class="service-icon">💆</span>
+                    <h3 class="service-title">Tratamientos Capilares</h3>
+                    <p class="service-description">Hidratación profunda, keratina, botox capilar y tratamientos reparadores para mantener tu pelo sano y radiante.</p>
+                </div>
+                <div class="service-card">
+                    <span class="service-icon">👰</span>
+                    <h3 class="service-title">Peinados de Eventos</h3>
+                    <p class="service-description">Recogidos elegantes para bodas, comuniones y eventos especiales. Hacemos realidad el look que imaginas.</p>
+                </div>
+                <div class="service-card">
+                    <span class="service-icon">🧔</span>
+                    <h3 class="service-title">Barbería y Afeitado</h3>
+                    <p class="service-description">Arreglo de barba, perfilado y afeitado tradicional con navaja. Cuidado masculino con técnicas profesionales.</p>
+                </div>
+                <div class="service-card">
+                    <span class="service-icon">👨‍👩‍👧</span>
+                    <h3 class="service-title">Peluquería Infantil</h3>
+                    <p class="service-description">Cortes para los más pequeños en un ambiente agradable. Paciencia y experiencia con niños de todas las edades.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY US -->
+    <section class="why-us">
+        <div class="container">
+            <h2 class="section-title">¿Por qué elegirnos?</h2>
+            <p class="section-subtitle">La confianza de nuestros clientes es nuestro mayor orgullo</p>
+            <div class="why-grid">
+                <div class="why-item">
+                    <div class="why-icon">👨‍🎨</div>
+                    <h3 class="why-title">Profesionalidad</h3>
+                    <p class="why-description">Equipo altamente cualificado con formación continua en las últimas técnicas y tendencias del sector.</p>
+                </div>
+                <div class="why-item">
+                    <div class="why-icon">⭐</div>
+                    <h3 class="why-title">Productos Premium</h3>
+                    <p class="why-description">Trabajamos exclusivamente con marcas profesionales de máxima calidad para garantizar los mejores resultados.</p>
+                </div>
+                <div class="why-item">
+                    <div class="why-icon">💎</div>
+                    <h3 class="why-title">Atención Personalizada</h3>
+                    <p class="why-description">Cada cliente es único. Dedicamos tiempo a escuchar y asesorar para conseguir exactamente lo que buscas.</p>
+                </div>
+                <div class="why-item">
+                    <div class="why-icon">🏆</div>
+                    <h3 class="why-title">Experiencia Local</h3>
+                    <p class="why-description">Más de 15 años siendo referencia en Torrox. Conocemos a nuestros clientes y sus preferencias.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- REVIEWS -->
+    <section class="reviews">
+        <div class="container">
+            <h2 class="section-title">Opiniones de Clientes</h2>
+            <p class="section-subtitle">La satisfacción de nuestros clientes habla por nosotros</p>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar">MC</div>
+                        <div class="review-info">
+                            <h4>María Carmen López</h4>
+                            <div class="review-stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="review-text">Llevo años viniendo y siempre salgo encantada. Ernesto es un profesional como la copa de un pino, me asesora genial con el color y siempre consigue que mi pelo quede espectacular. El trato es cercano y familiar.</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar">JR</div>
+                        <div class="review-info">
+                            <h4>José Ramón Molina</h4>
+                            <div class="review-stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="review-text">El mejor sitio para cortarse el pelo en Torrox sin duda. El corte me dura perfecto y el arreglo de barba es impecable. Muy buen ambiente y profesionalidad. Totalmente recomendable.</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar">AT</div>
+                        <div class="review-info">
+                            <h4>Ana Teresa Fernández</h4>
+                            <div class="review-stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="review-text">Me hicieron las mechas para mi boda y quedé maravillosa. Ernesto supo exactamente lo que necesitaba incluso mejor que yo misma. Precio justo y calidad excelente. Volveré siempre.</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar">FM</div>
+                        <div class="review-info">
+                            <h4>Francisco Martín Ruiz</h4>
+                            <div class="review-stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="review-text">Trato excepcional, te sientes como en casa. Mi hijo pequeño siempre viene encantado porque tienen mucha paciencia con los niños. Calidad-precio inmejorable.</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar">IG</div>
+                        <div class="review-info">
+                            <h4>Isabel González Pérez</h4>
+                            <div class="review-stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="review-text">Después de probar varias peluquerías, aquí me quedo fija. El tratamiento de keratina que me hicieron dejó mi pelo increíble. Ernesto es un artista y se nota la experiencia de años. Muy contenta.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- APPOINTMENT FORM -->
+    <section class="appointment" id="cita">
+        <div class="container">
+            <h2 class="section-title">Reserva tu Cita</h2>
+            <p class="section-subtitle">Completa el formulario y te confirmaremos tu cita en menos de 24 horas</p>
+            <div class="form-container">
+                <form id="appointmentForm">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="nombre">Nombre completo *</label>
+                            <input type="text" id="nombre" name="nombre" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="telefono">Teléfono *</label>
+                            <input type="tel" id="telefono" name="telefono" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="fecha">Fecha preferida *</label>
+                            <input type="date" id="fecha" name="fecha" required>
+                        </div>
+                        <div class="form-group full">
+                            <label for="servicio">Tipo de servicio *</label>
+                            <select id="servicio" name="servicio" required>
+                                <option value="">Selecciona un servicio</option>
+                                <option value="corte">Corte y Peinado</option>
+                                <option value="color">Coloración</option>
+                                <option value="tratamiento">Tratamientos Capilares</option>
+                                <option value="evento">Peinados de Eventos</option>
+                                <option value="barberia">Barbería y Afeitado</option>
+                                <option value="infantil">Peluquería Infantil</option>
+                            </select>
+                        </div>
+                        <div class="form-group full">
+                            <label for="mensaje">Mensaje (opcional)</label>
+                            <textarea id="mensaje" name="mensaje" placeholder="Cuéntanos qué tienes en mente..."></textarea>
+                        </div>
+                    </div>
+                    <button type="submit" class="submit-btn">Solicitar Cita</button>
+                    <div class="form-message" id="formMessage">
+                        ¡Solicitud recibida! Te llamaremos en menos de 24h para confirmar tu cita.
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- LOCATION -->
+    <section class="location">
+        <div class="container">
+            <h2 class="section-title">Cómo Llegar</h2>
+            <p class="section-subtitle">Estamos en el centro de Torrox, fácil acceso y buen aparcamiento</p>
+            <div class="location-grid">
+                <div class="location-card">
+                    <div class="location-icon">📍</div>
+                    <div class="location-label">DIRECCIÓN</div>
+                    <div class="location-value">C. Rinconcillo, 14<br>29793 Torrox, Málaga</div>
+                </div>
+                <div class="location-card">
+                    <div class="location-icon">📞</div>
+                    <div class="location-label">TELÉFONO</div>
+                    <div class="location-value">+34 652 87 75 26</div>
+                </div>
+                <div class="location-card">
+                    <div class="location-icon">🕐</div>
+                    <div class="location-label">HORARIO</div>
+                    <div class="location-value">Lun-Vie: 9:30 - 13:30<br>16:30 - 20:00<br>Sáb: 9:00 - 14:00</div>
+                </div>
+                <div class="location-card">
+                    <div class="location-icon">🚗</div>
+                    <div class="location-label">TRANSPORTE</div>
+                    <div class="location-value">Aparcamiento público cercano<br>Parada de bus a 2 min</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <div class="footer-logo">Ernesto Villena</div>
+                    <p class="footer-text">Peluquería profesional en Torrox con más de 15 años de experiencia. Tu imagen, nuestra pasión.</p>
+                </div>
+                <div>
+                    <h3 class="footer-title">Contacto</h3>
+                    <ul class="footer-links">
+                        <li>C. Rinconcillo, 14</li>
+                        <li>29793 Torrox, Málaga</li>
+                        <li>+34 652 87 75 26</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="footer-title">Horario</h3>
+                    <ul class="footer-links">
+                        <li>Lunes a Viernes</li>
+                        <li>9:30 - 13:30 | 16:30 - 20:00</li>
+                        <li>Sábados: 9:00 - 14:00</li>
+                        <li>Domingos: Cerrado</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Peluquería Ernesto Villena. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WHATSAPP BUTTON -->
+    <a href="https://wa.me/34652877526" class="whatsapp-float" target="_blank" rel="noopener">💬</a>
+
+    <script>
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animated elements
+        document.querySelectorAll('.stat-item, .service-card, .why-item, .review-card, .location-card').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offsetTop = target.offsetTop - 80;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Form submission
+        document.getElementById('appointmentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Show success message
+            const message = document.getElementById('formMessage');
+            message.style.display = 'block';
+            
+            // Reset form
+            this.reset();
+            
+            // Hide message after 5 seconds
+            setTimeout(() => {
+                message.style.display = 'none';
+            }, 5000);
+            
+            // Scroll to message
+            message.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        });
+
+        // Set minimum date for appointment (today)
+        const dateInput = document.getElementById('fecha');
+        const today = new Date().toISOString().split('T')[0];
+        dateInput.setAttribute('min', today);
+    </script>
+</body>
+</html>
