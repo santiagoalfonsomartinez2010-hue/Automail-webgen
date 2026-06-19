@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hair club - The Loft | Peluquería en Santa Cruz de Tenerife</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-primary: #C9A86A;
+            --color-secondary: #2C2C2C;
+            --color-accent: #8B7355;
+            --color-light: #F5F1ED;
+            --color-white: #FFFFFF;
+            --color-text: #333333;
+            --color-text-light: #666666;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--color-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--color-secondary);
+            letter-spacing: -0.5px;
+        }
+
+        .nav-cta {
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 12px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            border: 2px solid var(--color-primary);
+        }
+
+        .nav-cta:hover {
+            background: var(--color-secondary);
+            border-color: var(--color-secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 70px;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            background: linear-gradient(135deg, #2C2C2C 0%, #4A4A4A 50%, #C9A86A 100%);
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(201, 168, 106, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(139, 115, 85, 0.15) 0%, transparent 50%);
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-content {
+            color: var(--color-white);
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(52px, 10vw, 96px);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            letter-spacing: -2px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-subtitle {
+            font-size: clamp(18px, 3vw, 24px);
+            margin-bottom: 40px;
+            opacity: 0.95;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 16px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            display: inline-block;
+            border: 2px solid transparent;
+        }
+
+        .btn-primary {
+            background: var(--color-primary);
+            color: var(--color-white);
+            border-color: var(--color-primary);
+        }
+
+        .btn-primary:hover {
+            background: transparent;
+            border-color: var(--color-white);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--color-white);
+            border-color: var(--color-white);
+        }
+
+        .btn-secondary:hover {
+            background: var(--color-white);
+            color: var(--color-secondary);
+            transform: translateY(-2px);
+        }
+
+        .hero-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero-card-stat {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .hero-card-stat:last-child {
+            margin-bottom: 0;
+        }
+
+        .stat-icon {
+            font-size: 40px;
+        }
+
+        .stat-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            color: var(--color-primary);
+            font-weight: 900;
+        }
+
+        .stat-content p {
+            color: var(--color-text-light);
+            font-size: 14px;
+        }
+
+        /* Stats Bar */
+        .stats-bar {
+            background: var(--color-secondary);
+            padding: 60px 0;
+            color: var(--color-white);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 56px;
+            color: var(--color-primary);
+            font-weight: 900;
+            margin-bottom: 10px;
+        }
+
+        .stat-item p {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 100px 0;
+            background: var(--color-light);
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(36px, 5vw, 54px);
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 20px;
+            color: var(--color-secondary);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 18px;
+            color: var(--color-text-light);
+            margin-bottom: 60px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: var(--color-white);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .service-card.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .service-icon {
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--color-secondary);
+        }
+
+        .service-card p {
+            color: var(--color-text-light);
+            line-height: 1.7;
+        }
+
+        /* Why Choose Us */
+        .why-us {
+            padding: 100px 0;
+            background: var(--color-secondary);
+            color: var(--color-white);
+        }
+
+        .why-us .section-title {
+            color: var(--color-white);
+        }
+
+        .why-us .section-subtitle {
+            color: rgba(255,255,255,0.8);
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .why-item {
+            text-align: center;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.5s ease;
+        }
+
+        .why-item.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .why-icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+
+        .why-item h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--color-primary);
+        }
+
+        .why-item p {
+            opacity: 0.9;
+            line-height: 1.7;
+        }
+
+        /* Reviews Section */
+        .reviews {
+            padding: 100px 0;
+            background: var(--color-white);
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .review-card {
+            background: var(--color-light);
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .review-card.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .review-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+        }
+
+        .review-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .review-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 22px;
+            color: var(--color-white);
+        }
+
+        .review-info h4 {
+            font-size: 18px;
+            margin-bottom: 5px;
+            color: var(--color-secondary);
+        }
+
+        .review-stars {
+            color: var(--color-primary);
+            font-size: 16px;
+        }
+
+        .review-text {
+            color: var(--color-text-light);
+            line-height: 1.7;
+            font-style: italic;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            padding: 100px 0;
+            background: var(--color-light);
+        }
+
+        .form-wrapper {
+            max-width: 700px;
+            margin: 0 auto;
+            background: var(--color-white);
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--color-secondary);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #E0E0E0;
+            border-radius: 10px;
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--color-primary);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 18px;
+            background: var(--color-primary);
+            color: var(--color-white);
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-submit:hover {
+            background: var(--color-secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        .form-message {
+            margin-top: 20px;
+            padding: 20px;
+            background: #4CAF50;
+            color: white;
+            border-radius: 10px;
+            text-align: center;
+            display: none;
+            animation: slideDown 0.5s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Location Section */
+        .location {
+            padding: 100px 0;
+            background: var(--color-white);
+        }
+
+        .location-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .location-card {
+            background: var(--color-light);
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+
+        .location-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+        }
+
+        .location-icon {
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+
+        .location-label {
+            text-transform: uppercase;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: var(--color-primary);
+            margin-bottom: 10px;
+        }
+
+        .location-value {
+            color: var(--color-text);
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--color-secondary);
+            color: var(--color-white);
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            font-weight: 900;
+            margin-bottom: 20px;
+            color: var(--color-primary);
+        }
+
+        .footer-text {
+            opacity: 0.8;
+            line-height: 1.8;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            opacity: 0.7;
+        }
+
+        /* WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            color: white;
+            text-decoration: none;
+            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.5);
+            z-index: 999;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.7);
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 5px 20px rgba(37, 211, 102, 0.5);
+            }
+            50% {
+                box-shadow: 0 5px 30px rgba(37, 211, 102, 0.8);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero .container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .hero-card {
+                padding: 30px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .form-wrapper {
+                padding: 30px 20px;
+            }
+
+            nav .container {
+                padding: 12px 20px;
+            }
+
+            .logo {
+                font-size: 20px;
+            }
+
+            .nav-cta {
+                padding: 10px 20px;
+                font-size: 13px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .services-grid,
+            .reviews-grid,
+            .location-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">Hair club</div>
+            <a href="tel:+34633710536" class="nav-cta">☎ Llamar ahora</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Hair club<br>The Loft</h1>
+                <p class="hero-subtitle">Tu refugio de estilo en el corazón de Santa Cruz de Tenerife</p>
+                <div class="hero-buttons">
+                    <a href="#cita" class="btn btn-primary">Pedir cita</a>
+                    <a href="#servicios" class="btn btn-secondary">Ver servicios</a>
+                </div>
+            </div>
+            <div class="hero-card">
+                <div class="hero-card-stat">
+                    <div class="stat-icon">⭐</div>
+                    <div class="stat-content">
+                        <h3>4.9/5</h3>
+                        <p>66 reseñas en Google</p>
+                    </div>
+                </div>
+                <div class="hero-card-stat">
+                    <div class="stat-icon">✂️</div>
+                    <div class="stat-content">
+                        <h3>+5 años</h3>
+                        <p>De experiencia profesional</p>
+                    </div>
+                </div>
+                <div class="hero-card-stat">
+                    <div class="stat-icon">💎</div>
+                    <div class="stat-content">
+                        <h3>Premium</h3>
+                        <p>Productos de alta calidad</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Bar -->
+    <section class="stats-bar">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>+2000</h3>
+                    <p>Clientes satisfechos</p>
+                </div>
+                <div class="stat-item">
+                    <h3>4.9★</h3>
+                    <p>Valoración en Google</p>
+                </div>
+                <div class="stat-item">
+                    <h3>100%</h3>
+                    <p>Profesionalidad garantizada</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="servicios">
+        <div class="container">
+            <h2 class="section-title">Nuestros Servicios</h2>
+            <p class="section-subtitle">Cada servicio está diseñado para realzar tu belleza única con técnicas profesionales y productos premium</p>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">💇</div>
+                    <h3>Corte y Estilismo</h3>
+                    <p>Cortes personalizados adaptados a tu estilo y personalidad. Desde clásicos atemporales hasta tendencias vanguardistas.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🎨</div>
+                    <h3>Coloración</h3>
+                    <p>Técnicas avanzadas de coloración: mechas, balayage, ombré. Productos profesionales que cuidan y protegen tu cabello.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">✨</div>
+                    <h3>Tratamientos Capilares</h3>
+                    <p>Tratamientos de hidratación profunda, reparación y nutrición para todo tipo de cabello. Recupera brillo y vitalidad.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">👰</div>
+                    <h3>Peinados para Eventos</h3>
+                    <p>Recogidos elegantes, peinados de novia y para ocasiones especiales. Te ayudamos a lucir perfecta en tu día importante.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🌟</div>
+                    <h3>Keratina y Alisados</h3>
+                    <p>Tratamientos de alisado con keratina para un cabello liso, brillante y manejable durante meses.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">👨</div>
+                    <h3>Barbería</h3>
+                    <p>Servicios especializados de barbería: cortes masculinos, arreglo de barba, afeitado clásico y diseño de estilos modernos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="why-us">
+        <div class="container">
+            <h2 class="section-title">¿Por qué elegir Hair club - The Loft?</h2>
+            <p class="section-subtitle">Somos mucho más que una peluquería, somos tu espacio de confianza</p>
+            <div class="why-grid">
+                <div class="why-item">
+                    <div class="why-icon">👨‍🎨</div>
+                    <h3>Profesionales Expertos</h3>
+                    <p>Estilistas certificados con años de formación continua en las últimas técnicas y tendencias internacionales.</p>
+                </div>
+                <div class="why-item">
+                    <div class="why-icon">🏆</div>
+                    <h3>Productos Premium</h3>
+                    <p>Utilizamos exclusivamente productos profesionales de marcas líderes que cuidan y protegen tu cabello.</p>
+                </div>
+                <div class="why-item">
+                    <div class="why-icon">💎</div>
+                    <h3>Ambiente Exclusivo</h3>
+                    <p>Un espacio diseñado para tu comodidad y bienestar, donde cada visita es una experiencia única.</p>
+                </div>
+                <div class="why-item">
+                    <div class="why-icon">⚡</div>
+                    <h3>Atención Personalizada</h3>
+                    <p>Escuchamos tus necesidades y asesoramos de forma profesional para lograr el look que deseas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="reviews">
+        <div class="container">
+            <h2 class="section-title">Lo que dicen nuestros clientes</h2>
+            <p class="section-subtitle">La satisfacción de nuestros clientes es nuestra mejor carta de presentación</p>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar" style="background: linear-gradient(135deg, #C9A86A, #8B7355)">MR</div>
+                        <div class="review-info">
+                            <h4>María Rodríguez</h4>
+                            <div class="review-stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="review-text">"Llevo años viniendo a Hair club y siempre salgo encantada. El balayage que me hizo Laura es espectacular, súper natural y el color dura muchísimo. El trato es cercano y profesional, realmente se preocupan por la salud de tu cabello."</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar" style="background: linear-gradient(135deg, #8B7355, #C9A86A)">CM</div>
+                        <div class="review-info">
+                            <h4>Carlos Martín</h4>
+                            <div class="review-stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="review-text">"El mejor sitio para arreglar la barba en Santa Cruz. Muy meticulosos y con buen ojo para el detalle. El corte siempre perfecto y el ambiente del local es genial. Totalmente recomendable."</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar" style="background: linear-gradient(135deg, #C9A86A, #2C2C2C)">SG</div>
+                        <div class="review-info">
+                            <h4>Sofía González</h4>
+                            <div class="review-stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="review-text">"Me hicieron el peinado de novia y fue perfecto, aguantó toda la boda impecable. Son súper atentos y te hacen sentir especial. Los tratamientos de keratina que uso regularmente han transformado mi melena completamente."</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar" style="background: linear-gradient(135deg, #2C2C2C, #8B7355)">AL</div>
+                        <div class="review-info">
+                            <h4>Antonio López</h4>
+                            <div class="review-stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="review-text">"Profesionales de verdad. Me asesoraron sobre el corte que mejor me quedaba y acertaron de pleno. El ambiente es relajado y la ubicación en planta 5 le da un toque exclusivo. Volveré seguro."</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar" style="background: linear-gradient(135deg, #8B7355, #C9A86A)">LP</div>
+                        <div class="review-info">
+                            <h4>Lucía Pérez</h4>
+                            <div class="review-stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="review-text">"Después de probar varios sitios, por fin encontré mi peluquería de confianza. El tratamiento de hidratación que me pusieron dejó mi pelo increíble. Precios justos para la calidad que ofrecen. ¡Estoy feliz con el resultado!"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section class="contact-form" id="cita">
+        <div class="container">
+            <h2 class="section-title">Reserva tu cita</h2>
+            <p class="section-subtitle">Completa el formulario y te confirmaremos tu cita en menos de 24 horas</p>
+            <div class="form-wrapper">
+                <form id="appointmentForm">
+                    <div class="form-group">
+                        <label for="name">Nombre completo *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Teléfono *</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="service">Tipo de servicio *</label>
+                        <select id="service" name="service" required>
+                            <option value="">Selecciona un servicio</option>
+                            <option value="corte">Corte y Estilismo</option>
+                            <option value="coloracion">Coloración</option>
+                            <option value="tratamiento">Tratamientos Capilares</option>
+                            <option value="evento">Peinados para Eventos</option>
+                            <option value="keratina">Keratina y Alisados</option>
+                            <option value="barberia">Barbería</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="date">Fecha preferida *</label>
+                        <input type="date" id="date" name="date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Mensaje (opcional)</label>
+                        <textarea id="message" name="message" placeholder="Cuéntanos qué tienes en mente..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">Solicitar cita</button>
+                    <div class="form-message" id="formMessage">
+                        ✅ ¡Solicitud recibida! Te llamaremos en menos de 24h
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section class="location">
+        <div class="container">
+            <h2 class="section-title">Cómo llegar</h2>
+            <p class="section-subtitle">Estamos en el corazón de Santa Cruz, fácil acceso y ubicación privilegiada</p>
+            <div class="location-grid">
+                <div class="location-card">
+                    <div class="location-icon">📍</div>
+                    <div class="location-label">Dirección</div>
+                    <div class="location-value">C. El Sí, 3, Planta 5<br>38002 Santa Cruz de Tenerife</div>
+                </div>
+                <div class="location-card">
+                    <div class="location-icon">📞</div>
+                    <div class="location-label">Teléfono</div>
+                    <div class="location-value">+34 633 71 05 36</div>
+                </div>
+                <div class="location-card">
+                    <div class="location-icon">🕐</div>
+                    <div class="location-label">Horario</div>
+                    <div class="location-value">Lun-Vie: 10:00 - 20:00<br>Sábados: 10:00 - 14:00</div>
+                </div>
+                <div class="location-card">
+                    <div class="location-icon">🚌</div>
+                    <div class="location-label">Transporte</div>
+                    <div class="location-value">Tranvía: La Paz<br>Autobuses: 910, 920, 930</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <div class="footer-logo">Hair club</div>
+                    <p class="footer-text">Tu salón de confianza en Santa Cruz de Tenerife. Profesionalidad, estilo y calidad en cada servicio.</p>
+                </div>
+                <div>
+                    <h3 style="margin-bottom: 20px; color: var(--color-primary);">Contacto</h3>
+                    <p class="footer-text">C. El Sí, 3, Planta 5<br>38002 Santa Cruz de Tenerife<br><br>Tel: +34 633 71 05 36</p>
+                </div>
+                <div>
+                    <h3 style="margin-bottom: 20px; color: var(--color-primary);">Horario</h3>
+                    <p class="footer-text">Lunes a Viernes: 10:00 - 20:00<br>Sábados: 10:00 - 14:00<br>Domingos: Cerrado</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Hair club - The Loft. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/34633710536" class="whatsapp-float" target="_blank" rel="noopener">
+        💬
+    </a>
+
+    <script>
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('animate');
+                    }, index * 100);
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards
+        document.querySelectorAll('.service-card, .review-card, .why-item').forEach(card => {
+            observer.observe(card);
+        });
+
+        // Form submission
+        document.getElementById('appointmentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Show success message
+            const message = document.getElementById('formMessage');
+            message.style.display = 'block';
+            
+            // Reset form
+            this.reset();
+            
+            // Hide message after 5 seconds
+            setTimeout(() => {
+                message.style.display = 'none';
+            }, 5000);
+            
+            // Scroll to message
+            message.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        });
+
+        // Set minimum date for date picker (today)
+        const dateInput = document.getElementById('date');
+        const today = new Date().toISOString().split('T')[0];
+        dateInput.setAttribute('min', today);
+
+        // Nav shadow on scroll
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 50) {
+                nav.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+            } else {
+                nav.style.boxShadow = '0 2px 20px rgba(0,0,0,0.05)';
+            }
+            
+            lastScroll = currentScroll;
+        });
+    </script>
+</body>
+</html>
