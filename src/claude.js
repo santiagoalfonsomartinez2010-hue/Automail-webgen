@@ -170,6 +170,7 @@ REGLA DE ORO: Si un elemento no tiene una URL real de las 3 permitidas arriba, s
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 INSTRUCCIONES ESPECÍFICAS POR SECTOR:
 - Si el sector es "floristería" o similar: NO incluir servicios de coronas fúnebres ni suscripción semanal. Servicios típicos: ramos artesanales, bodas y eventos, decoración de espacios, entrega a domicilio, plantas de interior, ramos de regalo.
+- Si el sector es "peluquería", "barbería", "salón de belleza" o similar: NO usar NINGÚN emoji en toda la página (ni en iconos de servicios, ni en el hero, ni en botones, ni en el formulario, ni en ningún sitio). Sustituir los emojis por iconos SVG simples de línea (stroke, sin relleno) dibujados inline, o por números/letras estilizados. El diseño debe transmitir elegancia editorial sin recurrir a emojis en ningún punto.
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 REQUISITOS DE COPY Y GÉNERO
