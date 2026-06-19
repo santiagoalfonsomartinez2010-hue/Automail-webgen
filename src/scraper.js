@@ -38,6 +38,12 @@ export async function scrapeBusinesses({ ciudad, categoria, cantidad }) {
 
     console.log(`📦 ${items.length} negocios encontrados en total`);
 
+    // DEBUG temporal: mostrar cómo vienen los primeros 3 resultados crudos
+    console.log('🔬 DEBUG — muestra de los primeros 3 negocios:');
+    items.slice(0, 3).forEach((item, i) => {
+        console.log(`  [${i}] name="${item.title || item.name}" website="${item.website}" url="${item.url}" phone="${item.phone}"`);
+    });
+
     // ── FILTER 1: no website ────────────────────────────────────────────────
     const noWebsite = items.filter(item => {
         const w = (item.website || item.url || item.websiteUrl || '').trim();
