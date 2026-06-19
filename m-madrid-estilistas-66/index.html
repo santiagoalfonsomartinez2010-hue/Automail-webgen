@@ -6,7 +6,7 @@
     <title>M Madrid Estilistas 66 | Peluquería en Madrid</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -15,255 +15,270 @@
         }
 
         :root {
-            --color-primary: #2c1810;
-            --color-secondary: #d4a574;
-            --color-accent: #8b6f47;
-            --color-light: #f9f6f2;
-            --color-dark: #1a0f08;
-            --color-text: #333;
-            --font-display: 'Playfair Display', serif;
-            --font-body: 'Inter', sans-serif;
+            --primary: #D4A574;
+            --primary-dark: #B8875E;
+            --secondary: #2C2C2C;
+            --accent: #E8C8A0;
+            --bg-light: #FAF8F5;
+            --text-dark: #1A1A1A;
+            --text-light: #6B6B6B;
+            --white: #FFFFFF;
         }
 
         body {
-            font-family: var(--font-body);
-            color: var(--color-text);
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
             line-height: 1.6;
             overflow-x: hidden;
         }
 
-        .nav {
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* NAV */
+        nav {
             position: fixed;
             top: 0;
             width: 100%;
             background: rgba(255, 255, 255, 0.98);
             backdrop-filter: blur(10px);
             z-index: 1000;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+            padding: 18px 0;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
         }
 
-        .nav-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 1rem 2rem;
+        nav .container {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .logo {
-            font-family: var(--font-display);
-            font-size: 1.5rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 26px;
             font-weight: 900;
-            color: var(--color-primary);
+            color: var(--primary);
             letter-spacing: -0.5px;
         }
 
-        .btn {
-            padding: 0.9rem 2rem;
-            border-radius: 50px;
-            font-weight: 600;
+        .nav-cta {
+            background: var(--primary);
+            color: var(--white);
+            padding: 12px 28px;
+            border-radius: 30px;
             text-decoration: none;
-            display: inline-block;
+            font-weight: 600;
+            font-size: 15px;
             transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-            font-family: var(--font-body);
+            box-shadow: 0 4px 15px rgba(212, 165, 116, 0.3);
         }
 
-        .btn-primary {
-            background: var(--color-primary);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background: var(--color-dark);
+        .nav-cta:hover {
+            background: var(--primary-dark);
             transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(44, 24, 16, 0.3);
+            box-shadow: 0 6px 20px rgba(212, 165, 116, 0.4);
         }
 
-        .btn-secondary {
-            background: white;
-            color: var(--color-primary);
-            border: 2px solid var(--color-primary);
-        }
-
-        .btn-secondary:hover {
-            background: var(--color-primary);
-            color: white;
-        }
-
+        /* HERO */
         .hero {
             margin-top: 80px;
             min-height: 90vh;
-            background: linear-gradient(135deg, #2c1810 0%, #5a3825 50%, #8b6f47 100%);
-            display: flex;
-            align-items: center;
+            background: linear-gradient(135deg, #2C2C2C 0%, #4A4A4A 50%, var(--primary) 100%);
             position: relative;
             overflow: hidden;
+            display: flex;
+            align-items: center;
+            padding: 60px 0;
         }
 
         .hero::before {
             content: '';
             position: absolute;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(212, 165, 116, 0.15) 0%, transparent 70%);
-            border-radius: 50%;
-            top: -200px;
-            right: -200px;
-            animation: float 8s ease-in-out infinite;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(212, 165, 116, 0.3) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(232, 200, 160, 0.2) 0%, transparent 50%);
         }
 
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(-30px, 30px) scale(1.1); }
-        }
-
-        .hero-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 4rem 2rem;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
+        .hero-content {
             position: relative;
-            z-index: 1;
+            z-index: 2;
+            color: var(--white);
+            max-width: 800px;
         }
 
-        .hero-content h1 {
-            font-family: var(--font-display);
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
             font-size: clamp(52px, 10vw, 96px);
             font-weight: 900;
-            color: white;
             line-height: 1.1;
-            margin-bottom: 1.5rem;
+            margin-bottom: 24px;
             letter-spacing: -2px;
-            text-shadow: 2px 4px 8px rgba(0,0,0,0.3);
+            text-shadow: 2px 4px 12px rgba(0, 0, 0, 0.3);
         }
 
-        .hero-content p {
-            font-size: 1.3rem;
-            color: rgba(255, 255, 255, 0.9);
-            margin-bottom: 2.5rem;
-            font-weight: 300;
-            line-height: 1.7;
+        .hero-subtitle {
+            font-size: clamp(20px, 3vw, 26px);
+            margin-bottom: 40px;
+            opacity: 0.95;
+            font-weight: 400;
+            letter-spacing: 0.5px;
         }
 
-        .hero-buttons {
+        .hero-ctas {
             display: flex;
-            gap: 1.5rem;
+            gap: 20px;
             flex-wrap: wrap;
         }
 
+        .btn-primary, .btn-secondary {
+            padding: 16px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 17px;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--white);
+            box-shadow: 0 6px 25px rgba(212, 165, 116, 0.4);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(212, 165, 116, 0.5);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.15);
+            color: var(--white);
+            border: 2px solid var(--white);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: var(--white);
+            color: var(--secondary);
+        }
+
         .hero-card {
-            background: white;
-            padding: 2.5rem;
+            position: absolute;
+            right: 80px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(20px);
+            padding: 35px 40px;
             border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            animation: floatCard 6s ease-in-out infinite;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: float 4s ease-in-out infinite;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
         }
 
-        @keyframes floatCard {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
+        @keyframes float {
+            0%, 100% { transform: translateY(-50%) translateX(0); }
+            50% { transform: translateY(-50%) translateX(-10px); }
         }
 
-        .hero-card h3 {
-            font-family: var(--font-display);
-            font-size: 1.2rem;
-            color: var(--color-primary);
-            margin-bottom: 1.5rem;
+        .hero-card-stat {
+            text-align: center;
+            color: var(--white);
+            margin-bottom: 25px;
         }
 
-        .stat-item {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
+        .hero-card-stat:last-child {
+            margin-bottom: 0;
         }
 
-        .stat-icon {
-            font-size: 2rem;
+        .hero-card-number {
+            font-size: 42px;
+            font-weight: 900;
+            font-family: 'Playfair Display', serif;
+            display: block;
+            line-height: 1;
         }
 
-        .stat-info h4 {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--color-primary);
-            font-family: var(--font-display);
+        .hero-card-label {
+            font-size: 14px;
+            opacity: 0.9;
+            margin-top: 8px;
         }
 
-        .stat-info p {
-            font-size: 0.9rem;
-            color: #666;
-        }
-
+        /* STATS BAR */
         .stats-bar {
-            background: var(--color-light);
-            padding: 4rem 2rem;
+            background: var(--secondary);
+            padding: 50px 0;
+            color: var(--white);
         }
 
-        .stats-container {
-            max-width: 1400px;
-            margin: 0 auto;
+        .stats-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
             text-align: center;
         }
 
-        .stat-box h3 {
-            font-family: var(--font-display);
-            font-size: 3.5rem;
-            color: var(--color-primary);
-            margin-bottom: 0.5rem;
+        .stat-item h3 {
+            font-size: 52px;
+            font-weight: 900;
+            font-family: 'Playfair Display', serif;
+            color: var(--primary);
+            margin-bottom: 10px;
         }
 
-        .stat-box p {
-            font-size: 1.1rem;
-            color: #666;
-            font-weight: 500;
+        .stat-item p {
+            font-size: 16px;
+            opacity: 0.9;
         }
 
-        .section {
-            padding: 6rem 2rem;
+        /* SERVICES */
+        .services {
+            padding: 100px 0;
+            background: var(--bg-light);
         }
 
         .section-title {
-            font-family: var(--font-display);
-            font-size: clamp(2.5rem, 5vw, 3.5rem);
-            color: var(--color-primary);
             text-align: center;
-            margin-bottom: 1rem;
+            margin-bottom: 60px;
         }
 
-        .section-subtitle {
-            text-align: center;
-            color: #666;
-            font-size: 1.2rem;
-            margin-bottom: 4rem;
+        .section-title h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(38px, 5vw, 52px);
+            font-weight: 900;
+            color: var(--secondary);
+            margin-bottom: 16px;
+        }
+
+        .section-title p {
+            font-size: 18px;
+            color: var(--text-light);
             max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
+            margin: 0 auto;
         }
 
         .services-grid {
-            max-width: 1400px;
-            margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
         }
 
         .service-card {
-            background: white;
-            padding: 2.5rem;
+            background: var(--white);
+            padding: 40px 30px;
             border-radius: 20px;
-            box-shadow: 0 5px 30px rgba(0,0,0,0.08);
-            transition: all 0.3s ease;
+            text-align: center;
+            transition: all 0.4s ease;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
             opacity: 0;
             transform: translateY(30px);
         }
@@ -275,88 +290,97 @@
 
         .service-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 50px rgba(0,0,0,0.15);
+            box-shadow: 0 15px 40px rgba(212, 165, 116, 0.2);
         }
 
         .service-icon {
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
+            font-size: 56px;
+            margin-bottom: 20px;
             display: block;
         }
 
         .service-card h3 {
-            font-family: var(--font-display);
-            font-size: 1.5rem;
-            color: var(--color-primary);
-            margin-bottom: 1rem;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--secondary);
         }
 
         .service-card p {
-            color: #666;
+            color: var(--text-light);
             line-height: 1.7;
         }
 
+        /* WHY US */
         .why-us {
-            background: var(--color-primary);
-            color: white;
-        }
-
-        .why-us .section-title,
-        .why-us .section-subtitle {
-            color: white;
+            padding: 100px 0;
+            background: var(--secondary);
+            color: var(--white);
         }
 
         .why-grid {
-            max-width: 1400px;
-            margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
         }
 
         .why-item {
             text-align: center;
             opacity: 0;
-            transform: translateY(30px);
+            transform: scale(0.9);
+            transition: all 0.5s ease;
         }
 
         .why-item.visible {
             opacity: 1;
-            transform: translateY(0);
+            transform: scale(1);
         }
 
         .why-icon {
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
-            display: block;
+            width: 80px;
+            height: 80px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            margin: 0 auto 24px;
         }
 
         .why-item h3 {
-            font-family: var(--font-display);
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
+            font-size: 22px;
+            margin-bottom: 12px;
+            font-weight: 700;
         }
 
         .why-item p {
-            color: rgba(255, 255, 255, 0.85);
+            opacity: 0.9;
             line-height: 1.7;
         }
 
+        /* REVIEWS */
+        .reviews {
+            padding: 100px 0;
+            background: var(--bg-light);
+        }
+
         .reviews-grid {
-            max-width: 1400px;
-            margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            gap: 30px;
+            margin-top: 60px;
         }
 
         .review-card {
-            background: white;
-            padding: 2rem;
+            background: var(--white);
+            padding: 35px;
             border-radius: 20px;
-            box-shadow: 0 5px 30px rgba(0,0,0,0.08);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
             opacity: 0;
             transform: translateY(30px);
+            transition: all 0.4s ease;
         }
 
         .review-card.visible {
@@ -367,57 +391,64 @@
         .review-header {
             display: flex;
             align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
+            gap: 16px;
+            margin-bottom: 20px;
         }
 
         .review-avatar {
-            width: 50px;
-            height: 50px;
+            width: 55px;
+            height: 55px;
             border-radius: 50%;
+            background: var(--primary);
+            color: var(--white);
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 700;
-            color: white;
-            font-size: 1.2rem;
+            font-size: 20px;
         }
 
         .review-info h4 {
+            font-size: 18px;
             font-weight: 600;
-            color: var(--color-primary);
-            margin-bottom: 0.25rem;
+            margin-bottom: 4px;
         }
 
-        .stars {
-            color: #ffc107;
-            font-size: 1rem;
+        .review-stars {
+            color: var(--primary);
+            font-size: 16px;
         }
 
         .review-text {
-            color: #666;
+            color: var(--text-light);
             line-height: 1.7;
             font-style: italic;
         }
 
-        .form-section {
-            background: var(--color-light);
+        /* CONTACT FORM */
+        .contact-form {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+        }
+
+        .contact-form .section-title h2,
+        .contact-form .section-title p {
+            color: var(--white);
         }
 
         .form-container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: white;
-            padding: 3rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 50px rgba(0,0,0,0.1);
+            max-width: 700px;
+            margin: 60px auto 0;
+            background: var(--white);
+            padding: 50px;
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
         }
 
         .form-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
-            margin-bottom: 1.5rem;
+            gap: 24px;
         }
 
         .form-group {
@@ -431,19 +462,21 @@
 
         .form-group label {
             font-weight: 600;
-            color: var(--color-primary);
-            margin-bottom: 0.5rem;
-            font-size: 0.95rem;
+            margin-bottom: 8px;
+            color: var(--secondary);
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .form-group input,
         .form-group select,
         .form-group textarea {
-            padding: 1rem;
-            border: 2px solid #e0e0e0;
+            padding: 14px 18px;
+            border: 2px solid #E5E5E5;
             border-radius: 12px;
-            font-family: var(--font-body);
-            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
             transition: all 0.3s ease;
         }
 
@@ -451,7 +484,8 @@
         .form-group select:focus,
         .form-group textarea:focus {
             outline: none;
-            border-color: var(--color-secondary);
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(212, 165, 116, 0.1);
         }
 
         .form-group textarea {
@@ -460,27 +494,45 @@
         }
 
         .form-submit {
+            background: var(--secondary);
+            color: var(--white);
+            padding: 16px 40px;
+            border: none;
+            border-radius: 30px;
+            font-size: 17px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
             width: 100%;
-            padding: 1.2rem;
-            font-size: 1.1rem;
+            margin-top: 10px;
         }
 
-        .success-message {
-            background: #4caf50;
-            color: white;
-            padding: 1.5rem;
+        .form-submit:hover {
+            background: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 165, 116, 0.4);
+        }
+
+        .form-message {
+            display: none;
+            padding: 20px;
+            background: #10B981;
+            color: var(--white);
             border-radius: 12px;
             text-align: center;
             font-weight: 600;
-            display: none;
-            margin-top: 1.5rem;
-            animation: slideDown 0.5s ease;
+            margin-top: 20px;
+            animation: slideDown 0.4s ease;
+        }
+
+        .form-message.show {
+            display: block;
         }
 
         @keyframes slideDown {
             from {
                 opacity: 0;
-                transform: translateY(-20px);
+                transform: translateY(-10px);
             }
             to {
                 opacity: 1;
@@ -488,90 +540,90 @@
             }
         }
 
-        .location-section {
-            background: white;
+        /* LOCATION */
+        .location {
+            padding: 100px 0;
+            background: var(--bg-light);
         }
 
         .location-grid {
-            max-width: 1400px;
-            margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
         }
 
         .location-card {
-            background: var(--color-light);
-            padding: 2.5rem;
+            background: var(--white);
+            padding: 40px 30px;
             border-radius: 20px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.06);
             text-align: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
             transition: all 0.3s ease;
         }
 
         .location-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
 
         .location-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            display: block;
+            font-size: 44px;
+            margin-bottom: 20px;
         }
 
         .location-label {
-            text-transform: uppercase;
-            font-size: 0.85rem;
+            font-size: 12px;
             font-weight: 700;
-            color: var(--color-accent);
+            text-transform: uppercase;
             letter-spacing: 1px;
-            margin-bottom: 0.5rem;
+            color: var(--primary);
+            margin-bottom: 12px;
         }
 
         .location-value {
-            color: var(--color-primary);
-            font-weight: 500;
-            font-size: 1.05rem;
+            font-size: 16px;
+            color: var(--text-dark);
             line-height: 1.6;
+            font-weight: 500;
         }
 
-        .footer {
-            background: var(--color-dark);
-            color: white;
-            padding: 3rem 2rem 2rem;
+        /* FOOTER */
+        footer {
+            background: var(--secondary);
+            color: var(--white);
+            padding: 60px 0 30px;
         }
 
-        .footer-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            text-align: center;
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
         }
 
         .footer-logo {
-            font-family: var(--font-display);
-            font-size: 2rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
             font-weight: 900;
-            margin-bottom: 1rem;
-            color: var(--color-secondary);
+            color: var(--primary);
+            margin-bottom: 20px;
         }
 
-        .footer-info {
-            margin-bottom: 2rem;
-            opacity: 0.8;
+        .footer-text {
+            opacity: 0.85;
+            line-height: 1.8;
         }
 
-        .footer-info p {
-            margin-bottom: 0.5rem;
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.7;
+            font-size: 14px;
         }
 
-        .footer-copyright {
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            opacity: 0.6;
-            font-size: 0.9rem;
-        }
-
+        /* WHATSAPP BUTTON */
         .whatsapp-float {
             position: fixed;
             bottom: 30px;
@@ -583,43 +635,33 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
-            color: white;
-            box-shadow: 0 5px 25px rgba(37, 211, 102, 0.5);
-            z-index: 999;
+            font-size: 32px;
+            color: var(--white);
             text-decoration: none;
+            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.4);
+            z-index: 999;
             transition: all 0.3s ease;
             animation: pulse 2s infinite;
         }
 
-        @keyframes pulse {
-            0%, 100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.1);
-            }
-        }
-
         .whatsapp-float:hover {
-            transform: scale(1.15);
-            box-shadow: 0 8px 35px rgba(37, 211, 102, 0.7);
+            transform: scale(1.1);
+            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.6);
         }
 
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 6px 25px rgba(37, 211, 102, 0.4); }
+            50% { box-shadow: 0 6px 35px rgba(37, 211, 102, 0.6); }
+        }
+
+        /* RESPONSIVE */
         @media (max-width: 768px) {
-            .hero-container {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-                padding: 3rem 1.5rem;
-            }
-
             .hero-card {
-                padding: 2rem;
-            }
-
-            .stats-container {
-                grid-template-columns: 1fr;
-                gap: 2rem;
+                position: relative;
+                right: 0;
+                top: 0;
+                transform: none;
+                margin-top: 40px;
             }
 
             .form-grid {
@@ -627,331 +669,344 @@
             }
 
             .form-container {
-                padding: 2rem 1.5rem;
+                padding: 35px 25px;
             }
 
-            .section {
-                padding: 4rem 1.5rem;
-            }
-
-            .nav-container {
-                padding: 1rem 1.5rem;
-            }
-
-            .logo {
-                font-size: 1.2rem;
-            }
-
-            .btn {
-                padding: 0.75rem 1.5rem;
-                font-size: 0.95rem;
-            }
-
-            .hero-buttons {
+            .hero-ctas {
                 flex-direction: column;
             }
 
-            .hero-buttons .btn {
+            .btn-primary, .btn-secondary {
                 width: 100%;
                 text-align: center;
             }
 
             .whatsapp-float {
-                width: 55px;
-                height: 55px;
+                width: 58px;
+                height: 58px;
+                font-size: 28px;
                 bottom: 20px;
                 right: 20px;
-                font-size: 1.7rem;
             }
+        }
+
+        /* SCROLL ANIMATIONS */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
 <body>
-    <nav class="nav">
-        <div class="nav-container">
-            <div class="logo">M Madrid Estilistas 66</div>
-            <a href="tel:+34667014290" class="btn btn-primary">☎ Llamar ahora</a>
+    <!-- NAV -->
+    <nav>
+        <div class="container">
+            <div class="logo">M Madrid</div>
+            <a href="tel:+34667014290" class="nav-cta">☎ Llamar ahora</a>
         </div>
     </nav>
 
+    <!-- HERO -->
     <section class="hero">
-        <div class="hero-container">
+        <div class="container">
             <div class="hero-content">
                 <h1>M Madrid Estilistas 66</h1>
-                <p>Tu salón de referencia en Chamberí. Transformamos tu estilo con la mejor peluquería profesional de Madrid</p>
-                <div class="hero-buttons">
-                    <a href="#cita" class="btn btn-primary">✂️ Pedir cita</a>
-                    <a href="#servicios" class="btn btn-secondary">Ver servicios</a>
+                <p class="hero-subtitle">Tu salón de confianza en el corazón de Chamberí. Expertos en estilo, color y transformaciones que realzan tu personalidad.</p>
+                <div class="hero-ctas">
+                    <a href="#cita" class="btn-primary">Pedir cita</a>
+                    <a href="#servicios" class="btn-secondary">Ver servicios</a>
                 </div>
             </div>
             <div class="hero-card">
-                <h3>Tu confianza nos avala</h3>
-                <div class="stat-item">
-                    <span class="stat-icon">⭐</span>
-                    <div class="stat-info">
-                        <h4>4.9/5</h4>
-                        <p>Valoración Google</p>
-                    </div>
+                <div class="hero-card-stat">
+                    <span class="hero-card-number">4.9★</span>
+                    <span class="hero-card-label">Valoración</span>
                 </div>
-                <div class="stat-item">
-                    <span class="stat-icon">💬</span>
-                    <div class="stat-info">
-                        <h4>268</h4>
-                        <p>Reseñas verificadas</p>
-                    </div>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-icon">📍</span>
-                    <div class="stat-info">
-                        <h4>Chamberí</h4>
-                        <p>En el corazón de Madrid</p>
-                    </div>
+                <div class="hero-card-stat">
+                    <span class="hero-card-number">268</span>
+                    <span class="hero-card-label">Reseñas</span>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- STATS BAR -->
     <section class="stats-bar">
-        <div class="stats-container">
-            <div class="stat-box">
-                <h3>15+</h3>
-                <p>Años de experiencia</p>
-            </div>
-            <div class="stat-box">
-                <h3>5000+</h3>
-                <p>Clientes satisfechos</p>
-            </div>
-            <div class="stat-box">
-                <h3>100%</h3>
-                <p>Profesionales titulados</p>
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>15+</h3>
+                    <p>Años de experiencia</p>
+                </div>
+                <div class="stat-item">
+                    <h3>5000+</h3>
+                    <p>Clientes satisfechos</p>
+                </div>
+                <div class="stat-item">
+                    <h3>100%</h3>
+                    <p>Productos profesionales</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="servicios" class="section">
-        <h2 class="section-title">Nuestros Servicios</h2>
-        <p class="section-subtitle">Ofrecemos una amplia gama de servicios de peluquería profesional para todo tipo de clientes</p>
-        <div class="services-grid">
-            <div class="service-card">
-                <span class="service-icon">✂️</span>
-                <h3>Corte y Peinado</h3>
-                <p>Cortes personalizados adaptados a tu estilo y tipo de cabello. Tendencias actuales y asesoramiento profesional para lucir siempre impecable.</p>
+    <!-- SERVICES -->
+    <section class="services" id="servicios">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nuestros Servicios</h2>
+                <p>Tratamientos personalizados con las mejores técnicas y productos del mercado</p>
             </div>
-            <div class="service-card">
-                <span class="service-icon">🎨</span>
-                <h3>Coloración y Mechas</h3>
-                <p>Expertos en tintes, balayage, mechas californianas y técnicas de coloración avanzadas. Productos de alta calidad que cuidan tu cabello.</p>
-            </div>
-            <div class="service-card">
-                <span class="service-icon">💆</span>
-                <h3>Tratamientos Capilares</h3>
-                <p>Tratamientos de keratina, botox capilar y reconstrucción profunda. Devolvemos la vida y brillo a tu melena con los mejores productos.</p>
-            </div>
-            <div class="service-card">
-                <span class="service-icon">👰</span>
-                <h3>Peinados para Eventos</h3>
-                <p>Recogidos elegantes, peinados de boda y looks especiales para cualquier ocasión. Haremos que brilles en tu día más importante.</p>
-            </div>
-            <div class="service-card">
-                <span class="service-icon">🌊</span>
-                <h3>Permanentes y Alisados</h3>
-                <p>Alisado brasileño, permanente digital y tratamientos de texturización. Controla tu cabello y consigue el look que siempre has deseado.</p>
-            </div>
-            <div class="service-card">
-                <span class="service-icon">💇</span>
-                <h3>Asesoría de Imagen</h3>
-                <p>Consultoría personalizada sobre el corte y color que mejor se adapta a tus facciones y estilo de vida. Tu mejor versión está aquí.</p>
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <span class="service-icon">✂️</span>
+                    <h3>Corte y Peinado</h3>
+                    <p>Cortes personalizados adaptados a tu estilo y tipo de cabello. Asesoramiento profesional incluido.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <span class="service-icon">🎨</span>
+                    <h3>Coloración Experta</h3>
+                    <p>Tintes, mechas, balayage y técnicas avanzadas de color con productos de máxima calidad.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <span class="service-icon">💆</span>
+                    <h3>Tratamientos Capilares</h3>
+                    <p>Hidratación profunda, keratina, botox capilar y tratamientos reparadores intensivos.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <span class="service-icon">💇</span>
+                    <h3>Peinados de Evento</h3>
+                    <p>Recogidos elegantes, peinados de novia y looks especiales para tus momentos importantes.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <span class="service-icon">🌊</span>
+                    <h3>Alisados y Permanentes</h3>
+                    <p>Alisado brasileño, japonés y permanentes duraderas con técnicas de última generación.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <span class="service-icon">✨</span>
+                    <h3>Extensiones</h3>
+                    <p>Extensiones naturales de queratina, microring y cosidas. Volumen y largo al instante.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <section class="section why-us">
-        <h2 class="section-title">¿Por Qué Elegirnos?</h2>
-        <p class="section-subtitle">Somos el salón de confianza de cientos de clientes en Chamberí</p>
-        <div class="why-grid">
-            <div class="why-item">
-                <span class="why-icon">👨‍🎨</span>
-                <h3>Estilistas Expertos</h3>
-                <p>Equipo de profesionales con más de 15 años de experiencia y formación continua en las últimas tendencias internacionales.</p>
+    <!-- WHY US -->
+    <section class="why-us">
+        <div class="container">
+            <div class="section-title">
+                <h2>¿Por Qué Elegirnos?</h2>
+                <p>La excelencia en cada servicio es nuestro compromiso contigo</p>
             </div>
-            <div class="why-item">
-                <span class="why-icon">⭐</span>
-                <h3>Productos Premium</h3>
-                <p>Trabajamos exclusivamente con las mejores marcas profesionales del mercado para garantizar resultados excepcionales.</p>
-            </div>
-            <div class="why-item">
-                <span class="why-icon">💎</span>
-                <h3>Atención Personalizada</h3>
-                <p>Cada cliente es único. Estudiamos tu caso de forma individual y creamos el look perfecto para ti.</p>
-            </div>
-            <div class="why-item">
-                <span class="why-icon">🏆</span>
-                <h3>Resultados Garantizados</h3>
-                <p>268 reseñas de 5 estrellas nos avalan. La satisfacción de nuestros clientes es nuestra mejor carta de presentación.</p>
+            <div class="why-grid">
+                <div class="why-item fade-in">
+                    <div class="why-icon">👨‍🎨</div>
+                    <h3>Equipo Profesional</h3>
+                    <p>Estilistas certificados con formación continua en las últimas tendencias internacionales.</p>
+                </div>
+                <div class="why-item fade-in">
+                    <div class="why-icon">🏆</div>
+                    <h3>Productos Premium</h3>
+                    <p>Trabajamos exclusivamente con marcas profesionales de alta gama para resultados perfectos.</p>
+                </div>
+                <div class="why-item fade-in">
+                    <div class="why-icon">💎</div>
+                    <h3>Atención Personalizada</h3>
+                    <p>Cada cliente es único. Asesoramiento individual y trato cercano en cada visita.</p>
+                </div>
+                <div class="why-item fade-in">
+                    <div class="why-icon">⭐</div>
+                    <h3>Resultados Garantizados</h3>
+                    <p>268 reseñas de 5 estrellas avalan nuestra calidad y compromiso con la satisfacción.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <section class="section">
-        <h2 class="section-title">Lo Que Dicen Nuestros Clientes</h2>
-        <p class="section-subtitle">Testimonios reales de personas que confían en nosotros</p>
-        <div class="reviews-grid">
-            <div class="review-card">
-                <div class="review-header">
-                    <div class="review-avatar" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
-                        CL
-                    </div>
-                    <div class="review-info">
-                        <h4>Carmen López Martínez</h4>
-                        <div class="stars">★★★★★</div>
-                    </div>
-                </div>
-                <p class="review-text">"Llevo viniendo a M Madrid desde hace 3 años y siempre salgo encantada. El equipo es súper profesional y me asesoran genial con el color. Mi pelo nunca ha estado tan sano y bonito."</p>
+    <!-- REVIEWS -->
+    <section class="reviews">
+        <div class="container">
+            <div class="section-title">
+                <h2>Opiniones de Clientes</h2>
+                <p>La satisfacción de nuestros clientes es nuestra mejor carta de presentación</p>
             </div>
-            <div class="review-card">
-                <div class="review-header">
-                    <div class="review-avatar" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
-                        JR
+            <div class="reviews-grid">
+                <div class="review-card fade-in">
+                    <div class="review-header">
+                        <div class="review-avatar">CM</div>
+                        <div class="review-info">
+                            <h4>Carmen Martínez</h4>
+                            <div class="review-stars">★★★★★</div>
+                        </div>
                     </div>
-                    <div class="review-info">
-                        <h4>Javier Rodríguez Sanz</h4>
-                        <div class="stars">★★★★★</div>
-                    </div>
+                    <p class="review-text">Llevo años viniendo y siempre salgo encantada. El balayage que me hicieron la última vez es espectacular, super natural y con un brillo increíble. El equipo es profesional y te hacen sentir como en casa.</p>
                 </div>
-                <p class="review-text">"Encontrar una peluquería de confianza en Madrid es difícil, pero aquí han dado en el clavo. Cortan fenomenal y el trato es cercano y profesional. Totalmente recomendable."</p>
-            </div>
-            <div class="review-card">
-                <div class="review-header">
-                    <div class="review-avatar" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
-                        MG
+                <div class="review-card fade-in">
+                    <div class="review-header">
+                        <div class="review-avatar">JR</div>
+                        <div class="review-info">
+                            <h4>Javier Ruiz</h4>
+                            <div class="review-stars">★★★★★</div>
+                        </div>
                     </div>
-                    <div class="review-info">
-                        <h4>María González Ruiz</h4>
-                        <div class="stars">★★★★★</div>
-                    </div>
+                    <p class="review-text">Buscaba una peluquería de confianza en Chamberí y la encontré. El corte perfecto cada vez y el trato muy profesional. Te asesoran de verdad sobre qué estilo te queda mejor. Totalmente recomendable.</p>
                 </div>
-                <p class="review-text">"Me hicieron el peinado para mi boda y quedé impresionada. Duró perfecto todo el día y recibí un montón de cumplidos. Son unos artistas, gracias por hacer mi día tan especial."</p>
-            </div>
-            <div class="review-card">
-                <div class="review-header">
-                    <div class="review-avatar" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
-                        AS
+                <div class="review-card fade-in">
+                    <div class="review-header">
+                        <div class="review-avatar">LG</div>
+                        <div class="review-info">
+                            <h4>Laura García</h4>
+                            <div class="review-stars">★★★★★</div>
+                        </div>
                     </div>
-                    <div class="review-info">
-                        <h4>Alberto Sánchez Díaz</h4>
-                        <div class="stars">★★★★★</div>
-                    </div>
+                    <p class="review-text">Me hicieron el peinado para mi boda y quedé maravillada. Escucharon todas mis ideas y el resultado superó mis expectativas. Todo el día recibiendo cumplidos. Gracias por hacer mi día más especial.</p>
                 </div>
-                <p class="review-text">"Excelente servicio y ambiente muy agradable. Siempre consiguen el corte que quiero y me dan buenos consejos sobre cómo cuidar mi pelo. La relación calidad-precio es inmejorable."</p>
-            </div>
-            <div class="review-card">
-                <div class="review-header">
-                    <div class="review-avatar" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
-                        LF
+                <div class="review-card fade-in">
+                    <div class="review-header">
+                        <div class="review-avatar">AS</div>
+                        <div class="review-info">
+                            <h4>Alberto Sánchez</h4>
+                            <div class="review-stars">★★★★★</div>
+                        </div>
                     </div>
-                    <div class="review-info">
-                        <h4>Laura Fernández Vega</h4>
-                        <div class="stars">★★★★★</div>
-                    </div>
+                    <p class="review-text">Excelente servicio y atención. Me rescataron el pelo después de un desastre en otra peluquería. El tratamiento de keratina me dejó el cabello como nuevo. Profesionales de verdad, no voy a ir a otro sitio.</p>
                 </div>
-                <p class="review-text">"El tratamiento de keratina que me hicieron ha sido un antes y después. Tengo el pelo mucho más manejable y brillante. Las chicas son encantadoras y te hacen sentir como en casa."</p>
+                <div class="review-card fade-in">
+                    <div class="review-header">
+                        <div class="review-avatar">MF</div>
+                        <div class="review-info">
+                            <h4>Marta Fernández</h4>
+                            <div class="review-stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="review-text">La mejor peluquería de Madrid sin duda. Ambiente acogedor, productos de calidad y resultados siempre impecables. El cambio de color que me hicieron es justo lo que quería. Volveré seguro.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="cita" class="section form-section">
-        <h2 class="section-title">Solicita Tu Cita</h2>
-        <p class="section-subtitle">Rellena el formulario y te contactaremos en menos de 24 horas</p>
-        <div class="form-container">
-            <form id="appointmentForm">
-                <div class="form-grid">
-                    <div class="form-group">
-                        <label for="name">Nombre completo *</label>
-                        <input type="text" id="name" name="name" required placeholder="Tu nombre">
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Teléfono *</label>
-                        <input type="tel" id="phone" name="phone" required placeholder="+34 600 000 000">
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email *</label>
-                        <input type="email" id="email" name="email" required placeholder="tu@email.com">
-                    </div>
-                    <div class="form-group">
-                        <label for="date">Fecha preferida *</label>
-                        <input type="date" id="date" name="date" required>
-                    </div>
-                    <div class="form-group full">
-                        <label for="service">Tipo de servicio *</label>
-                        <select id="service" name="service" required>
-                            <option value="">Selecciona un servicio</option>
-                            <option value="corte">Corte y Peinado</option>
-                            <option value="color">Coloración y Mechas</option>
-                            <option value="tratamiento">Tratamientos Capilares</option>
-                            <option value="evento">Peinados para Eventos</option>
-                            <option value="alisado">Permanentes y Alisados</option>
-                            <option value="asesoria">Asesoría de Imagen</option>
-                        </select>
-                    </div>
-                    <div class="form-group full">
-                        <label for="message">Mensaje (opcional)</label>
-                        <textarea id="message" name="message" placeholder="Cuéntanos qué necesitas..."></textarea>
-                    </div>
-                </div>
-                <button type="submit" class="btn btn-primary form-submit">✂️ Solicitar Cita</button>
-                <div id="successMessage" class="success-message">
-                    ✅ ¡Solicitud recibida! Te llamaremos en menos de 24h
-                </div>
-            </form>
-        </div>
-    </section>
-
-    <section class="section location-section">
-        <h2 class="section-title">Cómo Llegar</h2>
-        <p class="section-subtitle">Estamos en el corazón de Chamberí, Madrid</p>
-        <div class="location-grid">
-            <div class="location-card">
-                <span class="location-icon">📍</span>
-                <div class="location-label">Dirección</div>
-                <div class="location-value">Calle de Viriato, 66<br>Chamberí, 28010 Madrid</div>
+    <!-- CONTACT FORM -->
+    <section class="contact-form" id="cita">
+        <div class="container">
+            <div class="section-title">
+                <h2>Reserva Tu Cita</h2>
+                <p>Completa el formulario y te llamaremos para confirmar tu cita</p>
             </div>
-            <div class="location-card">
-                <span class="location-icon">📞</span>
-                <div class="location-label">Teléfono</div>
-                <div class="location-value">+34 667 01 42 90</div>
-            </div>
-            <div class="location-card">
-                <span class="location-icon">🕒</span>
-                <div class="location-label">Horario</div>
-                <div class="location-value">Lunes a Viernes: 10:00 - 20:00<br>Sábados: 10:00 - 14:00</div>
-            </div>
-            <div class="location-card">
-                <span class="location-icon">🚇</span>
-                <div class="location-label">Transporte</div>
-                <div class="location-value">Metro Quevedo (L2)<br>Metro San Bernardo (L2, L4)</div>
+            <div class="form-container">
+                <form id="appointmentForm">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Nombre Completo</label>
+                            <input type="text" required placeholder="Tu nombre">
+                        </div>
+                        <div class="form-group">
+                            <label>Teléfono</label>
+                            <input type="tel" required placeholder="+34 600 000 000">
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" required placeholder="tu@email.com">
+                        </div>
+                        <div class="form-group">
+                            <label>Fecha Preferida</label>
+                            <input type="date" required>
+                        </div>
+                        <div class="form-group full">
+                            <label>Servicio</label>
+                            <select required>
+                                <option value="">Selecciona un servicio</option>
+                                <option>Corte y Peinado</option>
+                                <option>Coloración</option>
+                                <option>Tratamiento Capilar</option>
+                                <option>Peinado de Evento</option>
+                                <option>Alisado o Permanente</option>
+                                <option>Extensiones</option>
+                                <option>Otro</option>
+                            </select>
+                        </div>
+                        <div class="form-group full">
+                            <label>Mensaje (Opcional)</label>
+                            <textarea placeholder="Cuéntanos qué necesitas..."></textarea>
+                        </div>
+                    </div>
+                    <button type="submit" class="form-submit">Solicitar Cita</button>
+                    <div class="form-message" id="formMessage">
+                        ¡Solicitud recibida! Te llamaremos en menos de 24h
+                    </div>
+                </form>
             </div>
         </div>
     </section>
 
-    <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-logo">M Madrid Estilistas 66</div>
-            <div class="footer-info">
-                <p>Calle de Viriato, 66, Chamberí, 28010 Madrid</p>
-                <p>Teléfono: +34 667 01 42 90</p>
+    <!-- LOCATION -->
+    <section class="location">
+        <div class="container">
+            <div class="section-title">
+                <h2>Cómo Llegar</h2>
+                <p>Encuéntranos en el barrio de Chamberí, Madrid</p>
             </div>
-            <div class="footer-copyright">
+            <div class="location-grid">
+                <div class="location-card fade-in">
+                    <div class="location-icon">📍</div>
+                    <div class="location-label">Dirección</div>
+                    <div class="location-value">Calle de Viriato, 66<br>Chamberí, 28010 Madrid</div>
+                </div>
+                <div class="location-card fade-in">
+                    <div class="location-icon">📞</div>
+                    <div class="location-label">Teléfono</div>
+                    <div class="location-value">+34 667 01 42 90</div>
+                </div>
+                <div class="location-card fade-in">
+                    <div class="location-icon">🕐</div>
+                    <div class="location-label">Horario</div>
+                    <div class="location-value">Lun-Vie: 10:00 - 20:00<br>Sáb: 10:00 - 19:00</div>
+                </div>
+                <div class="location-card fade-in">
+                    <div class="location-icon">🚇</div>
+                    <div class="location-label">Transporte</div>
+                    <div class="location-value">Metro Ríos Rosas (L1)<br>Metro Iglesia (L1)</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <div class="footer-logo">M Madrid Estilistas 66</div>
+                    <p class="footer-text">Tu salón de referencia en Chamberí. Profesionalidad, estilo y cuidado personalizado desde hace más de 15 años.</p>
+                </div>
+                <div>
+                    <h4 style="margin-bottom: 16px; font-size: 18px;">Contacto</h4>
+                    <p class="footer-text">
+                        Calle de Viriato, 66<br>
+                        28010 Madrid, España<br>
+                        Tel: +34 667 01 42 90
+                    </p>
+                </div>
+            </div>
+            <div class="footer-bottom">
                 <p>&copy; 2024 M Madrid Estilistas 66. Todos los derechos reservados.</p>
             </div>
         </div>
     </footer>
 
-    <a href="https://wa.me/34667014290" class="whatsapp-float" aria-label="Contactar por WhatsApp">
+    <!-- WHATSAPP FLOAT -->
+    <a href="https://wa.me/34667014290" class="whatsapp-float" target="_blank" rel="noopener">
         💬
     </a>
 
     <script>
-        // Intersection Observer para animaciones
+        // Intersection Observer for scroll animations
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -965,25 +1020,23 @@
             });
         }, observerOptions);
 
-        document.querySelectorAll('.service-card, .why-item, .review-card').forEach(el => {
+        document.querySelectorAll('.fade-in, .service-card, .review-card, .why-item').forEach(el => {
             observer.observe(el);
         });
 
-        // Form handling
+        // Form submission
         document.getElementById('appointmentForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            
-            const successMessage = document.getElementById('successMessage');
-            successMessage.style.display = 'block';
-            
+            const message = document.getElementById('formMessage');
+            message.classList.add('show');
             this.reset();
             
             setTimeout(() => {
-                successMessage.style.display = 'none';
+                message.classList.remove('show');
             }, 5000);
         });
 
-        // Smooth scroll para links internos
+        // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -996,11 +1049,6 @@
                 }
             });
         });
-
-        // Set min date for date picker
-        const dateInput = document.getElementById('date');
-        const today = new Date().toISOString().split('T')[0];
-        dateInput.setAttribute('min', today);
     </script>
 </body>
 </html>
