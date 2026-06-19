@@ -6,8 +6,8 @@ export async function scrapeBusinesses({ ciudad, categoria, cantidad }) {
 
     const client = new ApifyClient({ token });
 
-    // Fetch more than needed since we'll filter by website, phone type, and category
-    const fetchQuantity = Math.min(cantidad * 8, 200);
+    // Fetch more than needed since we'll filter by website and phone type
+    const fetchQuantity = Math.min(cantidad * 5, 200);
 
     console.log(`🗺️  Buscando "${categoria}" en "${ciudad}"...`);
 
@@ -52,16 +52,12 @@ export async function scrapeBusinesses({ ciudad, categoria, cantidad }) {
     });
     console.log(`📱 ${mobileOnly.length} negocios con móvil (sin fijo)`);
 
-    // ── FILTER 3: male grooming only (barbería) ──────────────────────────────
-    const maleGrooming = mobileOnly.filter(item => isMaleGrooming(item, categoria));
-    console.log(`💈 ${maleGrooming.length} negocios de barbería/peluquería masculina`);
-
-    if (maleGrooming.length === 0) {
-        console.warn('⚠️  No se encontraron barberías con móvil sin web. Prueba aumentando "cantidad" o cambia la ciudad.');
+    if (mobileOnly.length === 0) {
+        console.warn('⚠️  No se encontraron negocios con móvil sin web. Prueba aumentando "cantidad" o cambia la ciudad.');
         return [];
     }
 
-    return maleGrooming
+    return mobileOnly
         .slice(0, cantidad)
         .map(normalise(categoria));
 }
@@ -75,23 +71,6 @@ function isSpanishMobile(phone) {
     const digits = phone.replace(/\D/g, '');
     const local = digits.startsWith('34') ? digits.slice(2) : digits;
     return /^[67]/.test(local) && local.length === 9;
-}
-
-/**
- * Detect male-oriented hair salons / barbershops by name or category keywords.
- */
-function isMaleGrooming(item, categoria) {
-    const name = (item.title || item.name || '').toLowerCase();
-    const cat  = (item.categoryName || item.category || item.type || '').toLowerCase();
-    const text = `${name} ${cat}`;
-
-    const maleKeywords = [
-        'barber', 'barbería', 'barberia', 'caballero', 'caballeros',
-        'gentlemen', 'gentleman', 'men\'s', 'mens', 'hombre', 'hombres',
-        'classic cuts', 'old school',
-    ];
-
-    return maleKeywords.some(kw => text.includes(kw));
 }
 
 function normalise(categoria) {
