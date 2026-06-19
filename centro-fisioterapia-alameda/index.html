@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centro Fisioterapia Alameda | Clínica de fisioterapia en Teror, Las Palmas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0891b2;
+            --primary-dark: #0e7490;
+            --secondary: #06b6d4;
+            --accent: #22d3ee;
+            --dark: #0f172a;
+            --dark-lighter: #1e293b;
+            --light: #f1f5f9;
+            --white: #ffffff;
+            --text: #334155;
+            --text-light: #64748b;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .nav.scrolled {
+            box-shadow: 0 2px 30px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .cta-phone {
+            background: var(--primary);
+            color: white;
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 4px 15px rgba(8, 145, 178, 0.3);
+        }
+
+        .cta-phone:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(8, 145, 178, 0.4);
+        }
+
+        .hero {
+            margin-top: 80px;
+            min-height: 90vh;
+            background: linear-gradient(135deg, #0891b2 0%, #06b6d4 50%, #22d3ee 100%);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            padding: 4rem 2rem;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(255,255,255,0.15) 0%, transparent 50%);
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(52px, 10vw, 96px);
+            line-height: 0.95;
+            color: white;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            letter-spacing: 2px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            color: rgba(255,255,255,0.95);
+            margin-bottom: 2.5rem;
+            font-weight: 500;
+            line-height: 1.5;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary, .btn-secondary {
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--primary);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.3);
+        }
+
+        .btn-secondary {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: 2px solid white;
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--primary);
+        }
+
+        .hero-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero-card-title {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .hero-stats {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .hero-stat {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .hero-stat-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .hero-stat-content h3 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .hero-stat-content p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .stats-bar {
+            background: var(--dark);
+            padding: 3rem 2rem;
+            color: white;
+        }
+
+        .stats-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 3.5rem;
+            color: var(--accent);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            font-family: 'Bebas Neue', sans-serif;
+            letter-spacing: 2px;
+        }
+
+        .stat-item p {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.8);
+        }
+
+        .section {
+            padding: 6rem 2rem;
+        }
+
+        .section-alt {
+            background: var(--light);
+        }
+
+        .section-dark {
+            background: var(--dark);
+            color: white;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            color: var(--dark);
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+        }
+
+        .section-dark .section-title {
+            color: white;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .section-dark .section-subtitle {
+            color: rgba(255,255,255,0.7);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .service-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 40px rgba(8, 145, 178, 0.2);
+        }
+
+        .service-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            color: var(--dark);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .service-card p {
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .benefit-item {
+            text-align: center;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .benefit-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .benefit-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin: 0 auto 1.5rem;
+            box-shadow: 0 8px 25px rgba(8, 145, 178, 0.3);
+        }
+
+        .benefit-item h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .benefit-item p {
+            color: rgba(255,255,255,0.8);
+            line-height: 1.7;
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .review-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .review-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .review-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .review-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: white;
+        }
+
+        .review-info h4 {
+            font-size: 1.1rem;
+            color: var(--dark);
+            margin-bottom: 0.3rem;
+        }
+
+        .stars {
+            color: #fbbf24;
+            font-size: 1rem;
+        }
+
+        .review-text {
+            color: var(--text);
+            line-height: 1.7;
+            font-style: italic;
+        }
+
+        .form-section {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            padding: 6rem 2rem;
+        }
+
+        .form-container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+        }
+
+        .form-container h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+        }
+
+        .form-container p {
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(8, 145, 178, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 1.2rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(8, 145, 178, 0.3);
+        }
+
+        .btn-submit:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(8, 145, 178, 0.4);
+        }
+
+        .success-message {
+            display: none;
+            background: #10b981;
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-top: 1rem;
+            text-align: center;
+            font-weight: 600;
+            animation: slideDown 0.5s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .location-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .location-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .location-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+        }
+
+        .location-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin: 0 auto 1.5rem;
+        }
+
+        .location-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .location-value {
+            font-size: 1.1rem;
+            color: var(--dark);
+            font-weight: 500;
+            line-height: 1.5;
+        }
+
+        .footer {
+            background: var(--dark-lighter);
+            color: white;
+            padding: 3rem 2rem 2rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.8rem;
+            color: white;
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .footer-text {
+            color: rgba(255,255,255,0.7);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            color: rgba(255,255,255,0.5);
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(37, 211, 102, 0.6);
+        }
+
+        @media (max-width: 968px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .nav-container {
+                padding: 1rem;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            .cta-phone {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.9rem;
+            }
+
+            .hero {
+                margin-top: 70px;
+                padding: 3rem 1.5rem;
+            }
+
+            .section {
+                padding: 4rem 1.5rem;
+            }
+
+            .services-grid,
+            .reviews-grid,
+            .location-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-container {
+                padding: 2rem 1.5rem;
+            }
+
+            .whatsapp-float {
+                width: 55px;
+                height: 55px;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-icon">CFA</div>
+                <span>Centro Fisioterapia Alameda</span>
+            </div>
+            <a href="tel:+34685981981" class="cta-phone">📞 Llámanos</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Centro Fisioterapia Alameda</h1>
+                <p class="hero-subtitle">Expertos en recuperación y bienestar. Tratamientos personalizados para tu salud física en Teror, Las Palmas.</p>
+                <div class="hero-buttons">
+                    <a href="tel:+34685981981" class="btn-primary">Pedir cita</a>
+                    <a href="#servicios" class="btn-secondary">Ver servicios</a>
+                </div>
+            </div>
+            <div class="hero-card">
+                <div class="hero-card-title">¿Por qué elegirnos?</div>
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <div class="hero-stat-icon">⭐</div>
+                        <div class="hero-stat-content">
+                            <h3>5.0/5</h3>
+                            <p>Valoración Google</p>
+                        </div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-icon">🏆</div>
+                        <div class="hero-stat-content">
+                            <h3>+10 años</h3>
+                            <p>de experiencia</p>
+                        </div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-icon">💙</div>
+                        <div class="hero-stat-content">
+                            <h3>+500</h3>
+                            <p>Pacientes atendidos</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats-bar">
+        <div class="stats-container">
+            <div class="stat-item">
+                <h3>100%</h3>
+                <p>Tratamientos personalizados</p>
+            </div>
+            <div class="stat-item">
+                <h3>24h</h3>
+                <p>Respuesta en citas</p>
+            </div>
+            <div class="stat-item">
+                <h3>15+</h3>
+                <p>Especialidades disponibles</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="servicios">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Nuestros Servicios</h2>
+                <p class="section-subtitle">Ofrecemos tratamientos especializados para cada necesidad, con técnicas avanzadas y atención personalizada.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <span class="service-icon">🦴</span>
+                    <h3>Fisioterapia Traumatológica</h3>
+                    <p>Tratamiento especializado para lesiones deportivas, fracturas y rehabilitación postoperatoria con técnicas de última generación.</p>
+                </div>
+                <div class="service-card">
+                    <span class="service-icon">💆</span>
+                    <h3>Terapia Manual</h3>
+                    <p>Técnicas manuales avanzadas para aliviar el dolor, mejorar la movilidad y restaurar la funcionalidad del sistema musculoesquelético.</p>
+                </div>
+                <div class="service-card">
+                    <span class="service-icon">⚡</span>
+                    <h3>Electroterapia</h3>
+                    <p>Aplicación de corrientes eléctricas terapéuticas para reducir el dolor, mejorar la circulación y acelerar la recuperación.</p>
+                </div>
+                <div class="service-card">
+                    <span class="service-icon">🧘</span>
+                    <h3>Rehabilitación Funcional</h3>
+                    <p>Programas personalizados de ejercicios y estiramientos para recuperar la función completa y prevenir futuras lesiones.</p>
+                </div>
+                <div class="service-card">
+                    <span class="service-icon">🌿</span>
+                    <h3>Punción Seca</h3>
+                    <p>Técnica efectiva para tratar puntos gatillo miofasciales, aliviar contracturas y mejorar el rango de movimiento.</p>
+                </div>
+                <div class="service-card">
+                    <span class="service-icon">💪</span>
+                    <h3>Readaptación Deportiva</h3>
+                    <p>Programas específicos para deportistas que buscan volver a su actividad después de una lesión al máximo rendimiento.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-dark">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">¿Por qué elegirnos?</h2>
+                <p class="section-subtitle">Nos diferenciamos por nuestra dedicación completa a tu recuperación y bienestar.</p>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <div class="benefit-icon">👨‍⚕️</div>
+                    <h3>Fisioterapeutas Colegiados</h3>
+                    <p>Equipo de profesionales cualificados con formación continua en las últimas técnicas y tratamientos.</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">🎯</div>
+                    <h3>Atención Personalizada</h3>
+                    <p>Cada paciente recibe un plan de tratamiento único adaptado a sus necesidades específicas y objetivos.</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">🏥</div>
+                    <h3>Instalaciones Modernas</h3>
+                    <p>Contamos con equipamiento de última generación para garantizar los mejores resultados terapéuticos.</p>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">⏰</div>
+                    <h3>Horarios Flexibles</h3>
+                    <p>Adaptamos nuestros horarios a tu disponibilidad para que nunca dejes de lado tu tratamiento.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-alt">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Lo que dicen nuestros pacientes</h2>
+                <p class="section-subtitle">La satisfacción de nuestros pacientes es nuestra mejor carta de presentación.</p>
+            </div>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar" style="background: linear-gradient(135deg, #f59e0b, #f97316);">MC</div>
+                        <div class="review-info">
+                            <h4>María Carmen Rodríguez</h4>
+                            <div class="stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="review-text">Llegué con un dolor de espalda crónico que me tenía limitada. Después de varias sesiones de terapia manual y ejercicios, puedo decir que he recuperado mi calidad de vida. El trato es excepcional y muy profesional.</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar" style="background: linear-gradient(135deg, #06b6d4, #0891b2);">JL</div>
+                        <div class="review-info">
+                            <h4>José Luis Martín</h4>
+                            <div class="stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="review-text">Tuve una lesión en el hombro jugando al tenis y me recomendaron este centro. La rehabilitación fue perfecta, con mucha dedicación personalizada. En pocas semanas ya estaba de vuelta en la pista. Totalmente recomendable.</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar" style="background: linear-gradient(135deg, #8b5cf6, #6366f1);">AG</div>
+                        <div class="review-info">
+                            <h4>Ana García Suárez</h4>
+                            <div class="stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="review-text">Después de mi operación de rodilla necesitaba un buen fisioterapeuta y acerté de lleno. Los ejercicios de rehabilitación funcional han sido clave para mi recuperación. Muy atentos y cercanos en todo momento.</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar" style="background: linear-gradient(135deg, #ec4899, #f43f5e);">PH</div>
+                        <div class="review-info">
+                            <h4>Pedro Hernández</h4>
+                            <div class="stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="review-text">Sufría de contracturas constantes por mi trabajo de oficina. La punción seca y los masajes me han cambiado la vida. Ahora voy una vez al mes para mantenimiento y estoy genial. Gran profesionalidad.</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar" style="background: linear-gradient(135deg, #10b981, #059669);">LS</div>
+                        <div class="review-info">
+                            <h4>Laura Sánchez Díaz</h4>
+                            <div class="stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="review-text">Me encanta la cercanía y profesionalidad del equipo. Cada sesión está adaptada a cómo me siento ese día. Los resultados han sido increíbles, he mejorado muchísimo mi movilidad en el cuello.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="form-section" id="cita">
+        <div class="form-container">
+            <h2>Solicita tu cita</h2>
+            <p>Rellena el formulario y nos pondremos en contacto contigo en menos de 24 horas.</p>
+            <form id="appointmentForm">
+                <div class="form-group">
+                    <label for="name">Nombre completo *</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Teléfono *</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="service">Tipo de servicio *</label>
+                    <select id="service" name="service" required>
+                        <option value="">Selecciona un servicio</option>
+                        <option value="traumatologica">Fisioterapia Traumatológica</option>
+                        <option value="manual">Terapia Manual</option>
+                        <option value="electroterapia">Electroterapia</option>
+                        <option value="rehabilitacion">Rehabilitación Funcional</option>
+                        <option value="puncion">Punción Seca</option>
+                        <option value="deportiva">Readaptación Deportiva</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="date">Fecha preferida *</label>
+                    <input type="date" id="date" name="date" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Mensaje (opcional)</label>
+                    <textarea id="message" name="message" placeholder="Cuéntanos brevemente tu caso..."></textarea>
+                </div>
+                <button type="submit" class="btn-submit">Solicitar cita</button>
+                <div class="success-message" id="successMessage">
+                    ✅ ¡Solicitud recibida! Te llamaremos en menos de 24h
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <section class="section" id="contacto">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Cómo llegar</h2>
+                <p class="section-subtitle">Estamos ubicados en el corazón de Teror, con fácil acceso y aparcamiento cercano.</p>
+            </div>
+            <div class="location-grid">
+                <div class="location-card">
+                    <div class="location-icon">📍</div>
+                    <div class="location-label">DIRECCIÓN</div>
+                    <div class="location-value">C. Obispo Urquinaona, 7<br>35330 Teror, Las Palmas</div>
+                </div>
+                <div class="location-card">
+                    <div class="location-icon">📞</div>
+                    <div class="location-label">TELÉFONO</div>
+                    <div class="location-value">+34 685 98 19 81</div>
+                </div>
+                <div class="location-card">
+                    <div class="location-icon">🕒</div>
+                    <div class="location-label">HORARIO</div>
+                    <div class="location-value">Lunes a Viernes<br>9:00 - 20:00h<br>Sábados: 9:00 - 14:00h</div>
+                </div>
+                <div class="location-card">
+                    <div class="location-icon">🚌</div>
+                    <div class="location-label">TRANSPORTE</div>
+                    <div class="location-value">Líneas 216, 220<br>Parada: Plaza de Teror<br>Aparcamiento disponible</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div>
+                <div class="footer-logo">Centro Fisioterapia Alameda</div>
+                <p class="footer-text">Tu centro de fisioterapia de confianza en Teror. Comprometidos con tu salud y bienestar desde hace más de 10 años.</p>
+            </div>
+            <div>
+                <h3 style="margin-bottom: 1rem; font-size: 1.2rem;">Contacto</h3>
+                <p class="footer-text">C. Obispo Urquinaona, 7<br>35330 Teror, Las Palmas</p>
+                <p class="footer-text">Tel: +34 685 98 19 81</p>
+            </div>
+            <div>
+                <h3 style="margin-bottom: 1rem; font-size: 1.2rem;">Horario</h3>
+                <p class="footer-text">Lunes a Viernes: 9:00 - 20:00h</p>
+                <p class="footer-text">Sábados: 9:00 - 14:00h</p>
+                <p class="footer-text">Domingos: Cerrado</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Centro Fisioterapia Alameda. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/34685981981" class="whatsapp-float" target="_blank" rel="noopener noreferrer">💬</a>
+
+    <script>
+        // Navbar scroll effect
+        const nav = document.querySelector('.nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.service-card, .review-card, .benefit-item').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Form submission
+        const form = document.getElementById('appointmentForm');
+        const successMessage = document.getElementById('successMessage');
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            successMessage.style.display = 'block';
+            form.reset();
+            
+            setTimeout(() => {
+                successMessage.style.display = 'none';
+            }, 5000);
+
+            // Scroll to success message
+            successMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offsetTop = target.offsetTop - 80;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Set min date for date picker to today
+        const dateInput = document.getElementById('date');
+        const today = new Date().toISOString().split('T')[0];
+        dateInput.setAttribute('min', today);
+    </script>
+</body>
+</html>
