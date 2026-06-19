@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centro de Fisioterapia y Osteopatía FisioLuna | Fisioterapeuta en Pozoblanco, Córdoba</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0d7377;
+            --primary-dark: #085f63;
+            --secondary: #14a085;
+            --accent: #32e0c4;
+            --neutral-light: #f8fffe;
+            --neutral: #e8f5f4;
+            --text-dark: #1a3a3d;
+            --text-gray: #5a7679;
+            --white: #ffffff;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.97);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(13, 115, 119, 0.08);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--primary);
+        }
+
+        .nav-cta {
+            background: var(--primary);
+            color: var(--white);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(13, 115, 119, 0.2);
+        }
+
+        .nav-cta:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(13, 115, 119, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            min-height: 90vh;
+            background: linear-gradient(135deg, #0d7377 0%, #14a085 50%, #32e0c4 100%);
+            position: relative;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: 50px 50px;
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(52px, 10vw, 96px);
+            font-weight: 900;
+            color: var(--white);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: var(--neutral-light);
+            margin-bottom: 2.5rem;
+            font-weight: 500;
+            line-height: 1.6;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary, .btn-secondary {
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--white);
+            color: var(--primary);
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 3px solid var(--white);
+        }
+
+        .btn-secondary:hover {
+            background: var(--white);
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .hero-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .stat-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .stat-icon {
+            font-size: 2rem;
+        }
+
+        .stat-text {
+            flex: 1;
+        }
+
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--primary);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+        }
+
+        /* Stats Bar */
+        .stats-bar {
+            background: var(--primary-dark);
+            padding: 3rem 2rem;
+            color: var(--white);
+        }
+
+        .stats-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            text-align: center;
+        }
+
+        .stat-box h3 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .stat-box p {
+            font-size: 1.1rem;
+            color: var(--neutral-light);
+            font-weight: 500;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 6rem 2rem;
+            background: var(--neutral-light);
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            text-align: center;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-weight: 900;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-gray);
+            font-size: 1.2rem;
+            margin-bottom: 4rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .services-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(13, 115, 119, 0.08);
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .service-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(13, 115, 119, 0.15);
+        }
+
+        .service-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .service-card p {
+            color: var(--text-gray);
+            line-height: 1.7;
+        }
+
+        /* Why Choose Us */
+        .why-us {
+            padding: 6rem 2rem;
+            background: var(--text-dark);
+            color: var(--white);
+        }
+
+        .why-us .section-title {
+            color: var(--white);
+        }
+
+        .why-us .section-subtitle {
+            color: var(--neutral);
+        }
+
+        .why-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .why-item {
+            text-align: center;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .why-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.6s ease;
+        }
+
+        .why-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .why-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .why-item p {
+            color: var(--neutral);
+            line-height: 1.7;
+        }
+
+        /* Reviews Section */
+        .reviews {
+            padding: 6rem 2rem;
+            background: var(--neutral-light);
+        }
+
+        .reviews-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .review-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(13, 115, 119, 0.08);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .review-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.6s ease;
+        }
+
+        .review-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .review-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: 700;
+            font-size: 1.3rem;
+        }
+
+        .review-info h4 {
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+        }
+
+        .stars {
+            color: #ffd700;
+            font-size: 1.1rem;
+        }
+
+        .review-text {
+            color: var(--text-gray);
+            line-height: 1.7;
+            font-style: italic;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            padding: 6rem 2rem;
+            background: var(--white);
+        }
+
+        .form-container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: var(--neutral-light);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(13, 115, 119, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--neutral);
+            border-radius: 10px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(13, 115, 119, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1.2rem;
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 25px rgba(13, 115, 119, 0.2);
+        }
+
+        .submit-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 35px rgba(13, 115, 119, 0.3);
+        }
+
+        .success-message {
+            display: none;
+            background: var(--secondary);
+            color: var(--white);
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 600;
+            margin-top: 1.5rem;
+            animation: slideIn 0.5s ease;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Location Section */
+        .location {
+            padding: 6rem 2rem;
+            background: var(--neutral-light);
+        }
+
+        .location-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .location-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(13, 115, 119, 0.08);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .location-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(13, 115, 119, 0.12);
+        }
+
+        .location-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .location-label {
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .location-value {
+            color: var(--text-dark);
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: var(--neutral);
+            padding: 3rem 2rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-info {
+            margin-bottom: 2rem;
+        }
+
+        .footer-info p {
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            color: var(--text-gray);
+        }
+
+        /* WhatsApp Button */
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: #25d366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            z-index: 999;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        .whatsapp-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(37, 211, 102, 0.6);
+        }
+
+        .whatsapp-btn::before {
+            content: '💬';
+            font-size: 2rem;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            }
+            50% {
+                box-shadow: 0 4px 30px rgba(37, 211, 102, 0.7);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-container {
+                padding: 1rem;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            .nav-cta {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.9rem;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                padding: 3rem 1.5rem;
+            }
+
+            .hero-card {
+                padding: 2rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn-primary, .btn-secondary {
+                width: 100%;
+                text-align: center;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .services-grid,
+            .why-grid,
+            .reviews-grid,
+            .location-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-container {
+                padding: 2rem 1.5rem;
+            }
+
+            .whatsapp-btn {
+                width: 55px;
+                height: 55px;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">FisioLuna</div>
+            <a href="tel:+34680383225" class="nav-cta">☎️ Llamar ahora</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Centro de Fisioterapia y Osteopatía FisioLuna</h1>
+                <p class="hero-subtitle">Especialistas en recuperación física y bienestar en Pozoblanco. Tu salud en las mejores manos.</p>
+                <div class="hero-buttons">
+                    <a href="#cita" class="btn-primary">Pedir cita</a>
+                    <a href="#servicios" class="btn-secondary">Ver servicios</a>
+                </div>
+            </div>
+            <div class="hero-card">
+                <h3>Tu centro de confianza</h3>
+                <div class="stat-item">
+                    <span class="stat-icon">⭐</span>
+                    <div class="stat-text">
+                        <span class="stat-number">4.9/5</span>
+                        <span class="stat-label">Valoración Google</span>
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-icon">👥</span>
+                    <div class="stat-text">
+                        <span class="stat-number">40+</span>
+                        <span class="stat-label">Opiniones verificadas</span>
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-icon">🏥</span>
+                    <div class="stat-text">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Profesionales titulados</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Bar -->
+    <section class="stats-bar">
+        <div class="stats-container">
+            <div class="stat-box">
+                <h3>15+</h3>
+                <p>Años de experiencia</p>
+            </div>
+            <div class="stat-box">
+                <h3>2000+</h3>
+                <p>Pacientes tratados</p>
+            </div>
+            <div class="stat-box">
+                <h3>98%</h3>
+                <p>Recuperaciones exitosas</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="servicios" class="services">
+        <h2 class="section-title">Nuestros Servicios</h2>
+        <p class="section-subtitle">Tratamientos personalizados con las técnicas más avanzadas para tu recuperación completa</p>
+        <div class="services-grid">
+            <div class="service-card">
+                <span class="service-icon">🦴</span>
+                <h3>Fisioterapia Traumatológica</h3>
+                <p>Tratamiento especializado para lesiones deportivas, fracturas y recuperación post-quirúrgica. Acelera tu recuperación con técnicas avanzadas.</p>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">🌊</span>
+                <h3>Osteopatía Integral</h3>
+                <p>Terapia manual que trata el cuerpo como un todo. Ideal para dolores crónicos, problemas articulares y mejora de la movilidad general.</p>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">💆</span>
+                <h3>Fisioterapia Neurológica</h3>
+                <p>Rehabilitación especializada para lesiones del sistema nervioso. Tratamos ictus, parkinson, esclerosis y otras patologías neurológicas.</p>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">🤰</span>
+                <h3>Suelo Pélvico y Embarazo</h3>
+                <p>Cuidado integral durante el embarazo y postparto. Fortalecimiento del suelo pélvico y preparación para el parto.</p>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">⚡</span>
+                <h3>Punción Seca y Electroterapia</h3>
+                <p>Técnicas avanzadas para el tratamiento del dolor muscular, contracturas y puntos gatillo. Resultados rápidos y duraderos.</p>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">🧘</span>
+                <h3>Readaptación Deportiva</h3>
+                <p>Vuelta al deporte de forma segura y efectiva. Programas personalizados de entrenamiento funcional y prevención de lesiones.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="why-us">
+        <h2 class="section-title">¿Por qué elegirnos?</h2>
+        <p class="section-subtitle">Nos diferenciamos por nuestra dedicación total a tu recuperación y bienestar</p>
+        <div class="why-grid">
+            <div class="why-item">
+                <span class="why-icon">👨‍⚕️</span>
+                <h3>Profesionales Expertos</h3>
+                <p>Equipo altamente cualificado con formación continua en las últimas técnicas de fisioterapia y osteopatía.</p>
+            </div>
+            <div class="why-item">
+                <span class="why-icon">🎯</span>
+                <h3>Tratamiento Personalizado</h3>
+                <p>Cada paciente es único. Diseñamos planes de tratamiento específicos adaptados a tus necesidades.</p>
+            </div>
+            <div class="why-item">
+                <span class="why-icon">🏆</span>
+                <h3>Equipamiento Avanzado</h3>
+                <p>Instalaciones modernas con la última tecnología para garantizar los mejores resultados en tu recuperación.</p>
+            </div>
+            <div class="why-item">
+                <span class="why-icon">💚</span>
+                <h3>Atención Cercana</h3>
+                <p>Trato humano y profesional. Estamos contigo en cada paso de tu proceso de recuperación.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="reviews">
+        <h2 class="section-title">Lo que dicen nuestros pacientes</h2>
+        <p class="section-subtitle">La satisfacción de nuestros pacientes es nuestro mayor orgullo</p>
+        <div class="reviews-grid">
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-avatar">MG</div>
+                    <div class="review-info">
+                        <h4>María González</h4>
+                        <div class="stars">★★★★★</div>
+                    </div>
+                </div>
+                <p class="review-text">Acudí por una lesión de rodilla tras jugar al pádel y el tratamiento fue excepcional. En tres semanas estaba completamente recuperada. El trato personal de todo el equipo es inmejorable, se nota que les importa de verdad tu recuperación.</p>
+            </div>
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-avatar">JR</div>
+                    <div class="review-info">
+                        <h4>Javier Romero</h4>
+                        <div class="stars">★★★★★</div>
+                    </div>
+                </div>
+                <p class="review-text">Llevaba años con dolores lumbares crónicos y después de varias sesiones de osteopatía he mejorado muchísimo. Los profesionales son muy preparados y explican todo el proceso con claridad. Totalmente recomendable.</p>
+            </div>
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-avatar">LC</div>
+                    <div class="review-info">
+                        <h4>Laura Castro</h4>
+                        <div class="stars">★★★★★</div>
+                    </div>
+                </div>
+                <p class="review-text">El mejor centro de fisioterapia de Pozoblanco sin duda. Me trataron el suelo pélvico después del parto y los resultados fueron increíbles. Un ambiente muy profesional pero a la vez cercano y acogedor.</p>
+            </div>
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-avatar">AR</div>
+                    <div class="review-info">
+                        <h4>Antonio Ruiz</h4>
+                        <div class="stars">★★★★★</div>
+                    </div>
+                </div>
+                <p class="review-text">Después de una operación de hombro necesitaba rehabilitación y en FisioLuna hicieron un trabajo excelente. Las instalaciones son muy modernas y el equipamiento de primera calidad. Muy satisfecho con todo.</p>
+            </div>
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-avatar">SR</div>
+                    <div class="review-info">
+                        <h4>Sofía Ramírez</h4>
+                        <div class="stars">★★★★★</div>
+                    </div>
+                </div>
+                <p class="review-text">Profesionalidad y eficacia al 100%. Me recuperé de una tendinitis que me tenía parada desde hacía meses. La punción seca fue lo que mejor me funcionó y ahora estoy sin dolor. ¡Muchas gracias a todo el equipo!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section id="cita" class="contact-form">
+        <h2 class="section-title">Pide tu cita</h2>
+        <p class="section-subtitle">Completa el formulario y te llamaremos en menos de 24 horas</p>
+        <div class="form-container">
+            <form id="appointmentForm">
+                <div class="form-group">
+                    <label for="nombre">Nombre completo *</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                </div>
+                <div class="form-group">
+                    <label for="telefono">Teléfono *</label>
+                    <input type="tel" id="telefono" name="telefono" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="servicio">Tipo de servicio *</label>
+                    <select id="servicio" name="servicio" required>
+                        <option value="">Selecciona un servicio</option>
+                        <option value="traumatologica">Fisioterapia Traumatológica</option>
+                        <option value="osteopatia">Osteopatía Integral</option>
+                        <option value="neurologica">Fisioterapia Neurológica</option>
+                        <option value="suelo-pelvico">Suelo Pélvico y Embarazo</option>
+                        <option value="puncion-seca">Punción Seca y Electroterapia</option>
+                        <option value="deportiva">Readaptación Deportiva</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="fecha">Fecha preferida</label>
+                    <input type="date" id="fecha" name="fecha">
+                </div>
+                <div class="form-group">
+                    <label for="mensaje">Mensaje (opcional)</label>
+                    <textarea id="mensaje" name="mensaje" placeholder="Cuéntanos brevemente tu caso..."></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Solicitar cita</button>
+                <div class="success-message" id="successMessage">
+                    ✅ ¡Solicitud recibida! Te llamaremos en menos de 24h
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section class="location">
+        <h2 class="section-title">Cómo llegar</h2>
+        <p class="section-subtitle">Estamos en el centro de Pozoblanco, fácil acceso y aparcamiento cercano</p>
+        <div class="location-grid">
+            <div class="location-card">
+                <span class="location-icon">📍</span>
+                <div class="location-label">Dirección</div>
+                <div class="location-value">C. Lucena, nº 9<br>14400 Pozoblanco<br>Córdoba, España</div>
+            </div>
+            <div class="location-card">
+                <span class="location-icon">📞</span>
+                <div class="location-label">Teléfono</div>
+                <div class="location-value"><a href="tel:+34680383225" style="color: var(--text-dark); text-decoration: none;">+34 680 38 32 25</a></div>
+            </div>
+            <div class="location-card">
+                <span class="location-icon">🕐</span>
+                <div class="location-label">Horario</div>
+                <div class="location-value">Lunes a Viernes: 9:00 - 20:00<br>Sábados: 9:00 - 14:00</div>
+            </div>
+            <div class="location-card">
+                <span class="location-icon">🚗</span>
+                <div class="location-label">Aparcamiento</div>
+                <div class="location-value">Zona azul cercana<br>Parking público<br>a 2 minutos</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">FisioLuna</div>
+            <div class="footer-info">
+                <p><strong>Centro de Fisioterapia y Osteopatía FisioLuna</strong></p>
+                <p>C. Lucena, nº 9, 14400 Pozoblanco, Córdoba, España</p>
+                <p>Teléfono: +34 680 38 32 25</p>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Centro de Fisioterapia y Osteopatía FisioLuna. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/34680383225" class="whatsapp-btn" target="_blank" rel="noopener"></a>
+
+    <script>
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all service cards
+        document.querySelectorAll('.service-card').forEach(card => {
+            observer.observe(card);
+        });
+
+        // Observe why items
+        document.querySelectorAll('.why-item').forEach(item => {
+            observer.observe(item);
+        });
+
+        // Observe review cards
+        document.querySelectorAll('.review-card').forEach(card => {
+            observer.observe(card);
+        });
+
+        // Form submission
+        document.getElementById('appointmentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const successMessage = document.getElementById('successMessage');
+            successMessage.classList.add('show');
+            
+            // Reset form
+            this.reset();
+            
+            // Hide message after 5 seconds
+            setTimeout(() => {
+                successMessage.classList.remove('show');
+            }, 5000);
+            
+            // Scroll to success message
+            successMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Set minimum date for date picker to today
+        const dateInput = document.getElementById('fecha');
+        const today = new Date().toISOString().split('T')[0];
+        dateInput.setAttribute('min', today);
+    </script>
+</body>
+</html>
