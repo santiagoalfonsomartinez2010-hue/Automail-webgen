@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lola Herrera Hair Salon – Balayage & Color Studio | Peluquería en Roquetas de Mar</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-primary: #D4AF37;
+            --color-secondary: #2C1810;
+            --color-accent: #E8C4A0;
+            --color-dark: #1a1a1a;
+            --color-light: #FAF8F5;
+            --color-text: #333;
+            --color-rose: #D4A5A5;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--color-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            padding: 1rem 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-secondary);
+            letter-spacing: -0.5px;
+        }
+
+        .nav-cta {
+            background: var(--color-primary);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .nav-cta:hover {
+            background: var(--color-secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+        }
+
+        .hero {
+            margin-top: 80px;
+            min-height: 90vh;
+            background: linear-gradient(135deg, #2C1810 0%, #4a2f20 50%, #2C1810 100%);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(232, 196, 160, 0.1) 0%, transparent 50%);
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(52px, 10vw, 96px);
+            font-weight: 900;
+            color: white;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -2px;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            color: var(--color-accent);
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+
+        .hero-cta-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--color-primary);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+            font-size: 1.05rem;
+            border: 2px solid var(--color-primary);
+        }
+
+        .btn-primary:hover {
+            background: transparent;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+            font-size: 1.05rem;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--color-secondary);
+            transform: translateY(-3px);
+        }
+
+        .hero-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: var(--color-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-stats {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .stat-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .stat-content h4 {
+            font-size: 1.8rem;
+            color: var(--color-primary);
+            font-weight: 700;
+        }
+
+        .stat-content p {
+            font-size: 0.9rem;
+            color: var(--color-text);
+        }
+
+        .stats-bar {
+            background: var(--color-light);
+            padding: 4rem 2rem;
+        }
+
+        .stats-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            text-align: center;
+        }
+
+        .stat-box h3 {
+            font-size: 3.5rem;
+            color: var(--color-primary);
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-box p {
+            color: var(--color-secondary);
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .section {
+            padding: 5rem 2rem;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            color: var(--color-secondary);
+            text-align: center;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #666;
+            font-size: 1.1rem;
+            margin-bottom: 4rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .services-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border: 1px solid #f0f0f0;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .service-card.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 50px rgba(212, 175, 55, 0.2);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .service-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--color-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .why-us {
+            background: var(--color-secondary);
+            color: white;
+        }
+
+        .why-us .section-title {
+            color: white;
+        }
+
+        .why-us .section-subtitle {
+            color: var(--color-accent);
+        }
+
+        .why-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .why-item {
+            text-align: center;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .why-item.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .why-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--color-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 1.5rem;
+        }
+
+        .why-item h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+        }
+
+        .why-item p {
+            color: var(--color-accent);
+            line-height: 1.8;
+        }
+
+        .reviews {
+            background: var(--color-light);
+        }
+
+        .reviews-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .review-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.08);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .review-card.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .review-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .review-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .review-info h4 {
+            font-weight: 600;
+            color: var(--color-secondary);
+            margin-bottom: 0.3rem;
+        }
+
+        .review-stars {
+            color: var(--color-primary);
+            font-size: 1rem;
+        }
+
+        .review-text {
+            color: #666;
+            line-height: 1.8;
+            font-style: italic;
+        }
+
+        .form-section {
+            background: white;
+        }
+
+        .form-container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: var(--color-light);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 50px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--color-secondary);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: var(--color-primary);
+            color: white;
+            padding: 1.2rem;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .submit-btn:hover {
+            background: var(--color-secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+        }
+
+        .success-message {
+            display: none;
+            background: #4CAF50;
+            color: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 1rem;
+            font-weight: 600;
+            animation: slideDown 0.5s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .location-section {
+            background: var(--color-light);
+        }
+
+        .location-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .location-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .location-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.12);
+        }
+
+        .location-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .location-label {
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .location-value {
+            color: var(--color-secondary);
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .footer {
+            background: var(--color-secondary);
+            color: white;
+            padding: 3rem 2rem 1.5rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--color-primary);
+        }
+
+        .footer-info {
+            color: var(--color-accent);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .footer-copyright {
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: var(--color-accent);
+            font-size: 0.9rem;
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 65px;
+            height: 65px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            text-decoration: none;
+            box-shadow: 0 5px 25px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 35px rgba(37, 211, 102, 0.6);
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 5px 25px rgba(37, 211, 102, 0.4);
+            }
+            50% {
+                box-shadow: 0 5px 35px rgba(37, 211, 102, 0.7);
+            }
+        }
+
+        @media (max-width: 968px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .stats-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .nav-container {
+                padding: 0 1rem;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            .nav-cta {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.85rem;
+            }
+
+            .section {
+                padding: 3rem 1rem;
+            }
+
+            .form-container {
+                padding: 2rem 1.5rem;
+            }
+
+            .whatsapp-float {
+                width: 55px;
+                height: 55px;
+                font-size: 1.7rem;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="logo">Lola Herrera</div>
+            <a href="tel:+34628837277" class="nav-cta">📞 Llamar Ahora</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Lola Herrera Hair Salon – Balayage & Color Studio</h1>
+                <p class="hero-subtitle">Especialistas en coloración artesanal, balayage y transformaciones capilares únicas en Roquetas de Mar</p>
+                <div class="hero-cta-group">
+                    <a href="#cita" class="btn-primary">Pedir Cita</a>
+                    <a href="#servicios" class="btn-secondary">Ver Servicios</a>
+                </div>
+            </div>
+            <div class="hero-card">
+                <h3>Tu salón de confianza</h3>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-icon">⭐</div>
+                        <div class="stat-content">
+                            <h4>4.8/5</h4>
+                            <p>Valoración Google</p>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon">💬</div>
+                        <div class="stat-content">
+                            <h4>55+</h4>
+                            <p>Reseñas verificadas</p>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon">✨</div>
+                        <div class="stat-content">
+                            <h4>100%</h4>
+                            <p>Satisfacción garantizada</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats-bar">
+        <div class="stats-container">
+            <div class="stat-box">
+                <h3>+8</h3>
+                <p>Años de Experiencia</p>
+            </div>
+            <div class="stat-box">
+                <h3>+2500</h3>
+                <p>Clientes Satisfechos</p>
+            </div>
+            <div class="stat-box">
+                <h3>100%</h3>
+                <p>Productos Premium</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="servicios">
+        <h2 class="section-title">Nuestros Servicios</h2>
+        <p class="section-subtitle">Tratamientos personalizados para realzar tu belleza natural</p>
+        <div class="services-grid">
+            <div class="service-card">
+                <span class="service-icon">✨</span>
+                <h3>Balayage & Mechas</h3>
+                <p>Técnicas avanzadas de coloración natural para un efecto luminoso y multidimensional adaptado a tu estilo único.</p>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">🎨</span>
+                <h3>Coloración Premium</h3>
+                <p>Tintes de alta gama con tratamiento nutritivo incluido. Desde tonos naturales hasta los colores más atrevidos y vibrantes.</p>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">✂️</span>
+                <h3>Corte & Estilismo</h3>
+                <p>Cortes personalizados según tu tipo de cabello y facciones. Asesoramiento profesional para encontrar tu look ideal.</p>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">💆</span>
+                <h3>Tratamientos Capilares</h3>
+                <p>Keratina, botox capilar, hidratación profunda y reparación intensiva para devolver la salud a tu cabello.</p>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">👰</span>
+                <h3>Peinados para Eventos</h3>
+                <p>Recogidos, ondas glamurosas y estilos personalizados para bodas, comuniones y ocasiones especiales.</p>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">🌟</span>
+                <h3>Asesoría de Imagen</h3>
+                <p>Consulta personalizada para elegir el color, corte y estilo que mejor se adapte a tu personalidad y estilo de vida.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section why-us">
+        <h2 class="section-title">¿Por Qué Elegirnos?</h2>
+        <p class="section-subtitle">La excelencia en cada detalle</p>
+        <div class="why-grid">
+            <div class="why-item">
+                <div class="why-icon">🏆</div>
+                <h3>Especialización</h3>
+                <p>Expertas certificadas en técnicas de coloración avanzada y balayage de última generación.</p>
+            </div>
+            <div class="why-item">
+                <div class="why-icon">💎</div>
+                <h3>Productos Premium</h3>
+                <p>Trabajamos exclusivamente con las mejores marcas profesionales del mercado para garantizar resultados impecables.</p>
+            </div>
+            <div class="why-item">
+                <div class="why-icon">💝</div>
+                <h3>Atención Personalizada</h3>
+                <p>Cada cliente es único. Te escuchamos y diseñamos soluciones 100% adaptadas a tus necesidades.</p>
+            </div>
+            <div class="why-item">
+                <div class="why-icon">🌸</div>
+                <h3>Ambiente Exclusivo</h3>
+                <p>Instalaciones modernas y acogedoras donde podrás relajarte mientras cuidamos de ti.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section reviews">
+        <h2 class="section-title">Lo Que Dicen Nuestros Clientes</h2>
+        <p class="section-subtitle">Testimonios reales de personas satisfechas</p>
+        <div class="reviews-grid">
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-avatar">MG</div>
+                    <div class="review-info">
+                        <h4>María González</h4>
+                        <div class="review-stars">★★★★★</div>
+                    </div>
+                </div>
+                <p class="review-text">"Lola es una auténtica artista del color. Me hizo un balayage espectacular que me ha cambiado por completo. El trato es cercano y profesional, te explica todo el proceso y se nota que le apasiona su trabajo. ¡Totalmente recomendable!"</p>
+            </div>
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-avatar">CR</div>
+                    <div class="review-info">
+                        <h4>Carmen Rodríguez</h4>
+                        <div class="review-stars">★★★★★</div>
+                    </div>
+                </div>
+                <p class="review-text">"Llevo años viniendo al salón y siempre salgo encantada. El ambiente es super agradable y los resultados son increíbles. El tratamiento de keratina que me hicieron dejó mi pelo como la seda. Sin duda el mejor salón de Roquetas de Mar."</p>
+            </div>
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-avatar">AP</div>
+                    <div class="review-info">
+                        <h4>Ana Pastor</h4>
+                        <div class="review-stars">★★★★★</div>
+                    </div>
+                </div>
+                <p class="review-text">"Fui para mi boda y el recogido quedó perfecto, aguantó toda la noche impecable. Lola entendió exactamente lo que quería y el resultado superó mis expectativas. Profesionalidad al 100% y un trato exquisito."</p>
+            </div>
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-avatar">LM</div>
+                    <div class="review-info">
+                        <h4>Laura Martínez</h4>
+                        <div class="review-stars">★★★★★</div>
+                    </div>
+                </div>
+                <p class="review-text">"Me cambié de rubio a moreno chocolate y el resultado es espectacular. Lola me asesoró sobre el tono perfecto para mi piel y acertó de lleno. Productos de primerísima calidad y un servicio impecable. Muy contenta con mi transformación."</p>
+            </div>
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-avatar">SF</div>
+                    <div class="review-info">
+                        <h4>Sofía Fernández</h4>
+                        <div class="review-stars">★★★★★</div>
+                    </div>
+                </div>
+                <p class="review-text">"Tenía el pelo muy estropeado y gracias al tratamiento intensivo recuperó la vida. Lola es súper detallista y se preocupa realmente por la salud de tu cabello. Las instalaciones son preciosas y el ambiente muy relajante. ¡Volveré seguro!"</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section form-section" id="cita">
+        <h2 class="section-title">Reserva Tu Cita</h2>
+        <p class="section-subtitle">Completa el formulario y te llamaremos para confirmar tu cita</p>
+        <div class="form-container">
+            <form id="appointmentForm">
+                <div class="form-group">
+                    <label for="nombre">Nombre Completo *</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                </div>
+                <div class="form-group">
+                    <label for="telefono">Teléfono *</label>
+                    <input type="tel" id="telefono" name="telefono" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="servicio">Tipo de Servicio *</label>
+                    <select id="servicio" name="servicio" required>
+                        <option value="">Selecciona un servicio</option>
+                        <option value="balayage">Balayage & Mechas</option>
+                        <option value="coloracion">Coloración Premium</option>
+                        <option value="corte">Corte & Estilismo</option>
+                        <option value="tratamiento">Tratamientos Capilares</option>
+                        <option value="eventos">Peinados para Eventos</option>
+                        <option value="asesoria">Asesoría de Imagen</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="fecha">Fecha Preferida *</label>
+                    <input type="date" id="fecha" name="fecha" required>
+                </div>
+                <div class="form-group">
+                    <label for="mensaje">Mensaje (opcional)</label>
+                    <textarea id="mensaje" name="mensaje" placeholder="¿Tienes alguna preferencia o necesidad especial que debamos conocer?"></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Solicitar Cita</button>
+                <div class="success-message" id="successMessage">
+                    ✅ ¡Solicitud recibida! Te llamaremos en menos de 24h
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <section class="section location-section">
+        <h2 class="section-title">Cómo Llegar</h2>
+        <p class="section-subtitle">Visítanos en Roquetas de Mar</p>
+        <div class="location-grid">
+            <div class="location-card">
+                <div class="location-icon">📍</div>
+                <div class="location-label">Dirección</div>
+                <div class="location-value">Av. Juan Carlos I, 76<br>04740 Roquetas de Mar, Almería</div>
+            </div>
+            <div class="location-card">
+                <div class="location-icon">📞</div>
+                <div class="location-label">Teléfono</div>
+                <div class="location-value"><a href="tel:+34628837277" style="color: inherit; text-decoration: none;">+34 628 83 72 77</a></div>
+            </div>
+            <div class="location-card">
+                <div class="location-icon">🕒</div>
+                <div class="location-label">Horario</div>
+                <div class="location-value">Lun-Vie: 10:00 - 20:00<br>Sáb: 10:00 - 14:00</div>
+            </div>
+            <div class="location-card">
+                <div class="location-icon">🚌</div>
+                <div class="location-label">Transporte</div>
+                <div class="location-value">Parada de autobús cercana<br>Fácil acceso y aparcamiento</div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-logo">Lola Herrera Hair Salon</div>
+            <div class="footer-info">
+                <p>Av. Juan Carlos I, 76, 04740 Roquetas de Mar, Almería</p>
+                <p>Teléfono: +34 628 83 72 77</p>
+            </div>
+            <div class="footer-copyright">
+                <p>&copy; 2024 Lola Herrera Hair Salon – Balayage & Color Studio. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/34628837277" class="whatsapp-float" target="_blank" rel="noopener">💬</a>
+
+    <script>
+        // Form handling
+        document.getElementById('appointmentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const successMessage = document.getElementById('successMessage');
+            successMessage.style.display = 'block';
+            this.reset();
+            setTimeout(() => {
+                successMessage.style.display = 'none';
+            }, 5000);
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.service-card, .why-item, .review-card').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href !== '#' && href.length > 1) {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }
+            });
+        });
+
+        // Set min date for date picker
+        const dateInput = document.getElementById('fecha');
+        const today = new Date().toISOString().split('T')[0];
+        dateInput.setAttribute('min', today);
+    </script>
+
+</body>
+</html>
