@@ -6,8 +6,8 @@ export async function scrapeBusinesses({ ciudad, categoria, cantidad }) {
 
     const client = new ApifyClient({ token });
 
-    // Fetch 5x more than needed since we'll filter out those with websites
-    const fetchQuantity = Math.min(cantidad * 5, 200);
+    // Fetch more than needed since we'll filter by website, phone type, and category
+    const fetchQuantity = Math.min(cantidad * 8, 200);
 
     console.log(`🗺️  Buscando "${categoria}" en "${ciudad}"...`);
 
@@ -38,29 +38,60 @@ export async function scrapeBusinesses({ ciudad, categoria, cantidad }) {
 
     console.log(`📦 ${items.length} negocios encontrados en total`);
 
-    // ── FILTER: no website ────────────────────────────────────────────────
-    // The Actor returns the website field when a business has one registered.
-    // We keep only those where website is missing or empty.
+    // ── FILTER 1: no website ────────────────────────────────────────────────
     const noWebsite = items.filter(item => {
         const w = (item.website || item.url || item.websiteUrl || '').trim();
         return w === '' || w === 'N/A';
     });
-
     console.log(`🔍 ${noWebsite.length} negocios sin web`);
 
-    if (noWebsite.length === 0) {
-        console.warn('⚠️  Todos los negocios encontrados tienen web. Aumentando búsqueda...');
-        // Last resort: return items with the least-complete profiles
-        // (more likely to be small local businesses)
-        return items
-            .sort((a, b) => (a.reviewsCount || 0) - (b.reviewsCount || 0))
-            .slice(0, cantidad)
-            .map(normalise(categoria));
+    // ── FILTER 2: mobile phone only (so we can contact via WhatsApp) ────────
+    const mobileOnly = noWebsite.filter(item => {
+        const raw = item.phone || item.phoneNumber || item.phoneUnformatted || '';
+        return isSpanishMobile(raw);
+    });
+    console.log(`📱 ${mobileOnly.length} negocios con móvil (sin fijo)`);
+
+    // ── FILTER 3: male grooming only (barbería) ──────────────────────────────
+    const maleGrooming = mobileOnly.filter(item => isMaleGrooming(item, categoria));
+    console.log(`💈 ${maleGrooming.length} negocios de barbería/peluquería masculina`);
+
+    if (maleGrooming.length === 0) {
+        console.warn('⚠️  No se encontraron barberías con móvil sin web. Prueba aumentando "cantidad" o cambia la ciudad.');
+        return [];
     }
 
-    return noWebsite
+    return maleGrooming
         .slice(0, cantidad)
         .map(normalise(categoria));
+}
+
+/**
+ * Spanish mobile numbers start with 6 or 7 (after country code).
+ * Landlines start with 8 or 9 and can't receive WhatsApp messages.
+ */
+function isSpanishMobile(phone) {
+    if (!phone) return false;
+    const digits = phone.replace(/\D/g, '');
+    const local = digits.startsWith('34') ? digits.slice(2) : digits;
+    return /^[67]/.test(local) && local.length === 9;
+}
+
+/**
+ * Detect male-oriented hair salons / barbershops by name or category keywords.
+ */
+function isMaleGrooming(item, categoria) {
+    const name = (item.title || item.name || '').toLowerCase();
+    const cat  = (item.categoryName || item.category || item.type || '').toLowerCase();
+    const text = `${name} ${cat}`;
+
+    const maleKeywords = [
+        'barber', 'barbería', 'barberia', 'caballero', 'caballeros',
+        'gentlemen', 'gentleman', 'men\'s', 'mens', 'hombre', 'hombres',
+        'classic cuts', 'old school',
+    ];
+
+    return maleKeywords.some(kw => text.includes(kw));
 }
 
 function normalise(categoria) {
