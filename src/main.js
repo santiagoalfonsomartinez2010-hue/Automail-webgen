@@ -3,6 +3,7 @@ import { generateLandingPage } from './claude.js';
 import { publishToGitHub } from './github.js';
 import { sendEmail } from './email.js';
 import { scrapeBusinesses } from './scraper.js';
+import { loadProcessedSet, saveProcessedSet, businessId } from './processed.js';
 
 await Actor.init();
 
@@ -46,10 +47,28 @@ if (businesses.length === 0) {
 
 console.log(`✅ ${businesses.length} negocios sin web encontrados`);
 
+// ── 1b. FILTRAR NEGOCIOS YA PROCESADOS EN EJECUCIONES ANTERIORES ──────────
+const processedSet = await loadProcessedSet();
+console.log(`📋 ${processedSet.size} negocios procesados históricamente`);
+
+const newBusinesses = businesses.filter(biz => !processedSet.has(businessId(biz)));
+const skipped = businesses.length - newBusinesses.length;
+
+if (skipped > 0) {
+    console.log(`⏭️  ${skipped} negocios omitidos (ya procesados antes)`);
+}
+
+if (newBusinesses.length === 0) {
+    console.log('⚠️  Todos los negocios encontrados ya fueron procesados antes. Prueba otra ciudad o categoría.');
+    await Actor.exit();
+}
+
+console.log(`🆕 ${newBusinesses.length} negocios nuevos a procesar`);
+
 // ── 2. GENERAR + PUBLICAR + CONTACTAR ─────────────────────────────────────
 const results = [];
 
-for (const biz of businesses) {
+for (const biz of newBusinesses) {
     console.log(`\n🔄 Procesando: ${biz.name}`);
 
     try {
@@ -100,6 +119,11 @@ for (const biz of businesses) {
             timestamp:   new Date().toISOString(),
         });
 
+        // Marcar como procesado SOLO si todo salió bien, y guardar de
+        // inmediato para no perder progreso si el Actor se cae a mitad.
+        processedSet.add(businessId(biz));
+        await saveProcessedSet(processedSet);
+
     } catch (err) {
         console.error(`  ❌ Error con ${biz.name}: ${err.message}`);
         results.push({
@@ -108,6 +132,7 @@ for (const biz of businesses) {
             error:     err.message,
             timestamp: new Date().toISOString(),
         });
+        // No se marca como procesado — se reintentará en la próxima ejecución.
     }
 
     await new Promise(r => setTimeout(r, 2000));
@@ -123,6 +148,7 @@ const noEmail   = results.filter(r => r.emailStatus === 'no_email').length;
 console.log(`\n🎯 RESUMEN FINAL`);
 console.log(`   ✅ Completados:      ${completed}`);
 console.log(`   ❌ Errores:          ${errors}`);
+console.log(`   ⏭️  Omitidos (repetidos): ${skipped}`);
 console.log(`   📵 Sin email:        ${noEmail}`);
 console.log(`   📊 Total procesados: ${results.length}`);
 
