@@ -13,7 +13,7 @@ export async function generateLandingPage(biz, apiKey) {
             },
             body: JSON.stringify({
                 model:      'claude-sonnet-4-5',
-                max_tokens: 8096,
+                max_tokens: 16000,
                 messages:   [{ role: 'user', content: prompt }],
             }),
         });
@@ -33,11 +33,25 @@ export async function generateLandingPage(biz, apiKey) {
         if (!data.content?.[0]?.text) throw new Error('Claude devolvió una respuesta vacía');
 
         const raw = data.content[0].text;
-        return raw
+        const cleaned = raw
             .replace(/^```html\s*/is, '')
             .replace(/^```\s*/is,    '')
             .replace(/\s*```\s*$/is, '')
             .trim();
+
+        // Detect truncated output: either Claude hit max_tokens, or the HTML
+        // doesn't actually close — both mean the page would render broken.
+        const wasTruncated = data.stop_reason === 'max_tokens' || !/<\/html>\s*$/i.test(cleaned);
+
+        if (wasTruncated && attempt === 1) {
+            console.warn('  ⚠️  Respuesta cortada (max_tokens), reintentando...');
+            continue;
+        }
+        if (wasTruncated && attempt === 2) {
+            throw new Error('La página generada quedó incompleta tras 2 intentos (límite de tokens)');
+        }
+
+        return cleaned;
     }
 }
 
