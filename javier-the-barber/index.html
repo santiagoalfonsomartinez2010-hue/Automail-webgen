@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JAVIER THE BARBER | Peluquería en Vélez-Málaga, Málaga</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-primary: #D4AF37;
+            --color-secondary: #1a1a1a;
+            --color-accent: #8B7355;
+            --color-dark: #0d0d0d;
+            --color-light: #f8f8f8;
+            --color-white: #ffffff;
+            --font-display: 'Bebas Neue', sans-serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--color-secondary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* NAV */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(13, 13, 13, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            color: var(--color-primary);
+            letter-spacing: 2px;
+        }
+
+        .nav-cta {
+            background: var(--color-primary);
+            color: var(--color-dark);
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .nav-cta:hover {
+            background: var(--color-white);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+        }
+
+        /* HERO */
+        .hero {
+            margin-top: 70px;
+            min-height: 95vh;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                repeating-linear-gradient(
+                    90deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(212, 175, 55, 0.03) 2px,
+                    rgba(212, 175, 55, 0.03) 4px
+                );
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(52px, 10vw, 96px);
+            color: var(--color-primary);
+            line-height: 0.95;
+            margin-bottom: 1.5rem;
+            letter-spacing: 4px;
+            text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.6rem);
+            color: var(--color-light);
+            margin-bottom: 3rem;
+            font-weight: 400;
+            letter-spacing: 1px;
+            animation: fadeInUp 1s ease 0.2s backwards;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease 0.4s backwards;
+        }
+
+        .btn-primary, .btn-secondary {
+            padding: 1.2rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--color-primary);
+            color: var(--color-dark);
+        }
+
+        .btn-primary:hover {
+            background: var(--color-white);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--color-white);
+            border: 2px solid var(--color-primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--color-primary);
+            color: var(--color-dark);
+            transform: translateY(-3px);
+        }
+
+        .hero-floating-card {
+            position: absolute;
+            bottom: 5%;
+            right: 5%;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+            animation: float 3s ease-in-out infinite;
+            max-width: 300px;
+        }
+
+        .floating-card-stat {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .floating-card-stat:last-child {
+            margin-bottom: 0;
+        }
+
+        .stat-icon {
+            font-size: 2rem;
+        }
+
+        .stat-content h3 {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            color: var(--color-primary);
+            line-height: 1;
+        }
+
+        .stat-content p {
+            font-size: 0.85rem;
+            color: var(--color-secondary);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* STATS BAR */
+        .stats-bar {
+            background: var(--color-primary);
+            padding: 3rem 2rem;
+        }
+
+        .stats-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-family: var(--font-display);
+            font-size: 3.5rem;
+            color: var(--color-dark);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-item p {
+            font-size: 1.1rem;
+            color: var(--color-secondary);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* SERVICES */
+        .services {
+            padding: 6rem 2rem;
+            background: var(--color-light);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            text-align: center;
+            margin-bottom: 1rem;
+            color: var(--color-secondary);
+            letter-spacing: 2px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--color-accent);
+            margin-bottom: 4rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .services-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--color-white);
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.5s ease;
+        }
+
+        .service-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .service-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .service-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--color-secondary);
+            letter-spacing: 1px;
+        }
+
+        .service-card p {
+            color: var(--color-accent);
+            line-height: 1.8;
+        }
+
+        /* WHY US */
+        .why-us {
+            padding: 6rem 2rem;
+            background: var(--color-dark);
+            color: var(--color-white);
+        }
+
+        .why-us .section-title {
+            color: var(--color-primary);
+        }
+
+        .why-us .section-subtitle {
+            color: var(--color-light);
+        }
+
+        .why-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .why-item {
+            text-align: center;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.5s ease;
+        }
+
+        .why-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .why-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .why-item h3 {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--color-primary);
+            letter-spacing: 1px;
+        }
+
+        .why-item p {
+            color: var(--color-light);
+            line-height: 1.8;
+        }
+
+        /* REVIEWS */
+        .reviews {
+            padding: 6rem 2rem;
+            background: var(--color-light);
+        }
+
+        .reviews-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .review-card {
+            background: var(--color-white);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.5s ease;
+        }
+
+        .review-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .review-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .review-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            color: var(--color-white);
+            flex-shrink: 0;
+        }
+
+        .review-info h4 {
+            font-weight: 700;
+            color: var(--color-secondary);
+            margin-bottom: 0.3rem;
+        }
+
+        .review-stars {
+            color: var(--color-primary);
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+        }
+
+        .review-text {
+            color: var(--color-accent);
+            line-height: 1.8;
+            font-style: italic;
+        }
+
+        /* FORM */
+        .form-section {
+            padding: 6rem 2rem;
+            background: var(--color-white);
+        }
+
+        .form-container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: var(--color-light);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--color-secondary);
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 1.2rem;
+            background: var(--color-primary);
+            color: var(--color-dark);
+            border: none;
+            border-radius: 50px;
+            font-family: var(--font-body);
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .form-submit:hover {
+            background: var(--color-dark);
+            color: var(--color-primary);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .form-message {
+            margin-top: 1.5rem;
+            padding: 1.5rem;
+            background: #d4edda;
+            color: #155724;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 600;
+            display: none;
+        }
+
+        .form-message.show {
+            display: block;
+            animation: slideDown 0.5s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* LOCATION */
+        .location {
+            padding: 6rem 2rem;
+            background: var(--color-light);
+        }
+
+        .location-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .location-card {
+            background: var(--color-white);
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+
+        .location-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+        }
+
+        .location-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .location-label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--color-accent);
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+        }
+
+        .location-value {
+            font-size: 1.1rem;
+            color: var(--color-secondary);
+            line-height: 1.6;
+            font-weight: 500;
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--color-dark);
+            color: var(--color-light);
+            padding: 3rem 2rem 2rem;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            color: var(--color-primary);
+            margin-bottom: 1.5rem;
+            letter-spacing: 2px;
+        }
+
+        .footer-info {
+            margin-bottom: 2rem;
+        }
+
+        .footer-info p {
+            margin-bottom: 0.5rem;
+            color: var(--color-light);
+        }
+
+        .footer-copyright {
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: var(--color-accent);
+            font-size: 0.9rem;
+        }
+
+        /* WHATSAPP BUTTON */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25D366;
+            color: white;
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 5px 25px rgba(37, 211, 102, 0.5);
+            z-index: 999;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 35px rgba(37, 211, 102, 0.7);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .nav-container {
+                padding: 0 1rem;
+            }
+
+            .logo {
+                font-size: 1.4rem;
+            }
+
+            .nav-cta {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.85rem;
+            }
+
+            .hero {
+                min-height: 90vh;
+            }
+
+            .hero-floating-card {
+                position: relative;
+                bottom: auto;
+                right: auto;
+                margin-top: 3rem;
+            }
+
+            .stats-container {
+                gap: 2rem;
+            }
+
+            .services, .why-us, .reviews, .form-section, .location {
+                padding: 4rem 1rem;
+            }
+
+            .form-container {
+                padding: 2rem 1.5rem;
+            }
+
+            .whatsapp-float {
+                width: 55px;
+                height: 55px;
+                font-size: 1.7rem;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- NAV -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">JAVIER THE BARBER</div>
+            <a href="tel:+34685405194" class="nav-cta">☎ Llamar ahora</a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>JAVIER THE BARBER</h1>
+            <p class="hero-subtitle">Expertos en estilo masculino y barbería tradicional en Vélez-Málaga</p>
+            <div class="hero-buttons">
+                <a href="#cita" class="btn-primary">Pedir cita</a>
+                <a href="#servicios" class="btn-secondary">Ver servicios</a>
+            </div>
+        </div>
+        <div class="hero-floating-card">
+            <div class="floating-card-stat">
+                <span class="stat-icon">⭐</span>
+                <div class="stat-content">
+                    <h3>4.9/5</h3>
+                    <p>145 reseñas</p>
+                </div>
+            </div>
+            <div class="floating-card-stat">
+                <span class="stat-icon">✂️</span>
+                <div class="stat-content">
+                    <h3>+2000</h3>
+                    <p>Clientes satisfechos</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS BAR -->
+    <section class="stats-bar">
+        <div class="stats-container">
+            <div class="stat-item">
+                <h3>8+</h3>
+                <p>Años de experiencia</p>
+            </div>
+            <div class="stat-item">
+                <h3>100%</h3>
+                <p>Satisfacción garantizada</p>
+            </div>
+            <div class="stat-item">
+                <h3>4.9★</h3>
+                <p>Valoración Google</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="servicios" class="services">
+        <h2 class="section-title">NUESTROS SERVICIOS</h2>
+        <p class="section-subtitle">Técnicas tradicionales con un toque moderno para el caballero actual</p>
+        <div class="services-grid">
+            <div class="service-card">
+                <span class="service-icon">✂️</span>
+                <h3>CORTE DE PELO</h3>
+                <p>Desde clásicos atemporales hasta estilos modernos. Adaptamos cada corte a tu personalidad y forma de rostro.</p>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">🪒</span>
+                <h3>AFEITADO TRADICIONAL</h3>
+                <p>Experiencia de barbería clásica con navaja, toallas calientes y productos premium para un resultado impecable.</p>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">🧔</span>
+                <h3>ARREGLO DE BARBA</h3>
+                <p>Perfilado, recorte y cuidado profesional de barba. Mantenemos tu estilo con precisión milimétrica.</p>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">⚡</span>
+                <h3>DEGRADADOS</h3>
+                <p>Fade, taper, undercut... Dominamos todas las técnicas de degradado para un acabado perfecto.</p>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">💈</span>
+                <h3>CORTE + BARBA</h3>
+                <p>Servicio completo que combina corte de pelo y arreglo de barba para un look totalmente renovado.</p>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">👔</span>
+                <h3>ARREGLO ESPECIAL</h3>
+                <p>Preparación completa para eventos importantes: bodas, entrevistas, ocasiones especiales.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY US -->
+    <section class="why-us">
+        <h2 class="section-title">¿POR QUÉ ELEGIRNOS?</h2>
+        <p class="section-subtitle">La mejor experiencia de barbería en Vélez-Málaga</p>
+        <div class="why-grid">
+            <div class="why-item">
+                <span class="why-icon">🏆</span>
+                <h3>EXPERIENCIA</h3>
+                <p>Más de 8 años perfeccionando nuestro arte. Cada corte es una obra maestra personalizada.</p>
+            </div>
+            <div class="why-item">
+                <span class="why-icon">💎</span>
+                <h3>PRODUCTOS PREMIUM</h3>
+                <p>Trabajamos exclusivamente con las mejores marcas profesionales del mercado.</p>
+            </div>
+            <div class="why-item">
+                <span class="why-icon">⏰</span>
+                <h3>PUNTUALIDAD</h3>
+                <p>Respetamos tu tiempo. Sistema de citas que garantiza atención sin esperas innecesarias.</p>
+            </div>
+            <div class="why-item">
+                <span class="why-icon">🎯</span>
+                <h3>ATENCIÓN PERSONALIZADA</h3>
+                <p>Cada cliente es único. Asesoramiento profesional adaptado a tu estilo y necesidades.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- REVIEWS -->
+    <section class="reviews">
+        <h2 class="section-title">OPINIONES</h2>
+        <p class="section-subtitle">Lo que dicen nuestros clientes</p>
+        <div class="reviews-grid">
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-avatar" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                        CM
+                    </div>
+                    <div class="review-info">
+                        <h4>Carlos Martínez</h4>
+                        <div class="review-stars">★★★★★</div>
+                    </div>
+                </div>
+                <p class="review-text">Llevo años viniendo y siempre salgo satisfecho. Javier es un profesional de verdad, conoce su oficio a la perfección. El degradado que me hace es impecable y siempre me aconseja qué estilo me queda mejor.</p>
+            </div>
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-avatar" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                        AR
+                    </div>
+                    <div class="review-info">
+                        <h4>Antonio Ruiz</h4>
+                        <div class="review-stars">★★★★★</div>
+                    </div>
+                </div>
+                <p class="review-text">La mejor barbería de Vélez-Málaga sin duda. El afeitado tradicional es una experiencia única, muy relajante. Productos de primera calidad y un trato excepcional. Totalmente recomendable.</p>
+            </div>
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-avatar" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                        MG
+                    </div>
+                    <div class="review-info">
+                        <h4>Miguel García</h4>
+                        <div class="review-stars">★★★★★</div>
+                    </div>
+                </div>
+                <p class="review-text">Vine para un corte antes de mi boda y el resultado superó mis expectativas. Javier se tomó su tiempo para dejarme perfecto. El ambiente es muy profesional y acogedor a la vez.</p>
+            </div>
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-avatar" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+                        JL
+                    </div>
+                    <div class="review-info">
+                        <h4>Javier López</h4>
+                        <div class="review-stars">★★★★★</div>
+                    </div>
+                </div>
+                <p class="review-text">Excelente atención y resultados increíbles. Me hizo un cambio de look completo y acertó totalmente con lo que me quedaba bien. Además la relación calidad-precio es inmejorable.</p>
+            </div>
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-avatar" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+                        DS
+                    </div>
+                    <div class="review-info">
+                        <h4>David Sánchez</h4>
+                        <div class="review-stars">★★★★★</div>
+                    </div>
+                </div>
+                <p class="review-text">He probado varias barberías en la zona y esta es la mejor con diferencia. Javier domina todas las técnicas modernas y también las clásicas. Mi barba nunca ha estado tan bien cuidada. 100% recomendado.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FORM -->
+    <section id="cita" class="form-section">
+        <h2 class="section-title">RESERVA TU CITA</h2>
+        <p class="section-subtitle">Déjanos tus datos y te confirmaremos la cita en menos de 24h</p>
+        <div class="form-container">
+            <form id="appointmentForm">
+                <div class="form-group">
+                    <label for="name">Nombre completo *</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Teléfono *</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="service">Tipo de servicio *</label>
+                    <select id="service" name="service" required>
+                        <option value="">Selecciona un servicio</option>
+                        <option value="corte">Corte de pelo</option>
+                        <option value="afeitado">Afeitado tradicional</option>
+                        <option value="barba">Arreglo de barba</option>
+                        <option value="degradado">Degradados</option>
+                        <option value="completo">Corte + Barba</option>
+                        <option value="especial">Arreglo especial</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="date">Fecha preferida *</label>
+                    <input type="date" id="date" name="date" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Mensaje adicional (opcional)</label>
+                    <textarea id="message" name="message" placeholder="Cuéntanos qué estilo buscas..."></textarea>
+                </div>
+                <button type="submit" class="form-submit">SOLICITAR CITA</button>
+                <div class="form-message" id="formMessage">
+                    ¡Solicitud recibida! Te llamaremos en menos de 24h ✓
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- LOCATION -->
+    <section class="location">
+        <h2 class="section-title">CÓMO LLEGAR</h2>
+        <p class="section-subtitle">Encuéntranos en el corazón de Vélez-Málaga</p>
+        <div class="location-grid">
+            <div class="location-card">
+                <span class="location-icon">📍</span>
+                <div class="location-label">DIRECCIÓN</div>
+                <div class="location-value">Av. Villa de Madrid, 4<br>29700 Vélez-Málaga<br>Málaga, España</div>
+            </div>
+            <div class="location-card">
+                <span class="location-icon">📞</span>
+                <div class="location-label">TELÉFONO</div>
+                <div class="location-value">+34 685 40 51 94</div>
+            </div>
+            <div class="location-card">
+                <span class="location-icon">🕐</span>
+                <div class="location-label">HORARIO</div>
+                <div class="location-value">Lunes a Viernes: 10:00 - 20:00<br>Sábados: 10:00 - 14:00<br>Domingos: Cerrado</div>
+            </div>
+            <div class="location-card">
+                <span class="location-icon">🚌</span>
+                <div class="location-label">TRANSPORTE</div>
+                <div class="location-value">Parada de autobús en Av. Villa de Madrid<br>Parking público cercano</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-logo">JAVIER THE BARBER</div>
+        <div class="footer-info">
+            <p>Av. Villa de Madrid, 4, 29700 Vélez-Málaga, Málaga</p>
+            <p>+34 685 40 51 94</p>
+        </div>
+        <div class="footer-copyright">
+            <p>&copy; 2024 Javier The Barber. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- WHATSAPP BUTTON -->
+    <a href="https://wa.me/34685405194" class="whatsapp-float" target="_blank" rel="noopener">
+        💬
+    </a>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.service-card, .why-item, .review-card').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Form submission
+        document.getElementById('appointmentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formMessage = document.getElementById('formMessage');
+            formMessage.classList.add('show');
+            
+            // Reset form
+            this.reset();
+            
+            // Hide message after 5 seconds
+            setTimeout(() => {
+                formMessage.classList.remove('show');
+            }, 5000);
+        });
+
+        // Set minimum date for date picker to today
+        const dateInput = document.getElementById('date');
+        const today = new Date().toISOString().split('T')[0];
+        dateInput.setAttribute('min', today);
+    </script>
+</body>
+</html>
