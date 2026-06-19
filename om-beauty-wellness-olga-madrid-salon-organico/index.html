@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OM Beauty & Wellness Olga Madrid✨💫 Salón orgánico | Peluquería en España</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Playfair+Display:wght@700;900&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-primary: #d4a574;
+            --color-secondary: #8b6f47;
+            --color-accent: #e8c9a1;
+            --color-dark: #2c2520;
+            --color-light: #faf8f5;
+            --color-sage: #a8b5a0;
+            --font-display: 'Playfair Display', serif;
+            --font-body: 'Montserrat', sans-serif;
+            --font-elegant: 'Cormorant Garamond', serif;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--color-dark);
+            background-color: var(--color-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Nav */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(250, 248, 245, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 5%;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            padding: 0.7rem 5%;
+            box-shadow: 0 2px 30px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--color-secondary);
+            letter-spacing: 1px;
+        }
+
+        .nav-cta {
+            background: var(--color-primary);
+            color: white;
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(212, 165, 116, 0.3);
+        }
+
+        .nav-cta:hover {
+            background: var(--color-secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(212, 165, 116, 0.4);
+        }
+
+        /* Hero */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #faf8f5 0%, #e8dfd5 50%, #d4c4b0 100%);
+            padding: 8rem 5% 4rem;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(212, 165, 116, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(168, 181, 160, 0.12) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 10s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(30px, 30px) scale(1.05); }
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-text h1 {
+            font-family: var(--font-display);
+            font-size: clamp(52px, 10vw, 96px);
+            font-weight: 900;
+            line-height: 1.1;
+            color: var(--color-secondary);
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .hero-text .subtitle {
+            font-family: var(--font-elegant);
+            font-size: clamp(1.3rem, 3vw, 1.8rem);
+            color: var(--color-dark);
+            margin-bottom: 2.5rem;
+            opacity: 0.85;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary, .btn-secondary {
+            padding: 1.1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.05rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--color-primary);
+            color: white;
+            box-shadow: 0 6px 25px rgba(212, 165, 116, 0.35);
+        }
+
+        .btn-primary:hover {
+            background: var(--color-secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(212, 165, 116, 0.45);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--color-secondary);
+            border: 2px solid var(--color-primary);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .btn-secondary:hover {
+            background: var(--color-primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .hero-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 25px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+            animation: floatCard 6s ease-in-out infinite;
+        }
+
+        @keyframes floatCard {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            color: var(--color-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.2rem;
+            padding: 1rem;
+            background: var(--color-light);
+            border-radius: 12px;
+        }
+
+        .stat-icon {
+            font-size: 2rem;
+        }
+
+        .stat-text h4 {
+            font-size: 1.6rem;
+            color: var(--color-primary);
+            font-weight: 700;
+        }
+
+        .stat-text p {
+            font-size: 0.9rem;
+            color: var(--color-dark);
+            opacity: 0.7;
+        }
+
+        /* Stats Bar */
+        .stats-bar {
+            background: var(--color-secondary);
+            padding: 3rem 5%;
+            color: white;
+        }
+
+        .stats-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            text-align: center;
+        }
+
+        .stat {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .stat.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stat-number {
+            font-family: var(--font-display);
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: var(--color-accent);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        /* Services */
+        .services {
+            padding: 6rem 5%;
+            background: var(--color-light);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            color: var(--color-secondary);
+            text-align: center;
+            margin-bottom: 1rem;
+            font-weight: 900;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--color-dark);
+            opacity: 0.7;
+            margin-bottom: 4rem;
+            font-size: 1.15rem;
+        }
+
+        .services-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(30px);
+            border: 1px solid rgba(212, 165, 116, 0.1);
+        }
+
+        .service-card.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 50px rgba(212, 165, 116, 0.2);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .service-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            color: var(--color-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: var(--color-dark);
+            opacity: 0.75;
+            line-height: 1.7;
+        }
+
+        /* Why Choose Us */
+        .why-us {
+            padding: 6rem 5%;
+            background: linear-gradient(135deg, var(--color-dark) 0%, #3d3530 100%);
+            color: white;
+        }
+
+        .why-us .section-title {
+            color: var(--color-accent);
+        }
+
+        .why-us .section-subtitle {
+            color: white;
+            opacity: 0.8;
+        }
+
+        .why-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .why-item {
+            text-align: center;
+            padding: 2rem;
+            opacity: 0;
+            transform: scale(0.9);
+            transition: all 0.5s ease;
+        }
+
+        .why-item.animate {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .why-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .why-item h3 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--color-accent);
+        }
+
+        .why-item p {
+            opacity: 0.85;
+            line-height: 1.7;
+        }
+
+        /* Reviews */
+        .reviews {
+            padding: 6rem 5%;
+            background: white;
+        }
+
+        .reviews-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .review-card {
+            background: var(--color-light);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.06);
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: all 0.5s ease;
+        }
+
+        .review-card.animate {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .review-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .review-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--color-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: white;
+            font-size: 1.3rem;
+        }
+
+        .review-info h4 {
+            font-size: 1.1rem;
+            color: var(--color-secondary);
+            margin-bottom: 0.3rem;
+        }
+
+        .stars {
+            color: var(--color-primary);
+            font-size: 1.1rem;
+        }
+
+        .review-text {
+            color: var(--color-dark);
+            opacity: 0.8;
+            line-height: 1.7;
+            font-style: italic;
+        }
+
+        /* Form */
+        .appointment-form {
+            padding: 6rem 5%;
+            background: linear-gradient(135deg, #faf8f5 0%, #f0ebe5 100%);
+        }
+
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 3rem;
+            border-radius: 25px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--color-secondary);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid rgba(212, 165, 116, 0.2);
+            border-radius: 12px;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: var(--color-light);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            background: white;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 1.2rem;
+            background: var(--color-primary);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 25px rgba(212, 165, 116, 0.35);
+        }
+
+        .form-submit:hover {
+            background: var(--color-secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(212, 165, 116, 0.45);
+        }
+
+        .form-message {
+            display: none;
+            padding: 1.5rem;
+            background: #d4edda;
+            color: #155724;
+            border-radius: 12px;
+            margin-top: 1.5rem;
+            text-align: center;
+            font-weight: 600;
+            animation: slideDown 0.4s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Location */
+        .location {
+            padding: 6rem 5%;
+            background: white;
+        }
+
+        .location-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .location-card {
+            background: var(--color-light);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.06);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .location-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 35px rgba(0,0,0,0.1);
+        }
+
+        .location-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .location-label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--color-primary);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .location-value {
+            font-size: 1.1rem;
+            color: var(--color-dark);
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--color-dark);
+            color: white;
+            padding: 3rem 5%;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--color-accent);
+            margin-bottom: 1rem;
+        }
+
+        .footer-info {
+            opacity: 0.8;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-copyright {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            opacity: 0.6;
+            font-size: 0.9rem;
+        }
+
+        /* WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 65px;
+            height: 65px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            box-shadow: 0 6px 30px rgba(37, 211, 102, 0.4);
+            z-index: 999;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            animation: pulse 2s infinite;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 40px rgba(37, 211, 102, 0.6);
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 6px 30px rgba(37, 211, 102, 0.4);
+            }
+            50% {
+                box-shadow: 0 6px 40px rgba(37, 211, 102, 0.6);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-card {
+                max-width: 500px;
+                margin: 0 auto;
+            }
+
+            .nav-cta {
+                padding: 0.7rem 1.3rem;
+                font-size: 0.9rem;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero {
+                padding: 6rem 5% 3rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn-primary, .btn-secondary {
+                width: 100%;
+                text-align: center;
+            }
+
+            .services-grid,
+            .reviews-grid,
+            .location-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-container {
+                padding: 2rem 1.5rem;
+            }
+
+            .whatsapp-float {
+                width: 55px;
+                height: 55px;
+                font-size: 1.7rem;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="nav">
+        <div class="nav-container">
+            <div class="logo">OM Beauty</div>
+            <a href="tel:+34658801707" class="nav-cta">📞 Llamar ahora</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>OM Beauty & Wellness Olga Madrid✨💫 Salón orgánico</h1>
+                <p class="subtitle">Belleza natural y bienestar consciente en el corazón de La Cala de Mijas</p>
+                <div class="hero-buttons">
+                    <a href="#cita" class="btn-primary">Pedir cita</a>
+                    <a href="#servicios" class="btn-secondary">Ver servicios</a>
+                </div>
+            </div>
+            <div class="hero-card">
+                <h3>Tu salón de confianza</h3>
+                <div class="stat-item">
+                    <span class="stat-icon">⭐</span>
+                    <div class="stat-text">
+                        <h4>5.0</h4>
+                        <p>Valoración en Google</p>
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-icon">💬</span>
+                    <div class="stat-text">
+                        <h4>67</h4>
+                        <p>Reseñas de clientes</p>
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-icon">🌿</span>
+                    <div class="stat-text">
+                        <h4>100%</h4>
+                        <p>Productos orgánicos</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Bar -->
+    <section class="stats-bar">
+        <div class="stats-container">
+            <div class="stat">
+                <span class="stat-number">67</span>
+                <span class="stat-label">Clientes satisfechos</span>
+            </div>
+            <div class="stat">
+                <span class="stat-number">5.0★</span>
+                <span class="stat-label">Valoración perfecta</span>
+            </div>
+            <div class="stat">
+                <span class="stat-number">100%</span>
+                <span class="stat-label">Orgánico & Natural</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="servicios">
+        <h2 class="section-title">Nuestros Servicios</h2>
+        <p class="section-subtitle">Tratamientos de belleza con productos naturales y orgánicos</p>
+        <div class="services-grid">
+            <div class="service-card">
+                <span class="service-icon">✂️</span>
+                <h3>Corte y Peinado</h3>
+                <p>Cortes personalizados y peinados profesionales adaptados a tu estilo y tipo de cabello. Asesoramiento experto incluido.</p>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">🎨</span>
+                <h3>Coloración Orgánica</h3>
+                <p>Tintes y mechas con productos 100% orgánicos libres de químicos agresivos. Cuida tu cabello mientras lo transformas.</p>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">💆</span>
+                <h3>Tratamientos Capilares</h3>
+                <p>Hidratación profunda, keratina orgánica y tratamientos reparadores con ingredientes naturales de alta calidad.</p>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">👰</span>
+                <h3>Peinados para Eventos</h3>
+                <p>Recogidos elegantes, peinados de boda y para ocasiones especiales. Reserva con antelación tu momento único.</p>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">🧖</span>
+                <h3>Tratamientos Faciales</h3>
+                <p>Faciales orgánicos personalizados con productos naturales para rejuvenecer y cuidar tu piel de forma consciente.</p>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">💅</span>
+                <h3>Manicura & Pedicura</h3>
+                <p>Cuidado completo de manos y pies con esmaltes ecológicos y tratamientos hidratantes naturales.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="why-us">
+        <h2 class="section-title">¿Por qué elegir OM Beauty?</h2>
+        <p class="section-subtitle">Compromiso con tu bienestar y el medio ambiente</p>
+        <div class="why-grid">
+            <div class="why-item">
+                <span class="why-icon">🌿</span>
+                <h3>100% Productos Orgánicos</h3>
+                <p>Trabajamos exclusivamente con cosmética natural certificada, libre de químicos dañinos para tu salud y el planeta.</p>
+            </div>
+            <div class="why-item">
+                <span class="why-icon">👩‍🎨</span>
+                <h3>Profesionales Expertos</h3>
+                <p>Equipo altamente cualificado con formación continua en las últimas técnicas de peluquería y estética orgánica.</p>
+            </div>
+            <div class="why-item">
+                <span class="why-icon">✨</span>
+                <h3>Ambiente Relajante</h3>
+                <p>Espacio diseñado para tu bienestar, donde cada visita es una experiencia de paz y renovación personal.</p>
+            </div>
+            <div class="why-item">
+                <span class="why-icon">💚</span>
+                <h3>Filosofía Consciente</h3>
+                <p>Compromiso real con la sostenibilidad, belleza ética y respeto por tu salud desde el primer momento.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="reviews">
+        <h2 class="section-title">Lo que dicen nuestros clientes</h2>
+        <p class="section-subtitle">Experiencias reales de personas que confían en nosotros</p>
+        <div class="reviews-grid">
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-avatar">MC</div>
+                    <div class="review-info">
+                        <h4>María Carmen López</h4>
+                        <div class="stars">★★★★★</div>
+                    </div>
+                </div>
+                <p class="review-text">"Llevo años buscando un salón que use productos naturales y por fin lo encontré. Olga es una profesional increíble, me hizo un tratamiento de keratina orgánica que dejó mi pelo espectacular. El trato es cercano y el ambiente muy relajante."</p>
+            </div>
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-avatar">AR</div>
+                    <div class="review-info">
+                        <h4>Ana Rodríguez</h4>
+                        <div class="stars">★★★★★</div>
+                    </div>
+                </div>
+                <p class="review-text">"Me encanta este salón. Los productos orgánicos marcan la diferencia, mi cabello nunca había estado tan sano. Además, el peinado de mi boda fue perfecto, justo lo que había imaginado. Totalmente recomendable."</p>
+            </div>
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-avatar">LS</div>
+                    <div class="review-info">
+                        <h4>Laura Sánchez</h4>
+                        <div class="stars">★★★★★</div>
+                    </div>
+                </div>
+                <p class="review-text">"Después de probar muchos sitios, OM Beauty es mi lugar de confianza. El cambio de color que me hicieron es precioso y sin dañar mi pelo. El equipo te asesora realmente bien y se nota su experiencia."</p>
+            </div>
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-avatar">CM</div>
+                    <div class="review-info">
+                        <h4>Carmen Martín</h4>
+                        <div class="stars">★★★★★</div>
+                    </div>
+                </div>
+                <p class="review-text">"La atención personalizada es lo que más valoro. Se toman su tiempo para entender lo que quieres y el resultado siempre supera mis expectativas. Los faciales orgánicos son una maravilla, sales renovada."</p>
+            </div>
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-avatar">IG</div>
+                    <div class="review-info">
+                        <h4>Isabel García</h4>
+                        <div class="stars">★★★★★</div>
+                    </div>
+                </div>
+                <p class="review-text">"Un salón diferente donde prima la calidad y la salud. Me hicieron mechas con productos naturales y el resultado es precioso. El ambiente es súper acogedor y Olga es un encanto. Vuelvo seguro."</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Appointment Form -->
+    <section class="appointment-form" id="cita">
+        <h2 class="section-title">Reserva tu cita</h2>
+        <p class="section-subtitle">Completa el formulario y te llamaremos en menos de 24 horas</p>
+        <div class="form-container">
+            <form id="appointmentForm">
+                <div class="form-group">
+                    <label for="name">Nombre completo *</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Teléfono *</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="service">Tipo de servicio *</label>
+                    <select id="service" name="service" required>
+                        <option value="">Selecciona un servicio</option>
+                        <option value="corte">Corte y Peinado</option>
+                        <option value="color">Coloración Orgánica</option>
+                        <option value="tratamiento">Tratamientos Capilares</option>
+                        <option value="evento">Peinados para Eventos</option>
+                        <option value="facial">Tratamientos Faciales</option>
+                        <option value="manicura">Manicura & Pedicura</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="date">Fecha preferida *</label>
+                    <input type="date" id="date" name="date" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Mensaje (opcional)</label>
+                    <textarea id="message" name="message" rows="4"></textarea>
+                </div>
+                <button type="submit" class="form-submit">Solicitar cita</button>
+                <div class="form-message" id="formMessage">
+                    ¡Solicitud recibida! Te llamaremos en menos de 24h
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section class="location">
+        <h2 class="section-title">Cómo llegar</h2>
+        <p class="section-subtitle">Encuéntranos en La Cala de Mijas</p>
+        <div class="location-grid">
+            <div class="location-card">
+                <span class="location-icon">📍</span>
+                <div class="location-label">Dirección</div>
+                <div class="location-value">C. Brida, 2<br>29649 La Cala de Mijas<br>Málaga, España</div>
+            </div>
+            <div class="location-card">
+                <span class="location-icon">📞</span>
+                <div class="location-label">Teléfono</div>
+                <div class="location-value">+34 658 80 17 07</div>
+            </div>
+            <div class="location-card">
+                <span class="location-icon">🕐</span>
+                <div class="location-label">Horario</div>
+                <div class="location-value">Lunes - Viernes: 10:00 - 20:00<br>Sábados: 10:00 - 18:00<br>Domingos: Cerrado</div>
+            </div>
+            <div class="location-card">
+                <span class="location-icon">🚌</span>
+                <div class="location-label">Transporte</div>
+                <div class="location-value">Líneas de autobús cercanas<br>Parada: La Cala Centro<br>Parking disponible en zona</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">OM Beauty & Wellness</div>
+            <p class="footer-info">C. Brida, 2, 29649 La Cala de Mijas, Málaga</p>
+            <p class="footer-info">📞 +34 658 80 17 07</p>
+            <p class="footer-copyright">© 2024 OM Beauty & Wellness Olga Madrid. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/34658801707" class="whatsapp-float" target="_blank" rel="noopener">
+        💬
+    </a>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Nav scroll effect
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animatable elements
+        document.querySelectorAll('.stat, .service-card, .why-item, .review-card').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Form submission
+        const form = document.getElementById('appointmentForm');
+        const formMessage = document.getElementById('formMessage');
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Show success message
+            formMessage.style.display = 'block';
+            
+            // Reset form
+            form.reset();
+            
+            // Hide message after 5 seconds
+            setTimeout(() => {
+                formMessage.style.display = 'none';
+            }, 5000);
+
+            // Scroll to message
+            formMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        });
+
+        // Set min date for date picker (today)
+        const dateInput = document.getElementById('date');
+        const today = new Date().toISOString().split('T')[0];
+        dateInput.setAttribute('min', today);
+    </script>
+</body>
+</html>
