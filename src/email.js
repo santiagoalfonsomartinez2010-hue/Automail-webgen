@@ -35,7 +35,7 @@ function buildEmail(bizName, pageUrl, city, phone, address) {
     const subject = `✅ Nueva web generada — ${bizName}`;
     const isMobile = isSpanishMobile(phone);
 
-    const whatsappMessage = `Hola 👋 Cada mes miles de personas en ${city || 'tu ciudad'} buscan en Google negocios como *${bizName}* y no os encuentran porque no tenéis página web.
+    const whatsappMessage = `Hola 👋 Soy Santiago. Cada mes miles de personas en ${city || 'tu ciudad'} buscan en Google negocios como *${bizName}* y no os encuentran porque no tenéis página web.
 
 Os he preparado una de muestra para que veáis cómo podría quedar 👉 ${pageUrl}
 
