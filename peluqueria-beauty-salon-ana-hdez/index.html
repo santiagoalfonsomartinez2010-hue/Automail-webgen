@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peluquería Beauty Salón Ana Hdez. | Peluquería en Puerto de la Cruz</title>
+    <meta name="description" content="Peluquería profesional en Puerto de la Cruz. Especialistas en corte, color, peinados y tratamientos capilares. 5 estrellas en Google. Pide tu cita ahora.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-primary: #C4967E;
+            --color-secondary: #8B6F5C;
+            --color-accent: #E8D4C6;
+            --color-dark: #2C2424;
+            --color-light: #FAF7F5;
+            --color-white: #FFFFFF;
+            --font-display: 'Playfair Display', serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--color-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--color-white);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 20px;
+        }
+
+        .logo {
+            font-family: var(--font-display);
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--color-primary);
+            letter-spacing: -0.5px;
+        }
+
+        .nav-cta {
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 12px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            border: 2px solid var(--color-primary);
+        }
+
+        .nav-cta:hover {
+            background: var(--color-secondary);
+            border-color: var(--color-secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(196, 150, 126, 0.3);
+        }
+
+        .hero {
+            margin-top: 70px;
+            min-height: 90vh;
+            background: linear-gradient(135deg, #C4967E 0%, #8B6F5C 50%, #2C2424 100%);
+            position: relative;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(232, 212, 198, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(196, 150, 126, 0.15) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            color: var(--color-white);
+            padding: 80px 0;
+        }
+
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(52px, 10vw, 96px);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            letter-spacing: -2px;
+            text-shadow: 2px 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .hero-subtitle {
+            font-size: clamp(18px, 3vw, 24px);
+            margin-bottom: 40px;
+            opacity: 0.95;
+            font-weight: 300;
+            max-width: 600px;
+            letter-spacing: 0.5px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 60px;
+        }
+
+        .btn {
+            padding: 16px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            display: inline-block;
+            border: 2px solid transparent;
+        }
+
+        .btn-primary {
+            background: var(--color-white);
+            color: var(--color-secondary);
+            border-color: var(--color-white);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(255,255,255,0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--color-white);
+            border: 2px solid var(--color-white);
+        }
+
+        .btn-secondary:hover {
+            background: var(--color-white);
+            color: var(--color-secondary);
+            transform: translateY(-3px);
+        }
+
+        .hero-stats {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 30px 40px;
+            display: inline-flex;
+            gap: 50px;
+            border: 1px solid rgba(255,255,255,0.2);
+            animation: float 6s ease-in-out infinite;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: var(--font-display);
+            font-size: 36px;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 13px;
+            opacity: 0.9;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .statistics {
+            background: var(--color-light);
+            padding: 60px 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            text-align: center;
+        }
+
+        .stat-box {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .stat-box.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stat-box-number {
+            font-family: var(--font-display);
+            font-size: 56px;
+            font-weight: 700;
+            color: var(--color-primary);
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .stat-box-text {
+            font-size: 16px;
+            color: var(--color-secondary);
+            font-weight: 500;
+        }
+
+        .services {
+            padding: 100px 0;
+            background: var(--color-white);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(36px, 5vw, 52px);
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 20px;
+            color: var(--color-dark);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 18px;
+            color: var(--color-secondary);
+            margin-bottom: 60px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .service-card {
+            background: var(--color-light);
+            padding: 40px 30px;
+            border-radius: 16px;
+            transition: all 0.4s ease;
+            border: 2px solid transparent;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .service-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--color-primary);
+            box-shadow: 0 15px 40px rgba(196, 150, 126, 0.2);
+        }
+
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            margin-bottom: 24px;
+        }
+
+        .service-title {
+            font-family: var(--font-display);
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--color-dark);
+        }
+
+        .service-description {
+            font-size: 15px;
+            color: var(--color-secondary);
+            line-height: 1.7;
+        }
+
+        .why-us {
+            background: var(--color-dark);
+            color: var(--color-white);
+            padding: 100px 0;
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .why-item {
+            text-align: center;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .why-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .why-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 24px;
+        }
+
+        .why-title {
+            font-family: var(--font-display);
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .why-text {
+            opacity: 0.9;
+            line-height: 1.7;
+        }
+
+        .reviews {
+            padding: 100px 0;
+            background: var(--color-light);
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .review-card {
+            background: var(--color-white);
+            padding: 35px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .review-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .review-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            gap: 15px;
+        }
+
+        .review-avatar {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            background: var(--color-primary);
+            color: var(--color-white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .review-info {
+            flex: 1;
+        }
+
+        .review-name {
+            font-weight: 600;
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .review-stars {
+            color: #FFB800;
+            font-size: 16px;
+            letter-spacing: 2px;
+        }
+
+        .review-text {
+            font-size: 15px;
+            line-height: 1.7;
+            color: var(--color-secondary);
+            font-style: italic;
+        }
+
+        .appointment {
+            padding: 100px 0;
+            background: var(--color-white);
+        }
+
+        .appointment-form {
+            max-width: 700px;
+            margin: 60px auto 0;
+            background: var(--color-light);
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--color-dark);
+            font-size: 15px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px 18px;
+            border: 2px solid rgba(196, 150, 126, 0.2);
+            border-radius: 10px;
+            font-family: var(--font-body);
+            font-size: 15px;
+            transition: all 0.3s ease;
+            background: var(--color-white);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 4px rgba(196, 150, 126, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-submit {
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 18px 50px;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            font-family: var(--font-body);
+        }
+
+        .form-submit:hover {
+            background: var(--color-secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(196, 150, 126, 0.3);
+        }
+
+        .form-message {
+            margin-top: 25px;
+            padding: 20px;
+            background: #4CAF50;
+            color: white;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 600;
+            display: none;
+            animation: slideDown 0.5s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .location {
+            padding: 100px 0;
+            background: var(--color-light);
+        }
+
+        .location-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .location-card {
+            background: var(--color-white);
+            padding: 35px 30px;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .location-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .location-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+        }
+
+        .location-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 20px;
+        }
+
+        .location-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--color-primary);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .location-value {
+            font-size: 16px;
+            color: var(--color-dark);
+            font-weight: 500;
+            line-height: 1.6;
+        }
+
+        footer {
+            background: var(--color-dark);
+            color: var(--color-white);
+            padding: 60px 0 30px;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: var(--font-display);
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: 20px;
+        }
+
+        .footer-info {
+            margin-bottom: 15px;
+            opacity: 0.9;
+        }
+
+        .footer-copyright {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            opacity: 0.7;
+            font-size: 14px;
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25D366;
+            color: white;
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.4);
+            z-index: 999;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 35px rgba(37, 211, 102, 0.6);
+        }
+
+        @media (max-width: 768px) {
+            .hero-stats {
+                flex-direction: column;
+                gap: 25px;
+                padding: 25px 30px;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .services-grid,
+            .reviews-grid,
+            .why-grid,
+            .location-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .appointment-form {
+                padding: 35px 25px;
+            }
+
+            .whatsapp-float {
+                width: 55px;
+                height: 55px;
+                font-size: 26px;
+                bottom: 20px;
+                right: 20px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <div class="logo">Beauty Salón Ana Hdez.</div>
+            <a href="tel:+34617256778" class="nav-cta">Llamar ahora</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Peluquería Beauty Salón Ana Hdez.</h1>
+                <p class="hero-subtitle">Expertos en transformar tu imagen en Puerto de la Cruz. Corte, color y estilo con pasión y profesionalidad.</p>
+                <div class="hero-buttons">
+                    <a href="#cita" class="btn btn-primary">Pedir cita</a>
+                    <a href="#servicios" class="btn btn-secondary">Ver servicios</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">5.0</span>
+                        <span class="stat-label">Valoración</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">81</span>
+                        <span class="stat-label">Reseñas</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">15+</span>
+                        <span class="stat-label">Años</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="statistics">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <span class="stat-box-number">2000+</span>
+                    <span class="stat-box-text">Clientes satisfechos cada año</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-box-number">100%</span>
+                    <span class="stat-box-text">Productos profesionales premium</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-box-number">15+</span>
+                    <span class="stat-box-text">Años de experiencia en el sector</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="servicios" class="services">
+        <div class="container">
+            <h2 class="section-title">Nuestros Servicios</h2>
+            <p class="section-subtitle">Servicios profesionales adaptados a tus necesidades y estilo personal</p>
+            <div class="services-grid">
+                <div class="service-card">
+                    <svg class="service-icon" viewBox="0 0 100 100" fill="none" stroke="#C4967E" stroke-width="2">
+                        <path d="M30 70 L50 20 L70 70 M35 55 L65 55" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="50" cy="20" r="8"/>
+                    </svg>
+                    <h3 class="service-title">Corte de Pelo</h3>
+                    <p class="service-description">Cortes personalizados que realzan tu imagen. Técnicas modernas y clásicas adaptadas a tu tipo de cabello y rostro.</p>
+                </div>
+                <div class="service-card">
+                    <svg class="service-icon" viewBox="0 0 100 100" fill="none" stroke="#C4967E" stroke-width="2">
+                        <circle cx="50" cy="40" r="25"/>
+                        <path d="M30 60 Q40 70 50 65 Q60 70 70 60" stroke-linecap="round"/>
+                        <circle cx="42" cy="35" r="3" fill="#C4967E"/>
+                        <circle cx="58" cy="35" r="3" fill="#C4967E"/>
+                    </svg>
+                    <h3 class="service-title">Color y Mechas</h3>
+                    <p class="service-description">Coloración profesional con productos de alta gama. Balayage, mechas californianas y tintes personalizados para ti.</p>
+                </div>
+                <div class="service-card">
+                    <svg class="service-icon" viewBox="0 0 100 100" fill="none" stroke="#C4967E" stroke-width="2">
+                        <path d="M20 50 Q50 20 80 50 Q50 80 20 50" stroke-linecap="round"/>
+                        <path d="M30 50 Q50 30 70 50" stroke-linecap="round"/>
+                    </svg>
+                    <h3 class="service-title">Peinados y Recogidos</h3>
+                    <p class="service-description">Peinados elegantes para bodas, eventos y ocasiones especiales. Creatividad y estilo en cada detalle.</p>
+                </div>
+                <div class="service-card">
+                    <svg class="service-icon" viewBox="0 0 100 100" fill="none" stroke="#C4967E" stroke-width="2">
+                        <rect x="25" y="25" width="50" height="50" rx="10"/>
+                        <path d="M35 40 L65 40 M35 50 L65 50 M35 60 L55 60" stroke-linecap="round"/>
+                    </svg>
+                    <h3 class="service-title">Tratamientos Capilares</h3>
+                    <p class="service-description">Tratamientos de keratina, botox capilar y nutrición profunda. Devolvemos la vida y brillo a tu cabello.</p>
+                </div>
+                <div class="service-card">
+                    <svg class="service-icon" viewBox="0 0 100 100" fill="none" stroke="#C4967E" stroke-width="2">
+                        <path d="M30 30 L70 70 M70 30 L30 70" stroke-linecap="round"/>
+                        <circle cx="50" cy="50" r="30"/>
+                    </svg>
+                    <h3 class="service-title">Alisados y Permanentes</h3>
+                    <p class="service-description">Alisado brasileño, japonés y permanentes duraderas. Transforma tu cabello con técnicas profesionales.</p>
+                </div>
+                <div class="service-card">
+                    <svg class="service-icon" viewBox="0 0 100 100" fill="none" stroke="#C4967E" stroke-width="2">
+                        <polygon points="50,20 80,80 20,80" stroke-linejoin="round"/>
+                        <path d="M35 60 L65 60" stroke-linecap="round"/>
+                    </svg>
+                    <h3 class="service-title">Extensiones de Pelo</h3>
+                    <p class="service-description">Extensiones de pelo natural con técnicas invisibles. Añade volumen y longitud de forma natural.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="why-us">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">¿Por Qué Elegirnos?</h2>
+            <p class="section-subtitle" style="color: rgba(255,255,255,0.8);">La confianza de cientos de clientes nos respalda</p>
+            <div class="why-grid">
+                <div class="why-item">
+                    <svg class="why-icon" viewBox="0 0 100 100" fill="none" stroke="#C4967E" stroke-width="2">
+                        <circle cx="50" cy="50" r="35"/>
+                        <path d="M35 50 L45 60 L65 40" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+                    </svg>
+                    <h3 class="why-title">Profesionales Cualificados</h3>
+                    <p class="why-text">Equipo con más de 15 años de experiencia y formación continua en las últimas tendencias.</p>
+                </div>
+                <div class="why-item">
+                    <svg class="why-icon" viewBox="0 0 100 100" fill="none" stroke="#C4967E" stroke-width="2">
+                        <polygon points="50,15 61,45 92,45 67,63 78,93 50,75 22,93 33,63 8,45 39,45" stroke-linejoin="round"/>
+                    </svg>
+                    <h3 class="why-title">Productos Premium</h3>
+                    <p class="why-text">Solo trabajamos con marcas profesionales de máxima calidad para cuidar tu cabello.</p>
+                </div>
+                <div class="why-item">
+                    <svg class="why-icon" viewBox="0 0 100 100" fill="none" stroke="#C4967E" stroke-width="2">
+                        <circle cx="50" cy="45" r="20"/>
+                        <path d="M30 65 Q35 75 50 70 Q65 75 70 65" stroke-linecap="round"/>
+                    </svg>
+                    <h3 class="why-title">Atención Personalizada</h3>
+                    <p class="why-text">Escuchamos tus necesidades y creamos el look perfecto para ti con asesoramiento experto.</p>
+                </div>
+                <div class="why-item">
+                    <svg class="why-icon" viewBox="0 0 100 100" fill="none" stroke="#C4967E" stroke-width="2">
+                        <rect x="20" y="30" width="60" height="50" rx="5"/>
+                        <path d="M35 50 L45 60 L65 40" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"/>
+                    </svg>
+                    <h3 class="why-title">Resultados Garantizados</h3>
+                    <p class="why-text">5 estrellas en Google y 81 reseñas positivas nos avalan. Tu satisfacción es nuestra prioridad.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="reviews">
+        <div class="container">
+            <h2 class="section-title">Lo Que Dicen Nuestros Clientes</h2>
+            <p class="section-subtitle">Opiniones reales de personas que confían en nosotros</p>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar">MC</div>
+                        <div class="review-info">
+                            <div class="review-name">María Carmen López</div>
+                            <div class="review-stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="review-text">Ana es una profesional increíble. Me hizo un balayage espectacular que ha durado perfecto. El trato es cercano y el salón tiene un ambiente muy agradable. Sin duda volveré.</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar" style="background: #8B6F5C;">LR</div>
+                        <div class="review-info">
+                            <div class="review-name">Laura Rodríguez Sánchez</div>
+                            <div class="review-stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="review-text">Llevaba años buscando una peluquería de confianza y por fin la encontré. Me hicieron un tratamiento de keratina que dejó mi pelo como la seda. Profesionalidad y calidad en cada servicio.</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar" style="background: #2C2424;">SM</div>
+                        <div class="review-info">
+                            <div class="review-name">Sandra Martín Cruz</div>
+                            <div class="review-stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="review-text">Me hicieron el peinado para mi boda y quedó absolutamente precioso. Ana entendió perfectamente lo que quería y superó mis expectativas. Todo el equipo es encantador.</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar" style="background: #C4967E;">PG</div>
+                        <div class="review-info">
+                            <div class="review-name">Patricia González Díaz</div>
+                            <div class="review-stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="review-text">El mejor salón de Puerto de la Cruz sin duda. Me asesoran siempre sobre qué color y corte me favorece más. Utilizan productos de primera calidad y se nota en el resultado.</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar" style="background: #8B6F5C;">CF</div>
+                        <div class="review-info">
+                            <div class="review-name">Carmen Fernández Ruiz</div>
+                            <div class="review-stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="review-text">Llevo viniendo más de 5 años y siempre salgo encantada. Me hacen mechas californianas que quedan súper naturales y el corte siempre perfecto. Totalmente recomendable.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="cita" class="appointment">
+        <div class="container">
+            <h2 class="section-title">Reserva Tu Cita</h2>
+            <p class="section-subtitle">Déjanos tus datos y te confirmaremos la cita en menos de 24 horas</p>
+            <form class="appointment-form" id="appointmentForm">
+                <div class="form-group">
+                    <label for="name">Nombre completo *</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Teléfono *</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="service">Tipo de servicio *</label>
+                    <select id="service" name="service" required>
+                        <option value="">Selecciona un servicio</option>
+                        <option value="corte">Corte de Pelo</option>
+                        <option value="color">Color y Mechas</option>
+                        <option value="peinado">Peinados y Recogidos</option>
+                        <option value="tratamiento">Tratamientos Capilares</option>
+                        <option value="alisado">Alisados y Permanentes</option>
+                        <option value="extensiones">Extensiones de Pelo</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="date">Fecha preferida *</label>
+                    <input type="date" id="date" name="date" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Mensaje adicional (opcional)</label>
+                    <textarea id="message" name="message" rows="4"></textarea>
+                </div>
+                <button type="submit" class="form-submit">Solicitar cita</button>
+                <div class="form-message" id="formMessage">
+                    ¡Solicitud recibida! Te llamaremos en menos de 24h
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <section class="location">
+        <div class="container">
+            <h2 class="section-title">Cómo Llegar</h2>
+            <p class="section-subtitle">Encuéntranos fácilmente en el centro de Puerto de la Cruz</p>
+            <div class="location-grid">
+                <div class="location-card">
+                    <svg class="location-icon" viewBox="0 0 100 100" fill="none" stroke="#C4967E" stroke-width="2">
+                        <path d="M50 20 L50 80 M50 20 C60 20 68 28 68 38 C68 48 50 65 50 65 C50 65 32 48 32 38 C32 28 40 20 50 20 Z" stroke-linejoin="round"/>
+                        <circle cx="50" cy="38" r="8" fill="#C4967E"/>
+                    </svg>
+                    <div class="location-label">Dirección</div>
+                    <div class="location-value">Calz. Martiánez, 4<br>38400 Puerto de la Cruz<br>Santa Cruz de Tenerife</div>
+                </div>
+                <div class="location-card">
+                    <svg class="location-icon" viewBox="0 0 100 100" fill="none" stroke="#C4967E" stroke-width="2">
+                        <rect x="25" y="30" width="50" height="50" rx="8"/>
+                        <path d="M38 25 L38 35 M62 25 L62 35" stroke-linecap="round"/>
+                        <path d="M35 50 L65 50 M35 60 L55 60 M35 70 L45 70" stroke-linecap="round"/>
+                    </svg>
+                    <div class="location-label">Horario</div>
+                    <div class="location-value">Lunes a Viernes: 9:00 - 20:00<br>Sábados: 9:00 - 14:00<br>Domingos: Cerrado</div>
+                </div>
+                <div class="location-card">
+                    <svg class="location-icon" viewBox="0 0 100 100" fill="none" stroke="#C4967E" stroke-width="2">
+                        <rect x="20" y="35" width="60" height="40" rx="8"/>
+                        <path d="M35 55 L45 55 M55 55 L65 55" stroke-linecap="round"/>
+                        <circle cx="35" cy="65" r="3" fill="#C4967E"/>
+                        <circle cx="65" cy="65" r="3" fill="#C4967E"/>
+                    </svg>
+                    <div class="location-label">Teléfono</div>
+                    <div class="location-value">+34 617 25 67 78</div>
+                </div>
+                <div class="location-card">
+                    <svg class="location-icon" viewBox="0 0 100 100" fill="none" stroke="#C4967E" stroke-width="2">
+                        <circle cx="50" cy="50" r="30"/>
+                        <path d="M50 30 L50 50 L65 65" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <div class="location-label">Transporte</div>
+                    <div class="location-value">Paradas de guagua cercanas<br>Aparcamiento público disponible<br>Zona centro accesible</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-logo">Beauty Salón Ana Hdez.</div>
+            <p class="footer-info">Calz. Martiánez, 4, 38400 Puerto de la Cruz, Santa Cruz de Tenerife</p>
+            <p class="footer-info">Teléfono: +34 617 25 67 78</p>
+            <p class="footer-copyright">© 2024 Peluquería Beauty Salón Ana Hdez. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/34617256778" class="whatsapp-float" target="_blank" aria-label="Contactar por WhatsApp">
+        <svg viewBox="0 0 32 32" fill="white" width="32" height="32">
+            <path d="M16 0C7.164 0 0 7.164 0 16c0 2.825.738 5.487 2.028 7.789L0 32l8.358-2.19A15.933 15.933 0 0016 32c8.836 0 16-7.164 16-16S24.836 0 16 0zm8.148 22.596c-.338.949-1.998 1.745-2.82 1.86-.756.103-1.745.139-2.82-.177-.652-.191-1.487-.445-2.555-.872-4.478-1.788-7.4-6.282-7.625-6.568-.217-.286-1.8-2.394-1.8-4.565 0-2.171 1.14-3.237 1.546-3.679.406-.442.887-.553 1.183-.553.295 0 .591.003.85.015.273.013.638-.104.998.76.369.883 1.26 3.074 1.371 3.298.11.224.184.485.037.77-.147.287-.22.466-.441.718-.22.251-.463.56-.661.752-.221.213-.45.443-.194.87.257.426 1.142 1.883 2.45 3.05 1.683 1.502 3.103 1.968 3.543 2.192.44.224.698.187.955-.112.256-.299.11-.703 1.026-1.79.294-.349.66-.393 1.026-.26.367.134 2.326 1.096 2.725 1.296.398.2.663.299.76.466.095.167.095 1.017-.243 1.966z"/>
+        </svg>
+    </a>
+
+    <script>
+        // Intersection Observer para animaciones
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.stat-box, .service-card, .why-item, .review-card, .location-card').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Formulario de cita
+        document.getElementById('appointmentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const message = document.getElementById('formMessage');
+            message.style.display = 'block';
+            this.reset();
+            setTimeout(() => {
+                message.style.display = 'none';
+            }, 5000);
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offset = 80;
+                    const targetPosition = target.offsetTop - offset;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Fecha mínima en el date picker
+        const dateInput = document.getElementById('date');
+        const today = new Date().toISOString().split('T')[0];
+        dateInput.setAttribute('min', today);
+    </script>
+</body>
+</html>
