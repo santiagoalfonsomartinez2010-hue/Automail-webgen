@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nora Arifi estilistas | Peluquería en La Cala del Moral, Málaga</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-primary: #D4A574;
+            --color-secondary: #8B6F47;
+            --color-dark: #2C2420;
+            --color-light: #FAF7F2;
+            --color-accent: #E8C5A0;
+            --color-text: #3D3430;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--color-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(250, 247, 242, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--color-secondary);
+            letter-spacing: -0.5px;
+        }
+
+        .nav-cta {
+            background: var(--color-primary);
+            color: white;
+            padding: 0.75rem 1.75rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(212, 165, 116, 0.3);
+        }
+
+        .nav-cta:hover {
+            background: var(--color-secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(212, 165, 116, 0.4);
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #FAF7F2 0%, #E8C5A0 50%, #D4A574 100%);
+            position: relative;
+            overflow: hidden;
+            padding: 8rem 2rem 4rem;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(212, 165, 116, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(139, 111, 71, 0.2) 0%, transparent 50%);
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .hero-content {
+            text-align: center;
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(52px, 10vw, 96px);
+            font-weight: 900;
+            color: var(--color-dark);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -2px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.25rem, 3vw, 1.75rem);
+            color: var(--color-secondary);
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.25rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary, .btn-secondary {
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--color-dark);
+            color: white;
+            box-shadow: 0 6px 25px rgba(44, 36, 32, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: var(--color-secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(44, 36, 32, 0.4);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--color-dark);
+            box-shadow: 0 6px 25px rgba(0,0,0,0.1);
+        }
+
+        .btn-secondary:hover {
+            background: var(--color-light);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+
+        .hero-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            max-width: 400px;
+            margin: 3rem auto 0;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero-card-title {
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--color-secondary);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .hero-card-stat {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .hero-card-stat span {
+            font-size: 1.75rem;
+        }
+
+        .hero-card-stat p {
+            font-size: 0.95rem;
+            color: var(--color-text);
+        }
+
+        .stats-bar {
+            background: var(--color-dark);
+            padding: 3rem 2rem;
+        }
+
+        .stats-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            text-align: center;
+        }
+
+        .stat-item {
+            color: white;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .stat-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: var(--color-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            font-weight: 300;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .section {
+            padding: 5rem 2rem;
+        }
+
+        .section-dark {
+            background: var(--color-dark);
+            color: white;
+        }
+
+        .section-light {
+            background: var(--color-light);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 900;
+            color: var(--color-dark);
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+        }
+
+        .section-dark .section-title {
+            color: white;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--color-secondary);
+            font-weight: 300;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .section-dark .section-subtitle {
+            color: var(--color-accent);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .service-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-dark);
+            margin-bottom: 1rem;
+        }
+
+        .service-description {
+            color: var(--color-text);
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .why-item {
+            text-align: center;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .why-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .why-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .why-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .why-description {
+            color: rgba(255,255,255,0.85);
+            line-height: 1.7;
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .review-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .review-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .review-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .review-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--color-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .review-info h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: var(--color-dark);
+            margin-bottom: 0.25rem;
+        }
+
+        .review-stars {
+            color: var(--color-primary);
+            font-size: 1rem;
+        }
+
+        .review-text {
+            color: var(--color-text);
+            line-height: 1.7;
+            font-style: italic;
+        }
+
+        .form-section {
+            background: linear-gradient(135deg, var(--color-light) 0%, white 100%);
+        }
+
+        .form-container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.75rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--color-dark);
+            font-size: 0.95rem;
+        }
+
+        .form-input, .form-select, .form-textarea {
+            width: 100%;
+            padding: 0.9rem 1.25rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: var(--color-light);
+        }
+
+        .form-input:focus, .form-select:focus, .form-textarea:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            background: white;
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-button {
+            width: 100%;
+            padding: 1.25rem;
+            background: var(--color-primary);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+            box-shadow: 0 6px 25px rgba(212, 165, 116, 0.3);
+        }
+
+        .form-button:hover {
+            background: var(--color-secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(212, 165, 116, 0.4);
+        }
+
+        .form-message {
+            display: none;
+            padding: 1.5rem;
+            background: #4CAF50;
+            color: white;
+            border-radius: 12px;
+            text-align: center;
+            font-weight: 600;
+            margin-top: 1.5rem;
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .location-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .location-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .location-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .location-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+        }
+
+        .location-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .location-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--color-secondary);
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .location-value {
+            font-size: 1.1rem;
+            color: var(--color-dark);
+            line-height: 1.6;
+            font-weight: 500;
+        }
+
+        .footer {
+            background: var(--color-dark);
+            color: white;
+            padding: 3rem 2rem 2rem;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--color-primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-info {
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .footer-divider {
+            height: 1px;
+            background: rgba(255,255,255,0.2);
+            margin: 2rem 0;
+        }
+
+        .footer-copyright {
+            color: rgba(255,255,255,0.5);
+            font-size: 0.9rem;
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25D366;
+            color: white;
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.4);
+            z-index: 999;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            .nav {
+                padding: 1rem;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            .nav-cta {
+                padding: 0.6rem 1.25rem;
+                font-size: 0.85rem;
+            }
+
+            .hero {
+                padding: 6rem 1rem 3rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn-primary, .btn-secondary {
+                width: 100%;
+                text-align: center;
+            }
+
+            .section {
+                padding: 3rem 1rem;
+            }
+
+            .stats-bar {
+                padding: 2rem 1rem;
+            }
+
+            .stats-container {
+                gap: 2rem;
+            }
+
+            .stat-number {
+                font-size: 2.5rem;
+            }
+
+            .services-grid, .why-grid, .reviews-grid, .location-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-container {
+                padding: 2rem 1.5rem;
+            }
+
+            .whatsapp-float {
+                width: 55px;
+                height: 55px;
+                font-size: 1.5rem;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="logo">Nora Arifi</div>
+            <a href="tel:+34603117019" class="nav-cta">☎ Llamar ahora</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">Nora Arifi estilistas</h1>
+                <p class="hero-subtitle">Tu salón de belleza de confianza en La Cala del Moral, donde el estilo y la profesionalidad se encuentran</p>
+                <div class="hero-buttons">
+                    <a href="tel:+34603117019" class="btn-primary">Pedir cita</a>
+                    <a href="#servicios" class="btn-secondary">Ver servicios</a>
+                </div>
+                <div class="hero-card">
+                    <div class="hero-card-title">Confianza y Calidad</div>
+                    <div class="hero-card-stat">
+                        <span>⭐</span>
+                        <p><strong>4.8/5</strong> en Google Maps</p>
+                    </div>
+                    <div class="hero-card-stat">
+                        <span>💬</span>
+                        <p><strong>92 reseñas</strong> de clientes</p>
+                    </div>
+                    <div class="hero-card-stat">
+                        <span>✂️</span>
+                        <p><strong>Profesionales</strong> certificados</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats-bar">
+        <div class="stats-container">
+            <div class="stat-item">
+                <div class="stat-number">15+</div>
+                <div class="stat-label">Años de experiencia</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">3.500+</div>
+                <div class="stat-label">Clientes satisfechos</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Profesionalidad garantizada</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="servicios" class="section section-light">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Nuestros Servicios</h2>
+                <p class="section-subtitle">Tratamientos profesionales para realzar tu belleza y estilo personal</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">✂️</div>
+                    <h3 class="service-title">Corte y Peinado</h3>
+                    <p class="service-description">Cortes personalizados para todo tipo de cabello, adaptados a tu estilo y personalidad. Técnicas actuales y acabados impecables.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🎨</div>
+                    <h3 class="service-title">Coloración Profesional</h3>
+                    <p class="service-description">Tintes, mechas, balayage y técnicas de color avanzadas con productos de alta calidad para un resultado duradero y brillante.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">💆</div>
+                    <h3 class="service-title">Tratamientos Capilares</h3>
+                    <p class="service-description">Hidratación profunda, keratina, botox capilar y tratamientos reparadores para devolver la vida a tu cabello.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">👰</div>
+                    <h3 class="service-title">Peinados de Evento</h3>
+                    <p class="service-description">Recogidos, peinados de boda, comuniones y eventos especiales. Diseños exclusivos para tu día más importante.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">✨</div>
+                    <h3 class="service-title">Alisado y Permanente</h3>
+                    <p class="service-description">Alisado brasileño, japonés y permanentes con las mejores técnicas para transformar tu melena de forma duradera.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">💅</div>
+                    <h3 class="service-title">Manicura y Pedicura</h3>
+                    <p class="service-description">Cuidado completo de manos y pies con esmaltado semipermanente, decoración y tratamientos de belleza integral.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-dark">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">¿Por qué elegirnos?</h2>
+                <p class="section-subtitle">La experiencia y calidad que tu cabello merece</p>
+            </div>
+            <div class="why-grid">
+                <div class="why-item">
+                    <div class="why-icon">👨‍🎨</div>
+                    <h3 class="why-title">Estilistas Profesionales</h3>
+                    <p class="why-description">Equipo altamente cualificado con formación continua en las últimas tendencias y técnicas de peluquería.</p>
+                </div>
+                <div class="why-item">
+                    <div class="why-icon">🌟</div>
+                    <h3 class="why-title">Productos Premium</h3>
+                    <p class="why-description">Trabajamos exclusivamente con marcas de alta gama para garantizar resultados excepcionales y duraderos.</p>
+                </div>
+                <div class="why-item">
+                    <div class="why-icon">💎</div>
+                    <h3 class="why-title">Atención Personalizada</h3>
+                    <p class="why-description">Cada cliente es único. Escuchamos tus necesidades y te asesoramos para lograr el look perfecto para ti.</p>
+                </div>
+                <div class="why-item">
+                    <div class="why-icon">🏆</div>
+                    <h3 class="why-title">Reputación Excelente</h3>
+                    <p class="why-description">Más de 92 reseñas positivas y una valoración de 4.8 estrellas nos avalan como referente en La Cala del Moral.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Lo que dicen nuestros clientes</h2>
+                <p class="section-subtitle">Testimonios reales de personas que confían en nosotros</p>
+            </div>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar">MC</div>
+                        <div class="review-info">
+                            <h4>María Carmen López</h4>
+                            <div class="review-stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="review-text">Llevo años viniendo a Nora Arifi y siempre salgo encantada. El trato es cercano y profesional. La coloración me dura meses perfecta y los cortes siempre quedan impecables. ¡Totalmente recomendable!</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar">AR</div>
+                        <div class="review-info">
+                            <h4>Ana Rodríguez</h4>
+                            <div class="review-stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="review-text">Me hicieron el peinado de boda y quedó espectacular. El recogido aguantó perfecto toda la celebración. Además, son super atentas y te hacen sentir como en casa. Sin duda, las mejores de la zona.</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar">LS</div>
+                        <div class="review-info">
+                            <h4>Laura Sánchez</h4>
+                            <div class="review-stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="review-text">El alisado brasileño que me hicieron fue un antes y después. Mi pelo está sedoso, manejable y sin frizz. Nora es una artista y sabe exactamente qué necesita cada cabello. Volveré seguro.</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar">CG</div>
+                        <div class="review-info">
+                            <h4>Carmen García</h4>
+                            <div class="review-stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="review-text">Profesionalidad al 100%. Me asesoraron sobre el mejor color para mi tono de piel y quedó precioso. Los productos que usan son de primera calidad y se nota en el resultado. ¡Muy contentas!</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-avatar">IM</div>
+                        <div class="review-info">
+                            <h4>Isabel Martín</h4>
+                            <div class="review-stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="review-text">Encontrar un salón donde te entiendan y cuiden tu pelo es difícil, pero aquí lo conseguí. El tratamiento de keratina dejó mi melena brillante y saludable. Precio justo por calidad excelente.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="cita" class="section form-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Reserva tu cita</h2>
+                <p class="section-subtitle">Déjanos tus datos y te contactaremos en menos de 24 horas</p>
+            </div>
+            <div class="form-container">
+                <form id="citaForm">
+                    <div class="form-group">
+                        <label class="form-label" for="nombre">Nombre completo *</label>
+                        <input type="text" id="nombre" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="telefono">Teléfono *</label>
+                        <input type="tel" id="telefono" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="email">Email *</label>
+                        <input type="email" id="email" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="servicio">Tipo de servicio *</label>
+                        <select id="servicio" class="form-select" required>
+                            <option value="">Selecciona un servicio</option>
+                            <option value="corte">Corte y Peinado</option>
+                            <option value="coloracion">Coloración Profesional</option>
+                            <option value="tratamiento">Tratamientos Capilares</option>
+                            <option value="evento">Peinados de Evento</option>
+                            <option value="alisado">Alisado y Permanente</option>
+                            <option value="manicura">Manicura y Pedicura</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="fecha">Fecha preferida *</label>
+                        <input type="date" id="fecha" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="mensaje">Mensaje (opcional)</label>
+                        <textarea id="mensaje" class="form-textarea" placeholder="Cuéntanos cualquier detalle adicional..."></textarea>
+                    </div>
+                    <button type="submit" class="form-button">Solicitar cita</button>
+                    <div id="formMessage" class="form-message">
+                        ¡Solicitud recibida! Te llamaremos en menos de 24h
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-light">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Cómo llegar</h2>
+                <p class="section-subtitle">Encuéntranos en La Cala del Moral, Málaga</p>
+            </div>
+            <div class="location-grid">
+                <div class="location-card">
+                    <div class="location-icon">📍</div>
+                    <div class="location-label">Dirección</div>
+                    <div class="location-value">Av. de Málaga, 131, local 2<br>29720 La Cala del Moral<br>Málaga, España</div>
+                </div>
+                <div class="location-card">
+                    <div class="location-icon">📞</div>
+                    <div class="location-label">Teléfono</div>
+                    <div class="location-value">+34 603 11 70 19</div>
+                </div>
+                <div class="location-card">
+                    <div class="location-icon">🕐</div>
+                    <div class="location-label">Horario</div>
+                    <div class="location-value">Lunes a Viernes: 10:00 - 20:00<br>Sábados: 10:00 - 14:00<br>Domingos: Cerrado</div>
+                </div>
+                <div class="location-card">
+                    <div class="location-icon">🚌</div>
+                    <div class="location-label">Transporte</div>
+                    <div class="location-value">Líneas de autobús 40 y 111<br>Parada: La Cala del Moral<br>Aparcamiento en la zona</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-logo">Nora Arifi estilistas</div>
+            <p class="footer-info">Av. de Málaga, 131, local 2 - 29720 La Cala del Moral, Málaga</p>
+            <p class="footer-info">Teléfono: +34 603 11 70 19</p>
+            <div class="footer-divider"></div>
+            <p class="footer-copyright">© 2024 Nora Arifi estilistas. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/34603117019" class="whatsapp-float" aria-label="Contactar por WhatsApp">💬</a>
+
+    <script>
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.stat-item, .service-card, .why-item, .review-card, .location-card').forEach(el => {
+            observer.observe(el);
+        });
+
+        document.getElementById('citaForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formMessage = document.getElementById('formMessage');
+            formMessage.style.display = 'block';
+            
+            this.reset();
+            
+            setTimeout(() => {
+                formMessage.style.display = 'none';
+            }, 5000);
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('fecha').setAttribute('min', today);
+    </script>
+
+</body>
+</html>
