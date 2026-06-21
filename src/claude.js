@@ -128,10 +128,15 @@ ${reviewsSection}
    - Al hacer submit (preventDefault): mostrar mensaje de confirmación "¡Solicitud recibida! Te llamaremos en menos de 24h" con animación
    - Diseño limpio, sin backend real necesario
 
-9. SECCIÓN "CÓMO LLEGAR":
+9. SECCIÓN "CÓMO LLEGAR" — SEGUIR ESTE PATRÓN VISUAL EXACTO (Variante F: tarjetas apiladas con icono circular):
    - SIN mapa ni iframe de ningún tipo
-   - Grid de 4 tarjetas con icono, label en mayúsculas y valor: Dirección, Teléfono, Horario (inferido para el sector), Transporte público cercano (inferido)
-   - Diseño limpio sobre fondo claro con sombra suave en cada tarjeta
+   - Estructura: encabezado centrado pequeño (eyebrow + título con una palabra en cursiva/acento) seguido de una lista VERTICAL de 4 tarjetas apiladas (NO grid, NO horizontal)
+   - Cada tarjeta es una fila horizontal con: icono circular a la izquierda (círculo de color oscuro sólido, ~48px, con un icono SVG de línea simple en el color de acento dentro) + texto a la derecha (label pequeño en mayúsculas con color de acento arriba, valor en texto grande y semi-negrita debajo)
+   - Las 4 tarjetas son: Dirección, Teléfono, Horario, Cómo llegar (transporte público inferido)
+   - Cada tarjeta tiene fondo gris muy claro o blanco roto, esquinas redondeadas (~14px), y un borde izquierdo grueso (~4px) en el color de acento de la página
+   - Al hacer hover sobre una tarjeta: el fondo se oscurece ligeramente y la tarjeta se desplaza unos píxeles hacia la derecha (transform: translateX)
+   - El contenedor de las 4 tarjetas tiene un máximo de ancho (~720px) y está centrado en la página, con espacio entre tarjetas (~14px)
+   - Usa los mismos iconos SVG de línea (stroke, sin relleno) ya utilizados en el resto de la página, nunca emojis en esta sección
 
 10. FOOTER con logo, dirección, teléfono y copyright
 
