@@ -2,6 +2,7 @@ node_modules/
 backend/node_modules/
 frontend/node_modules/
 frontend/dist/
+frontend/dist-demo/
 backend/database.sqlite
 backend/database.sqlite-shm
 backend/database.sqlite-wal
