@@ -16,8 +16,9 @@ export function useApp() {
   return useContext(AppContext);
 }
 
-// Instancia de Socket.io (singleton)
-const socket = io('http://localhost:3001', { autoConnect: false });
+// En producción el socket conecta al mismo origen; en dev al backend local
+const SOCKET_URL = import.meta.env.PROD ? window.location.origin : 'http://localhost:3001';
+const socket = io(SOCKET_URL, { autoConnect: false });
 
 export default function App() {
   const [config, setConfig] = useState(null);

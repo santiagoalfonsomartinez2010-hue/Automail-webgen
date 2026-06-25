@@ -3,6 +3,8 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [react()],
+  // En producción el frontend y backend están en el mismo origen
+  base: '/',
   server: {
     port: 3000,
     proxy: {

@@ -3,7 +3,8 @@
 // Puerto 3001
 // =============================================
 
-require('dotenv').config({ path: '../.env' });
+require('dotenv').config({ path: process.env.NODE_ENV === 'production' ? '/etc/secrets/.env' : '../.env' });
+if (!process.env.ANTHROPIC_API_KEY) require('dotenv').config({ path: '../.env' });
 const express = require('express');
 const cors = require('cors');
 const http = require('http');
@@ -32,9 +33,14 @@ const io = new Server(server, {
 const PORT = process.env.PORT || 3001;
 
 // Middleware
+// En producción sirve el frontend buildado
+const FRONTEND_DIST = path.join(__dirname, '../frontend/dist');
 app.use(cors({ origin: process.env.FRONTEND_URL || 'http://localhost:3000' }));
 app.use(express.json());
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(FRONTEND_DIST));
+}
 
 // Multer para subida de fotos
 const storage = multer.diskStorage({
@@ -286,6 +292,13 @@ app.get('/auth/gmail/callback', async (req, res) => {
 app.get('/api/gmail/estado', (req, res) => {
   res.json({ conectado: gmail.estaConectado() });
 });
+
+// En producción, todas las rutas no-API devuelven el index.html (SPA)
+if (process.env.NODE_ENV === 'production') {
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(FRONTEND_DIST, 'index.html'));
+  });
+}
 
 // ---- MANEJO DE ERRORES ----
 
