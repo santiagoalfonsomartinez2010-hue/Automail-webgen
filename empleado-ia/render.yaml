@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: empleado-ia
+    runtime: node
+    rootDir: empleado-ia
+    buildCommand: cd frontend && npm install && npm run build && cd ../backend && npm install
+    startCommand: cd backend && node server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MODO_SIMULACION
+        value: "true"
+      - key: PORT
+        generateValue: false
+        value: "10000"
+      - key: ANTHROPIC_API_KEY
+        value: "sk-ant-demo-sin-clave"
