@@ -6,6 +6,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Send, Loader2, Bot, User, RefreshCw } from 'lucide-react';
 import { useApp } from '../App.jsx';
+import { getChatHistorial, postChat } from '../api.js';
 
 export default function Chat() {
   const { config, agregarNotificacion } = useApp();
@@ -27,9 +28,8 @@ export default function Chat() {
   async function cargarHistorial() {
     setCargandoHistorial(true);
     try {
-      const res = await fetch('/api/chat/historial');
-      const datos = await res.json();
-      if (datos.length > 0) {
+      const datos = await getChatHistorial();
+      if (datos && datos.length > 0) {
         setMensajes(datos.map(m => ({
           id: m.id,
           rol: m.rol,
@@ -37,7 +37,6 @@ export default function Chat() {
           fecha: m.fecha
         })));
       } else {
-        // Mensaje de bienvenida si no hay historial
         setMensajes([{
           id: 'bienvenida',
           rol: 'empleada',
@@ -84,21 +83,14 @@ export default function Chat() {
 
     setEnviando(true);
     try {
-      const res = await fetch('/api/chat', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ mensaje: texto })
-      });
-      const datos = await res.json();
-
-      // Reemplazar el indicador de escritura con la respuesta real
+      const datos = await postChat(texto);
       setMensajes(prev => [
         ...prev.filter(m => m.id !== escribiendoId),
         {
           id: 'resp_' + Date.now(),
           rol: 'empleada',
           contenido: datos.respuesta,
-          fecha: datos.fecha
+          fecha: datos.fecha || new Date().toISOString()
         }
       ]);
     } catch (error) {

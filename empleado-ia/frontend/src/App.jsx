@@ -8,6 +8,7 @@ import React, { useState, useEffect, createContext, useContext } from 'react';
 import { io } from 'socket.io-client';
 import Onboarding from './components/Onboarding.jsx';
 import Dashboard from './components/Dashboard.jsx';
+import { getConfig, getStats, isDemoMode } from './api.js';
 
 // Contexto global para compartir estado entre componentes
 export const AppContext = createContext(null);
@@ -18,7 +19,7 @@ export function useApp() {
 
 // En producción el socket conecta al mismo origen; en dev al backend local
 const SOCKET_URL = import.meta.env.PROD ? window.location.origin : 'http://localhost:3001';
-const socket = io(SOCKET_URL, { autoConnect: false });
+const socket = isDemoMode ? { connect(){}, disconnect(){}, on(){}, off(){} } : io(SOCKET_URL, { autoConnect: false });
 
 export default function App() {
   const [config, setConfig] = useState(null);
@@ -98,8 +99,7 @@ export default function App() {
 
   async function cargarConfig() {
     try {
-      const res = await fetch('/api/config');
-      const datos = await res.json();
+      const datos = await getConfig();
       setConfig(datos);
     } catch (error) {
       console.error('Error cargando config:', error);
@@ -110,8 +110,7 @@ export default function App() {
 
   async function cargarStats() {
     try {
-      const res = await fetch('/api/stats');
-      const datos = await res.json();
+      const datos = await getStats();
       setStatsHoy(datos);
     } catch (error) {
       console.error('Error cargando stats:', error);

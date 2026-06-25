@@ -9,6 +9,7 @@ import {
   Mail, MessageSquare, Tag, Zap
 } from 'lucide-react';
 import { useApp } from '../App.jsx';
+import { getTicketsHoy, getTicketAcciones, postAgentesProcesar } from '../api.js';
 
 // Configuración visual por estado
 const CONFIG_ESTADO = {
@@ -59,8 +60,7 @@ export default function TicketList() {
   async function cargarTickets() {
     setCargando(true);
     try {
-      const res = await fetch('/api/tickets/hoy');
-      const datos = await res.json();
+      const datos = await getTicketsHoy();
       setTickets(datos);
     } catch (error) {
       agregarNotificacion('Error cargando tickets', 'error');
@@ -72,7 +72,7 @@ export default function TicketList() {
   async function procesarEmails() {
     setProcesando(true);
     try {
-      await fetch('/api/agente/procesar', { method: 'POST' });
+      await postAgentesProcesar();
       agregarNotificacion('Procesando emails...', 'info');
       setTimeout(cargarTickets, 3000);
     } catch (error) {
@@ -178,8 +178,7 @@ function TicketCard({ ticket, expandido, onToggle }) {
 
   async function cargarAcciones() {
     try {
-      const res = await fetch(`/api/tickets/${ticket.id}/acciones`);
-      const datos = await res.json();
+      const datos = await getTicketAcciones(ticket.id);
       setAcciones(datos);
     } catch {}
   }

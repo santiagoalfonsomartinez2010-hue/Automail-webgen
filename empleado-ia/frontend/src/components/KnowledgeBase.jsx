@@ -9,6 +9,7 @@ import {
   Star, Clock, Database, ChevronDown, ChevronUp
 } from 'lucide-react';
 import { useApp } from '../App.jsx';
+import { getConocimiento, postSheetsSincronizar } from '../api.js';
 
 const SECCIONES = [
   { id: 'FAQs', label: 'FAQs', icono: HelpCircle, color: 'var(--blue)' },
@@ -31,8 +32,7 @@ export default function KnowledgeBase() {
   async function cargarCache() {
     setCargando(true);
     try {
-      const res = await fetch('/api/conocimiento');
-      const datos = await res.json();
+      const datos = await getConocimiento();
       setCache(datos);
     } catch (error) {
       agregarNotificacion('Error cargando base de conocimiento', 'error');
@@ -44,12 +44,9 @@ export default function KnowledgeBase() {
   async function sincronizar() {
     setSincronizando(true);
     try {
-      const res = await fetch('/api/sheets/sincronizar', { method: 'POST' });
-      const datos = await res.json();
-      if (datos.ok) {
-        await cargarCache();
-        agregarNotificacion('Base de conocimiento sincronizada', 'success');
-      }
+      await postSheetsSincronizar();
+      await cargarCache();
+      agregarNotificacion('Base de conocimiento sincronizada', 'success');
     } catch (error) {
       agregarNotificacion('Error al sincronizar', 'error');
     } finally {

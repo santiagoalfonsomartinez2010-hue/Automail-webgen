@@ -9,6 +9,7 @@ import {
   RefreshCw
 } from 'lucide-react';
 import { useApp } from '../App.jsx';
+import { getClientes, getTicketsHoy } from '../api.js';
 
 export default function ClientList() {
   const { agregarNotificacion } = useApp();
@@ -25,8 +26,7 @@ export default function ClientList() {
   async function cargarClientes() {
     setCargando(true);
     try {
-      const res = await fetch('/api/clientes');
-      const datos = await res.json();
+      const datos = await getClientes();
       setClientes(datos);
     } catch (error) {
       agregarNotificacion('Error cargando clientes', 'error');
@@ -38,9 +38,16 @@ export default function ClientList() {
   async function cargarTicketsCliente(email) {
     if (ticketsCliente[email]) return;
     try {
-      const res = await fetch(`/api/clientes/${encodeURIComponent(email)}/tickets`);
-      const datos = await res.json();
-      setTicketsCliente(prev => ({ ...prev, [email]: datos.tickets }));
+      let ticketsDatos;
+      try {
+        const res = await fetch(`/api/clientes/${encodeURIComponent(email)}/tickets`);
+        const datos = await res.json();
+        ticketsDatos = datos.tickets;
+      } catch {
+        const todos = await getTicketsHoy();
+        ticketsDatos = todos.filter(t => t.cliente_email === email);
+      }
+      setTicketsCliente(prev => ({ ...prev, [email]: ticketsDatos }));
     } catch {}
   }
 
