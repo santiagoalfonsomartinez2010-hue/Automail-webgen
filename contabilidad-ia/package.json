@@ -1,0 +1,21 @@
+{
+  "name": "contabilidad-ia-frontend",
+  "version": "1.0.0",
+  "description": "Demo visual del Empleado de Contabilidad IA de Reformas Meridiano S.L.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "lucide-react": "^0.344.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "recharts": "^2.12.7"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.2.1",
+    "vite": "^5.2.0"
+  }
+}
