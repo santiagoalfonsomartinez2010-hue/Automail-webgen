@@ -6,7 +6,7 @@ import react from '@vitejs/plugin-react';
 // La base apunta a la ruta de GitHub Pages cuando se despliega.
 export default defineConfig({
   plugins: [react()],
-  base: '/Automail-webgen/contabilidad-ia/',
+  base: '/Automail-webgen/',
   server: {
     port: 3000
   }
