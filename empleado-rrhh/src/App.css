@@ -1,0 +1,159 @@
+/* =============================================
+   Estilos globales — Empleado RRHH IA
+   Misma paleta oscura que Empleado Atención al Cliente
+   ============================================= */
+
+:root {
+  --bg-main: #0B0D14;
+  --bg-card: #0F1117;
+  --bg-card-hover: #141720;
+  --border: #1E2130;
+  --border-light: #262a3e;
+
+  --accent: #6366F1;
+  --accent-hover: #4f52d9;
+  --accent-light: rgba(99, 102, 241, 0.15);
+
+  --green: #10B981;
+  --green-light: rgba(16, 185, 129, 0.15);
+  --yellow: #F59E0B;
+  --yellow-light: rgba(245, 158, 11, 0.15);
+  --red: #EF4444;
+  --red-light: rgba(239, 68, 68, 0.15);
+  --blue: #3B82F6;
+  --blue-light: rgba(59, 130, 246, 0.15);
+
+  --text-primary: #E2E8F0;
+  --text-secondary: #8892A4;
+  --text-muted: #4A5568;
+
+  --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --radius: 10px;
+  --radius-sm: 6px;
+  --radius-lg: 14px;
+
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body, #root { height: 100%; width: 100%; }
+
+body {
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  font-family: var(--font);
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Scrollbar personalizada */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-card); }
+::-webkit-scrollbar-thumb { background: var(--border-light); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+
+/* ---- Utilidades ---- */
+.truncate { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* ---- Componentes base ---- */
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-family: var(--font);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.btn-primary { background: var(--accent); color: white; }
+.btn-primary:hover { background: var(--accent-hover); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(99,102,241,0.3); }
+.btn-secondary { background: var(--border); color: var(--text-primary); }
+.btn-secondary:hover { background: var(--border-light); }
+.btn-ghost { background: transparent; color: var(--text-secondary); border: 1px solid var(--border); }
+.btn-ghost:hover { background: var(--bg-card-hover); color: var(--text-primary); }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+.input {
+  width: 100%;
+  padding: 10px 14px;
+  background: var(--bg-main);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-family: var(--font);
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-light); }
+.input::placeholder { color: var(--text-muted); }
+textarea.input { resize: none; }
+
+/* ---- Badges ---- */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+.badge-green  { background: var(--green-light);  color: var(--green);  }
+.badge-yellow { background: var(--yellow-light); color: var(--yellow); }
+.badge-red    { background: var(--red-light);    color: var(--red);    }
+.badge-blue   { background: var(--blue-light);   color: var(--blue);   }
+.badge-purple { background: var(--accent-light); color: var(--accent); }
+.badge-gray   { background: rgba(74,85,104,0.2); color: var(--text-secondary); }
+
+/* ---- Animaciones ---- */
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.6; transform: scale(1.15); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.animate-pulse  { animation: pulse 2s ease-in-out infinite; }
+.animate-fadein { animation: fadeIn 0.3s ease-out; }
+.animate-spin   { animation: spin 1s linear infinite; }
+
+/* ---- Scrollable ---- */
+.scrollable {
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-light) transparent;
+}
+
+/* ---- Estado vacío ---- */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 24px;
+  color: var(--text-muted);
+  gap: 12px;
+  text-align: center;
+}
+.empty-state svg { opacity: 0.3; }
